@@ -70,7 +70,7 @@ theme: light
 deploy:
   type: ftpsync
   host: ftp.ferugi.com
-  user: deploy
+  user: deploy@ferugi.com
   pass: ~Random~String
   remote: /
   port: 21
