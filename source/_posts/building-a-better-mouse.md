@@ -101,8 +101,35 @@ IMAGE OF COMPONENTS
 
 The next step was harder.
 
-Soldering is a skill, and not one that I had ever built up before. The last time I'd soldered was attempting to repair a pair of headphone drivers where the cable had came loose. The heat melted the plastic on the driver cone, rendering them useless.
+Soldering is a skill, and not one that I had ever built up before. The last time was attempting to repair a pair of headphone drivers where the cable had came loose. The heat melted the plastic on the driver cone, rendering them useless.
 
 That was basically the experience I had at first with my initial attempts at soldering the components. The Teensy, Adafruit FPC Stick & 14 pin connector had arrived. I had borrowed my Dad's Antex 25w iron and grabbed some rosin core solder from a local hardware shop. For wire I ripped apart a few cables from a box of computer and audio junk.
+
+Soldering the FPC connector to the stick was going to be a real challenge. 0.5mm surface connectors can be pretty unforgiving, the chance for the solder to bridge connections and short was high. Being a novice at best the chance for burning the board as a result of too many attempts was also there. Both things happened.
+
+At this point I had nothing to hold the small cuircuitry with. I had a desk clamp, but its designed for holding mobile phones. That held the iron pretty well while it was hot. My solution was to use a combination of paper clips and bluetack. A bent paperclip held the connector tightly against the board, which rested on some card covered in tinfoil. I'd tackle the problem by soldering the metal clips on the side of the connector first, securing the placement, and then work on the pins.
+
+This somewhat worked, but not using flux here was a massive mistake. It was very tricky to get the solder comfortably onto the pins and the trace, and I ended up spending far too long trying to remove clumping that had happened. This stripped some of the masking from the traces and burned some of the connectors plastic though it posed no problem.
+
+Moving onto the Teensy 
+
+I plugged in the FPC cable to test its stability. Disaster, as the pins & one side of the connector came loose. Fuck.
+
+So, back to what I'd already been spending hours doing. Sitting hobbled over in a dark room with poor ventiliation. Not a good idea. Whatever, I was this far and not going to give up so easily. I reseated the connector with and held it in place again with the paperclip. Back to soldering....
+
+In this persistance I fucked up, and clumped solder got worse. I'd thought that perhaps by adding some more of the rosin it'd help it reflow and perhaps improve the situation. Nah. The solder moved all the way up, right against the plastic of the connector making it impossible to remove. Perhaps I though, I could remove the connector and drain some of it off.
+
+Which is where disater struck for a second time. After desoldering the feet of the connector on the sides, and doing what I thought was the same to the pins I attempted to remove the connector. With a bit of force it came off, along with the metal trace on the board.
+
+Whatever, £3.50 down the drain. Lesson learned.
+
+
+
+
+
+
+
+
+
 
 ## Lessons Learned
