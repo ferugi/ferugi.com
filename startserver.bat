@@ -1,1 +1,1 @@
-start /MIN hexo server && start LiveSite.url
+start /MIN hexo server && start LocalSite.url
