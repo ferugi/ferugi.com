@@ -97,7 +97,7 @@ I used the rotary tool to split the Xai's mainboard, seperating the front area f
 Next up was shell modification. The 3366 sensor in the G502 is on a seperate board connected by a 14 pin FPC cable. It is secured in by two screws and some soft plastic washers, but also there are ridges that seat the lens. The pattern of these ridges is similar to the 9500 that was contained in the Xai.
 Sadly there wasn't anything in the Xai to firmly hold the new sensor in place, so my only choice was to cut the plastic out of the G502. I'd remove the hexagonal piece including the columns with threads for the screws, and then cut a similarly shape out of the base of the Xai. This was all relatively easy stuff, very iterative. The only error I could have made was removing too much material from any piece. This left me with the componenets in the image below:
 
-IMAGE OF COMPONENTS
+IMAGE OF COMPONENTS HERE: http://www.overclock.net/t/1561041/reverse-engineering-3366/170#post_24525557
 
 The next step was harder.
 

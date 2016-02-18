@@ -76,4 +76,4 @@ deploy:
   port: 21
   ignore: 
   connections: 1
-  verbose: true
+  verbose: false

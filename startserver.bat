@@ -1,0 +1,1 @@
+start /MIN hexo server && start LiveSite.url

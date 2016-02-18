@@ -1,0 +1,26 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+
+    "build_systems":
+    [
+        {
+            "name": "Regenerate Hexo",
+			"cmd": "regenerate.bat"
+        },
+
+        {
+            "name": "Deploy Hexo",
+			"shell_cmd": "start deploy.bat"
+        },
+
+        {
+            "name": "Start Hexo Server",
+            "cmd":  "startserver.bat", 
+        }
+    ],
+}
