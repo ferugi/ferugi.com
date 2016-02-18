@@ -10,17 +10,17 @@
     [
         {
             "name": "Regenerate Hexo",
-			"cmd": "regenerate.bat"
+			"cmd": "$project_path/regenerate.bat"
         },
 
         {
             "name": "Deploy Hexo",
-			"shell_cmd": "start deploy.bat"
+			"shell_cmd": "start $project_path/deploy.bat"
         },
 
         {
             "name": "Start Hexo Server",
-            "cmd":  "startserver.bat", 
+            "cmd":  "$project_path/startserver.bat", 
         }
     ],
 }

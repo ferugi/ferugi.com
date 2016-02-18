@@ -1,4 +1,15 @@
 title: Installing Node.js on GoDaddy Shared Hosting
+categories:
+    - Web Development
+
+tags: 
+- Linux
+- Node.js
+- Backend
+- Javascript
+- NPM
+- NVM
+- Guide
 ---
 
 The common response to the question *"How do I install Node.js on GoDaddy shared hosting?"* is *"it's impossible!"*.
@@ -64,7 +75,7 @@ To fix that **add the following line to the file .bashrc** which is located in y
 ## Conclusion
 Finally I could use Node.js and NPM as I pleased! The irony, to all of this, is that I didn't need Node running on my webserver. 
 
-All I wanted to do was get this blog up and running with Hexo. On the other hand, lesson learned, and hopefully this information will provide useful to others. It does also mean that Node.js is available for use in the future, should the need arise.
+All I wanted to do was get this blog up and running with Hexo. On the other hand, lesson learned, and hopefully this information will prove useful to others. It does also mean that Node.js is available for use in the future, should the need arise.
 
 Lastly for laughs [here's](https://gist.github.com/isaacs/579814) some of the approaches that **didn't** work.
 * `sudo apt-get install nodeJs` - I couldn't use sudo because I don't have root access. That much is obvious. 
