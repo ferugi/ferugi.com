@@ -67,6 +67,7 @@ The following list includes this and more. Here's everything that I used, but re
 * Logitech G502
 * 2nd Hand [Steelseries Xai](http://www.amazon.co.uk/gp/product/B00YUJ6OSE)
 * [Teensy 2.0 USB Development Board](https://www.pjrc.com/store/teensy.html)
+* Voltage Regulator // Add link
 * [Adafruit FPC Stick](https://www.adafruit.com/products/1325)
 * 14 Pin 0.5mm Pitch Surface Mount FPC Connecter e.g. [this](https://www.digikey.com/product-detail/en/SFV14R-1STE1HLF/609-4309-1-ND/2626760)
 * 14 Conductor FPC Cable e.g. [this](https://www.digikey.com/product-detail/en/687614050002/732-3559-ND/2811281) (The G502 comes with two, but note that they are reversed)
@@ -111,6 +112,11 @@ At this point I had nothing to hold the small cuircuitry with. I had a desk clam
 
 This somewhat worked, but not using flux here was a massive mistake. It was very tricky to get the solder comfortably onto the pins and the trace, and I ended up spending far too long trying to remove clumping that had happened. This stripped some of the masking from the traces and burned some of the connectors plastic though it posed no problem.
 
+Next I soldered the voltage regulator onto the teensy. Not a pretty sight, but easier than the FPC connector.
+    // image here
+
+The biggest mistake I made, was soldering the board & wires to the FPC stick. 
+
 Moving onto the Teensy 
 
 I plugged in the FPC cable to test its stability. Disaster, as the pins & one side of the connector came loose. Fuck.
@@ -123,13 +129,6 @@ Which is where disater struck for a second time. After desoldering the feet of t
 
 Whatever, £3.50 down the drain. Lesson learned.
 
-
-
-
-
-
-
-
-
-
 ## Lessons Learned
+
+Shortly after I recieved 
