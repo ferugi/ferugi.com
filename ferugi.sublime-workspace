@@ -520,10 +520,27 @@
 	"buffers":
 	[
 		{
-			"file": "ferugi.sublime-project",
+			"file": "/C/Windows/System32/drivers/etc/hosts",
 			"settings":
 			{
-				"buffer_size": 404,
+				"buffer_size": 8214,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/index.md",
+			"settings":
+			{
+				"buffer_size": 29,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "source/resume/index.md",
+			"settings":
+			{
+				"buffer_size": 754,
 				"line_ending": "Unix"
 			}
 		}
@@ -755,6 +772,8 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Ferugi/Documents/www/ferugi/node_modules/hexo-server/README.md",
+		"/C/Users/Ferugi/Documents/www/ferugi/toolbar.ejs",
 		"/C/Users/Ferugi/Desktop/Teensy Mouse Source/xai502/srom_3366.h",
 		"/C/Users/Ferugi/Documents/www/ferugi/source/about/index.md",
 		"/C/Users/Ferugi/Documents/www/ferugi/source/resume/index.md",
@@ -880,9 +899,7 @@
 		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Core/Utility.php",
 		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Event.php",
 		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Registry.php",
-		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/ServiceLocator.php",
-		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Session.php",
-		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/generator.php"
+		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/ServiceLocator.php"
 	],
 	"find":
 	{
@@ -900,6 +917,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"0.0.0.0",
 			"voltage",
 			"Node.js",
 			"echo",
@@ -1026,8 +1044,7 @@
 			");\n",
 			"NotifyPropertyChanged(MethodBase.GetCurrentMethod().Name)",
 			"valueType",
-			"Valu",
-			");\n"
+			"Valu"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1035,6 +1052,7 @@
 		"regex": true,
 		"replace_history":
 		[
+			"# 0.0.0.0",
 			"write_dpi_array",
 			"read_dpi_array",
 			"read_current_dpi",
@@ -1090,16 +1108,44 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "ferugi.sublime-project",
-					"semi_transient": true,
+					"file": "/C/Windows/System32/drivers/etc/hosts",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 404,
+						"buffer_size": 8214,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								763,
+								763
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 79.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "source/index.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 29,
 						"regions":
 						{
 						},
@@ -1112,9 +1158,35 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "source/resume/index.md",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 754,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1169,7 +1241,7 @@
 	"project": "ferugi.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="<%- config.language %>">
+
+    <!-- Head -->
+    <%- partial('_partial/head') %>
+
+    <body>
+
+        <!-- Header -->
+        <!--<%- partial('_partial/header') %>-->
+        <div class="side-container">
+            <section class="sidebar">
+                <div class="portrait">
+                    <img src="<%- config.root %><%- theme.sidebar.portrait %>"/>
+                </div>
+                <p>
+                    My name is Ferugi. I'm currently an IT Analyst.
+
+                    I've got a degree in Film and Video product.
+                    I'm a self taught programmer
+
+                    My interests are:
+
+                    * Weightlifting
+                    * Bouldering
+                    * First Person Shooters
+                    * Science Fiction
+                    * Getting Drunk
+
+                </p>
+                <!--<%- partial('_partial/sidebar') %>-->
+            </section>
+        </div>
+        <div class="main-container">
+            <main class="content">
+                <%- body %>
+
+                <footer class="site-footer">
+                    <p>Copyright <%- config.author %> 2016-<%- new Date().getFullYear() %></p>
+                </footer>
+            </main>
+        </div>
+
+        <!-- After footer scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="<%- config.root %>js/site.js"></script>
+    </body>
+
+</html>

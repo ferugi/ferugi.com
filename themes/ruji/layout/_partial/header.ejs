@@ -1,0 +1,16 @@
+<header id="topbar">
+    <nav>
+        <h1><a href="<%- url_for(config.root) %>"><%- config.title %></a></h1>
+        <ul>
+            <% for (let i in theme.menu) { %>
+                <a href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+            <% } %>
+        </ul>
+        <div class="search">
+            <form action="//google.com/search" method="get" accept-charset="utf-8">
+                <input type="search" name="q" results="0" placeholder="<%= __('search') %>">
+                <input type="hidden" name="q" value="site:<%- config.url.replace(/^https?:\/\//, '') %>">
+            </form>
+        </div>
+    </nav>
+</header>

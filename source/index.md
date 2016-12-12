@@ -1,4 +1,2 @@
-portrait: /images/profile_golden.png
----
+_Hello, I'm_
 # Ferugi El Heri
-Hi, my name is Ferugi.

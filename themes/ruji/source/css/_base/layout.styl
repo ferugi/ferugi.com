@@ -1,0 +1,173 @@
+*
+    font-size: 100%
+    font-family: 'Open Sans', 'sans-serif'
+
+a
+    font-weight: bold
+    text-decoration: none
+
+    &:hover
+        text-decoration: underline
+
+h1
+    font-size: 140%
+
+h2
+    margin-top: 2em
+    font-size: 110%
+    padding-bottom: 0.5em
+    border-bottom: 1px solid #ddd
+
+body
+    padding: 0
+    margin: 0
+    background: #eee
+    min-height: 100vh
+
+code
+    font-family: monospace
+    background: rgba(0,0,0,0.1)
+    border-radius: 2px
+    padding: 0.35em
+
+input
+    text-shadow: 0px
+    border-radius: 5px
+    border: solid 1px #ccc
+    padding: 5px
+
+    &:focus
+        border-radius: 10px
+
+.site-footer
+    text-align: center
+    font-size: 70%
+
+.main-container
+    padding: 1em
+    margin-left: 17em
+
+    @media only screen and (max-width: 915px)
+        margin-left: auto
+
+.side-container
+    @media only screen and (min-width: 916px)
+        width: 15em
+        float: left
+        min-height: 100vh
+    
+    @media only screen and (max-width: 915px)
+        float: none
+        width: 100%
+        min-height: 4em
+
+.portrait
+    overflow: hidden
+    border-radius: 5px
+
+    @media only screen and (min-width: 916px)
+        width: 15em
+        height: 24.27em
+    
+    @media only screen and (max-width: 915px)
+        float: left
+        width: 4em
+        height: 4em
+        margin-right: 1em
+
+    img
+        @media only screen and (min-width: 916px)
+            max-width: 120%
+            max-height: none
+            margin-left: -10%
+        
+        @media only screen and (max-width: 915px)
+            max-width: 100%
+            max-height: none
+            margin: -10% auto auto auto
+
+.topbar
+    position: static
+
+.sidebar
+    background: #fff
+    padding: 1em
+    height: 100%
+
+    @media only screen and (min-width: 916px)
+        width: 15em
+        position: fixed
+
+    @media only screen and (max-width: 915px)
+        min-height: 3em
+        position: static
+
+img
+    max-height: 100%
+    max-width: 100%
+        
+.content
+    margin: auto
+    max-width: 50em
+
+.clearfix
+    clear: both
+
+article
+    background: #fff
+    padding: 1em 1em 3em 1em
+    margin: 1em auto
+    border-radius: 2px
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+
+    header, footer, .entry
+        line-height: 1.6
+        margin: auto
+        max-width: 36em 
+
+    &.bio
+        color: #fff
+        height: 100%
+        width: 100%
+        font-size: 1.4em
+        text-shadow: 1px 1px 1px #000
+        background: transparent
+
+        .entry
+            display: inline
+            text-align: center
+
+        .portrait 
+            float: left
+            display: inline
+
+            img
+                width: 4em
+                display: inline
+                margin: 10px
+
+#topbar
+    position: fixed
+    width: 100%
+    text-align: center
+    z-index: 1
+
+    h1
+        float: left
+        margin: 0 0 0 10px
+
+    ul
+        vertical-align: middle
+        
+    .search
+        float: right
+        margin: 0 10px 0 0
+    *
+        display: inline
+        text-decoration: none
+        text-shadow: 2px 2px 1px #000
+        color: #fff
+
+        a
+            &:hover
+                color: red

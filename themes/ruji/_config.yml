@@ -1,0 +1,21 @@
+menu:
+    About: about
+    Blog: blog
+
+sidebar:
+    portrait: images\profile_golden.png
+    bio-text: Hi, I'm Ferugi. I love games, tech, weightlifing, coding and climbing
+    socialmedia:
+        facebook:
+            icon: 
+            link: http://facebook.com/ferugi
+        github:
+            icon:
+            link: https://github.com/ferugi
+        linkedin:
+            icon:
+            link: https://www.linkedin.com/in/ferugi
+        twitch:
+            icon:
+            link: https://www.twitch.tv/furiosustv
+
