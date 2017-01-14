@@ -1,9 +1,23 @@
-var $topbar = $('#topbar');
+/*
+var $left = $('.left-side');
+var $right = $('.right-side');
+
+function init () {
+    oldTransition = $left.css("transition");
+    oldWidth = $left.css("width");
+}
+
+$(document).ready(init);
 
 $(document).scroll(function(){
-    let shadow;
-    let percentFromTop = $topbar.offset().top / $(window).height()
 
-    console.log("Percent from top: " + percentFromTop);
-    $topbar.css('background-color', 'rgba(0,0,0,' + percentFromTop + ')');
-})
+    if ($left.offset().top == 0) {
+        $left.css("width", "50%");
+        $right.css("margin-left", "50%");
+    } else {
+        $left.css("width", "15em");
+        $right.css("margin-left", "15em");
+    }
+
+});
+*/

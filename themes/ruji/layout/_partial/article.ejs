@@ -1,13 +1,19 @@
 <article>
+    <div class="icon">
+        <% if (item.icon) { %>
+            <a href="<%- config.root %><%- item.path %>"><img src="<%- item.icon %>"></a>
+        <% } %>
+    </div>
     <header>
+        <time>
+                <%- item.date.toDate().toDateString() %>
+        </time>
         <% if (index) { %><a href="<%- config.root %><%- item.path %>"><% } %>
         <h1 class="article-title"><%- item.title %></h1>
         <% if (index) { %></a><% } %>
 
         <div class="artile-sub-header">
-            <time>
-                <%- item.date.toDate().toDateString() %>
-            </time>
+            
         </div>
     </header>
     <div class="entry">
@@ -19,7 +25,7 @@
     </div>
     <footer>
         <% if (index && item.excerpt) { %>
-            <a href="<%- config.root %><%- item.path %>">Read more</a>
+            <a class="button" href="<%- config.root %><%- item.path %>">Read more...</a>
         <% } %>
     </footer>
 </article>
