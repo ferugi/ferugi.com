@@ -5,26 +5,24 @@
     <%- partial('_partial/head') %>
 
     <body>
-
         <!-- Header -->
         <!--<%- partial('_partial/header') %>-->
-        <div class="left-side">
+        <div id="sidebar">
             <section class="bio">
-                <h1 class="title">Ferugi El Heri</h1>
-                <div class="social-icons">
-                
-                </div>
+                <h1 class="title"><%- theme.bio.title %></h1>
+                <h2><%- theme.bio.description %></h2>
+                <%- partial('_widget/socialmedia') %>
+                <a href="mailto:<%- theme.links.email %>" target="_blank"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
             </section>
         </div>
-        <div class="right-side">
-            <main>
+        <main>
+            <section id="articles">
                 <%- body %>
-
-                <footer class="site-footer">
-                    <p>Copyright <%- config.author %> 2016-<%- new Date().getFullYear() %></p>
-                </footer>
-            </main>
-        </div>
+            </section>                
+            <footer class="site-footer">
+                <p>Copyright <%- config.author %> 2016-<%- new Date().getFullYear() %></p>
+            </footer>
+        </main>
 
         <!-- After footer scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

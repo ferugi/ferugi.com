@@ -1,21 +1,12 @@
-menu:
-    About: about
-    Blog: blog
+bio:
+    title: Ferugi El Heri
+    description: I'm into tech, coding, weightlifing, and climbing
 
-sidebar:
-    portrait: images\profile_golden.png
-    bio-text: Hi, I'm Ferugi. I love games, tech, weightlifing, coding and climbing
+links:
+    email: me@ferugi.com
     socialmedia:
-        facebook:
-            icon: 
-            link: http://facebook.com/ferugi
-        github:
-            icon:
-            link: https://github.com/ferugi
-        linkedin:
-            icon:
-            link: https://www.linkedin.com/in/ferugi
-        twitch:
-            icon:
-            link: https://www.twitch.tv/furiosustv
+        facebook: http://facebook.com/ferugi
+        github: https://github.com/ferugi
+        linkedin: https://www.linkedin.com/in/ferugi
+        #twitch: https://www.twitch.tv/furiosustv
 

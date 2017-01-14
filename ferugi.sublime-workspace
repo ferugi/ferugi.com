@@ -772,6 +772,7 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Ferugi/AppData/Local/Temp/Temp1_font-awesome-4.7.0.zip/font-awesome-4.7.0/css/font-awesome.css",
 		"/C/Users/Ferugi/Documents/www/ferugi/node_modules/hexo-server/README.md",
 		"/C/Users/Ferugi/Documents/www/ferugi/toolbar.ejs",
 		"/C/Users/Ferugi/Desktop/Teensy Mouse Source/xai502/srom_3366.h",
@@ -898,8 +899,7 @@
 		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/content/blog/page.md",
 		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Core/Utility.php",
 		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Event.php",
-		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Registry.php",
-		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/ServiceLocator.php"
+		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Registry.php"
 	],
 	"find":
 	{
@@ -1158,10 +1158,11 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/MarkdownEditing/MarkdownEditor.tmTheme",
 							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1180,12 +1181,13 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								342,
+								342
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/MarkdownEditing/MarkdownEditor.tmTheme",
 							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage"
 						},
 						"translation.x": 0.0,
