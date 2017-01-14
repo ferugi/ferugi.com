@@ -1,0 +1,5 @@
+<div class="socialmedia">
+    <% Object.keys(theme.links.socialmedia).forEach(function(key){ %>
+        <a href="<%- theme.links.socialmedia[key] %>" target="_blank"><i class="fa fa-<%- key %>" aria-hidden="true"></i></a>
+    <% }); %>
+</div>
