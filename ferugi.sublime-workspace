@@ -532,7 +532,7 @@
 			"file": "source/index.md",
 			"settings":
 			{
-				"buffer_size": 29,
+				"buffer_size": 37,
 				"line_ending": "Windows"
 			}
 		},
@@ -772,6 +772,7 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Ferugi/Downloads/nodejs-on-godaddy-shared-cpanel",
 		"/C/Users/Ferugi/AppData/Local/Temp/Temp1_font-awesome-4.7.0.zip/font-awesome-4.7.0/css/font-awesome.css",
 		"/C/Users/Ferugi/Documents/www/ferugi/node_modules/hexo-server/README.md",
 		"/C/Users/Ferugi/Documents/www/ferugi/toolbar.ejs",
@@ -898,8 +899,7 @@
 		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/content/links.html",
 		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/content/blog/page.md",
 		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Core/Utility.php",
-		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Event.php",
-		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Registry.php"
+		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Event.php"
 	],
 	"find":
 	{
@@ -1145,7 +1145,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 29,
+						"buffer_size": 37,
 						"regions":
 						{
 						},

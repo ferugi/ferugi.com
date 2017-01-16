@@ -39,6 +39,6 @@
 </article>
 <% if (!index) { %>
     <section id="comments">
-        <p>We think your site sucks!</p>
+        <%- partial('_partial/comments', {fbcommentlink: item.fbcommentlink }) %>
     </section>
 <% } %>

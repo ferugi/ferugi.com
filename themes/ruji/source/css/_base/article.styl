@@ -1,6 +1,10 @@
 article
-    margin: 10% auto
-    max-width: 40em
+    margin: 6vh auto
+    max-width: 32em
+
+    header, footer, .entry
+        line-height: 1.6
+        max-width: 32em
 
     h2
         margin-top: 2em
@@ -8,7 +12,7 @@ article
     header
         h1
             font-weight: bold
-            color: #000
+            color: colour-dark
             margin: 0
             border-bottom: 2px solid #ccc
 
@@ -16,26 +20,33 @@ article
             font-weight: 300
 
     .icon
-        width: 6em
-        height: 6em
+        width: 5em
+        height: 5em
         margin: auto
         color: colour-blue
         border-radius: 10px
+        float: left
+        margin-left: -6em
+        position: absolute
 
         i
-            margin: 0.175em 0 0 0.175em
-            font-size: 5em
+            margin: 0.15em 0 0 0.2em
+            font-size: 4em
 
-    header, footer, .entry
-        line-height: 1.6
-        margin: auto
-        max-width: 32em
+        @media only screen and (max-width: 46em)
+            display: none
 
     &.index
+        max-width: 40em
+        
         .icon
-            float: left
-            margin-right: 2em
+            position: static
+            margin-right: 1em
+            margin-left: 0
         
         header, footer, .entry
-            margin-left: 8em
-    
+            margin-left: 6em
+
+#comments
+    margin: auto
+    max-width: 32em

@@ -1,12 +1,15 @@
-bio:
-    title: Ferugi El Heri
-    description: I'm into tech, coding, weightlifing, and climbing
-
 links:
     email: me@ferugi.com
     socialmedia:
-        facebook: http://facebook.com/ferugi
-        github: https://github.com/ferugi
-        linkedin: https://www.linkedin.com/in/ferugi
+        Facebook: http://facebook.com/ferugi
+        LinkedIn: https://www.linkedin.com/in/ferugi
+        GitHub: https://github.com/ferugi
         #twitch: https://www.twitch.tv/furiosustv
 
+comments:
+    using: facebook     #   "facebook" or "disqus"
+    facebook:
+        appId: 929230953797958
+        count: 5
+        width: 512
+        colorscheme: light

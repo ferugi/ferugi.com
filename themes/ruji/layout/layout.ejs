@@ -1,21 +1,14 @@
 <!DOCTYPE html>
+<% var isIndex = page.path == 'index.html' %>
 <html lang="<%- config.language %>">
-
-    <!-- Head -->
     <%- partial('_partial/head') %>
-
     <body>
-        <!-- Header -->
-        <!--<%- partial('_partial/header') %>-->
-        <div id="sidebar">
-            <section class="bio">
-                <h1 class="title"><%- theme.bio.title %></h1>
-                <h2><%- theme.bio.description %></h2>
-                <%- partial('_widget/socialmedia') %>
-                <a href="mailto:<%- theme.links.email %>" target="_blank"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+        <%- partial('_partial/navbar') %>
+        <%- partial('_partial/sidebar', {isIndex: isIndex}) %>
+        <main  <% if (isIndex) { %>class="index"<% } %>>
+            <section id="bio">
+
             </section>
-        </div>
-        <main>
             <section id="articles">
                 <%- body %>
             </section>                
