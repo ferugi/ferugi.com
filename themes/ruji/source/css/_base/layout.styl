@@ -76,7 +76,7 @@ main
     transition: 0.25s
     overflow: hidden
 
-#sidebar
+#titlepanel
     background: colour-blue
     transition: width 0.25s
     color: colour-light
@@ -140,24 +140,29 @@ main
         text-decoration: none
         background: colour-blue-light
 
-#topbar
-    position: fixed
+#sitenav
+    right: 0
     width: 100%
+    background: colour-light
+    text-align: center
 
+    ul
+        li
+            display: inline
+    
     i
-        color: colour-blue
-        padding: 0.5em
-        font-size: 2em
-        float: right
+        position: absolute
+        right: 0
+        top: 0
 
 // Media Rules
 
 // Large / Desktop / High Res Landscape
 @media only screen and (min-width: 84em) and (min-aspect-ratio: 1/1)
-    #sidebar
+    #titlepanel
         position: fixed
         float: left
-        width: 20em
+        width: 20%
         height: 100vh
         font-size: 1vw
 
@@ -178,7 +183,7 @@ main
                 margin-left: 6em
 
     main
-        margin-left: 20em
+        margin-left: 20%
 
         &.index
             margin-left: 50%
@@ -186,22 +191,22 @@ main
 
 // Small / Mobile / Low Res Portrait
 @media only screen and (max-width: 84em)
-    #sidebar.index
+    #titlepanel.index
         height: 100vh
         width: 100%
 
 // Extreme Portait
 @media only screen and (max-aspect-ratio: 8/13)
-    #sidebar.index
+    #titlepanel.index
         font-size: 3vw
 
 // Extreme Portait
 @media only screen and (min-aspect-ratio: 13/8) and (max-width: 84em)
-    #sidebar.index
+    #titlepanel.index
         font-size: 1.3vw
 
 // Min height
 @media only screen and (max-height: 400px)
-    #sidebar.index
+    #titlepanel.index
         h2
             display: none

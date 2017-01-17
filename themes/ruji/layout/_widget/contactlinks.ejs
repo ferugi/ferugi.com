@@ -1,8 +1,10 @@
-<ul class="contact-links">
-    <% Object.keys(theme.links.socialmedia).forEach(function(key){ %>
-        <li><a href="<%- theme.links.socialmedia[key] %>" title="<%- key %>" target="_blank"><i class="fa fa-<%- key.toLowerCase() %>" aria-hidden="true"></i></a></li>
-    <% }); %>
-    <% if (theme.links.email) { %>
-        <li><a href="mailto:<%- theme.links.email %>" title="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-    <% } %>
-</ul>
+<nav>
+    <ul class="contact-links">
+        <% Object.keys(theme.links.socialmedia).forEach(function(key){ %>
+            <li><a href="<%- theme.links.socialmedia[key] %>" title="<%- key %>" target="_blank"><i class="fa fa-<%- key.toLowerCase() %>" aria-hidden="true"></i></a></li>
+        <% }); %>
+        <% if (theme.links.email) { %>
+            <li><a href="mailto:<%- theme.links.email %>" title="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+        <% } %>
+    </ul>
+</nav>

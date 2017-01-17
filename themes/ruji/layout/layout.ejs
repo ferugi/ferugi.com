@@ -3,13 +3,37 @@
 <html lang="<%- config.language %>">
     <%- partial('_partial/head') %>
     <body>
-        <%- partial('_partial/navbar') %>
-        <%- partial('_partial/sidebar', {isIndex: isIndex}) %>
+        
+        <% // Include bio in titlepanel if not index %>
+        <%- partial('_partial/titlepanel', {isIndex: isIndex}) %>
         <main  <% if (isIndex) { %>class="index"<% } %>>
-            <section id="bio">
 
-            </section>
+            
+            <% if (isIndex) { %>
+                <section id="bio">
+                        <article>
+                                <div class="icon">
+                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                </div>
+                                <header>
+                                    // This should probably be an "about me" or "bio" page.
+                                    <h1 class="article-title">Hi, I'm Ferugi</h1>
+                                </header>
+                                <div class="entry">
+                                    <p>Hello Wurld</p>
+                                </div>
+                                <footer>
+                                </footer>
+                            </article>
+                </section>
+            <% } %>
+
+            <%- partial('_partial/sitenav') %>
+
             <section id="articles">
+                <header>
+                    <h1>Blog</h1>
+                </header>
                 <%- body %>
             </section>                
             <footer class="site-footer">

@@ -1,5 +1,4 @@
 DO NOW
-    low-width post width (remove icon completely)
     blog-post side & top bar
     scroll down menu
     navigation
