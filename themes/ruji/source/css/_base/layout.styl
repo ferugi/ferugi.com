@@ -153,7 +153,7 @@ main
 // Media Rules
 
 // Large / Desktop / High Res Landscape
-@media only screen and (min-aspect-ratio: 12/10) and (min-width: 1000px)
+@media only screen and (min-width: 84em) and (min-aspect-ratio: 1/1)
     #sidebar
         position: fixed
         float: left
@@ -164,15 +164,28 @@ main
         &.index
             width: 50%
             height: 100%
-                
+        
+    article
+        &.index
+            max-width: 40em
+            
+            .icon
+                position: static
+                margin-right: 1em
+                margin-left: 0
+            
+            header, footer, .entry
+                margin-left: 6em
+
     main
         margin-left: 20em
 
         &.index
             margin-left: 50%
 
+
 // Small / Mobile / Low Res Portrait
-@media only screen and (max-aspect-ratio: 12/10)
+@media only screen and (max-width: 84em)
     #sidebar.index
         height: 100vh
         width: 100%
@@ -183,7 +196,7 @@ main
         font-size: 3vw
 
 // Extreme Portait
-@media only screen and (min-aspect-ratio: 13/8) and (max-width: 999px)
+@media only screen and (min-aspect-ratio: 13/8) and (max-width: 84em)
     #sidebar.index
         font-size: 1.3vw
 

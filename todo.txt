@@ -1,0 +1,19 @@
+DO NOW
+    low-width post width (remove icon completely)
+    blog-post side & top bar
+    scroll down menu
+    navigation
+
+
+DO LAST
+    resolve URL naming
+    resolve comments page ID's
+    get high quality picture
+    clean up CSS - devise solid structure
+    finalise colour scheme
+    get criticism
+
+
+DO FUTURE
+    include bio page
+    low res contact buttons

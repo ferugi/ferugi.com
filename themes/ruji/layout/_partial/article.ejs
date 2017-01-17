@@ -3,6 +3,7 @@
 <% } else { %>
     <article>
 <% } %>
+    <%- strip_html(url_for(page.path)) %>
     <div class="icon">
         <a href="<%- config.root %><%- item.path %>">
             <% if (item.icon) { %>

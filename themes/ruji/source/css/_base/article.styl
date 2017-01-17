@@ -33,20 +33,12 @@ article
             margin: 0.15em 0 0 0.2em
             font-size: 4em
 
-        @media only screen and (max-width: 46em)
-            display: none
-
-    &.index
-        max-width: 40em
-        
-        .icon
-            position: static
-            margin-right: 1em
-            margin-left: 0
-        
-        header, footer, .entry
-            margin-left: 6em
-
 #comments
     margin: auto
     max-width: 32em
+
+// Article Min-Width
+@media only screen and (max-width: 46em)
+    article
+        .icon
+            display: none

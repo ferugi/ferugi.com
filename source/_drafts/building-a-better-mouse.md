@@ -1,13 +1,13 @@
 title: Building A Better Mouse
 categories:
-    - Mice
-    - Hardware
-    - Gaming
-
-tags: 
-- DIY
-- Arduino
-- Gaming
+  - Mice
+  - Hardware
+  - Gaming
+tags:
+  - DIY
+  - Arduino
+  - Gaming
+date: 2016-02-17 12:24:00
 ---
 Introduction
     the problem
