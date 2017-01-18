@@ -16,3 +16,11 @@ DO LAST
 DO FUTURE
     include bio page
     low res contact buttons
+
+
+INSPIRATION
+    https://xcoder.in/
+    http://luuman.github.io/
+    http://moxfive.xyz/
+    https://livingos.github.io/hexo-theme-strata/
+    http://louisbarranqueiro.github.io/hexo-theme-tranquilpeak/

@@ -1,5 +1,14 @@
 <div id="titlepanel" <% if (isIndex) { %>class="index"<% } %>>
     <h1 class="title"><%- config.author %></h1>
+    <% if (!isIndex) { %>
+        <div class="profile-pic">
+        </div>
+        <section class="bio">
+            // Bio
+        </section>
+    <% } else { %>
     <h2><%- config.subtitle %></h2>
+    <% } %> 
+    
     <%- partial('_widget/contactlinks') %>
 </div>

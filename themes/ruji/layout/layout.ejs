@@ -7,18 +7,13 @@
         <% // Include bio in titlepanel if not index %>
         <%- partial('_partial/titlepanel', {isIndex: isIndex}) %>
         <main  <% if (isIndex) { %>class="index"<% } %>>
-
-            
+            <%- partial('_partial/sitenav') %>
             <% if (isIndex) { %>
                 <section id="bio">
                         <article>
                                 <div class="icon">
-                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                    <i class="fa fa-user-circle" aria-hidden="true"></i>
                                 </div>
-                                <header>
-                                    // This should probably be an "about me" or "bio" page.
-                                    <h1 class="article-title">Hi, I'm Ferugi</h1>
-                                </header>
                                 <div class="entry">
                                     <p>Hello Wurld</p>
                                 </div>
@@ -27,23 +22,13 @@
                             </article>
                 </section>
             <% } %>
-
-            <%- partial('_partial/sitenav') %>
-
-            <section id="articles">
-                <header>
-                    <h1>Blog</h1>
-                </header>
-                <%- body %>
-            </section>                
+                <%- body %>             
             <footer class="site-footer">
                 <p>Copyright <%- config.author %> 2016-<%- new Date().getFullYear() %></p>
             </footer>
         </main>
 
-        <!-- After footer scripts -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="<%- config.root %>js/site.js"></script>
+        <%- js('https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', 'js/site.js') %>
     </body>
 
 </html>
