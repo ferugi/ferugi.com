@@ -1,33 +1,18 @@
 <!DOCTYPE html>
-<% var isIndex = is_home() %>
 <html lang="<%- config.language %>">
     <%- partial('_partial/head') %>
     <body>
-        
-        <% // Include bio in titlepanel if not index %>
-        <%- partial('_partial/titlepanel', {isIndex: isIndex}) %>
-        <main  <% if (isIndex) { %>class="index"<% } %>>
-            <%- partial('_partial/sitenav') %>
-            <% if (isIndex) { %>
-                <section id="bio">
-                        <article>
-                                <div class="icon">
-                                    <i class="fa fa-user-circle" aria-hidden="true"></i>
-                                </div>
-                                <div class="entry">
-                                    <p>Hello Wurld</p>
-                                </div>
-                                <footer>
-                                </footer>
-                            </article>
-                </section>
-            <% } %>
-                <%- body %>             
+        <%- partial('_partial/topbar') %>
+        <% if (is_home()) { %> 
+            <%- partial('_partial/titlepanel') %>
+        <% } %>
+        <main  <% if (is_home()) { %>class="index"<% } %>>
+            <%- body %>
             <footer class="site-footer">
                 <p>Copyright <%- config.author %> 2016-<%- new Date().getFullYear() %></p>
             </footer>
         </main>
-
+        <%- partial('_partial/bottombar') %>
         <%- js('https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', 'js/site.js') %>
     </body>
 

@@ -1,6 +1,6 @@
-<div id="titlepanel" <% if (isIndex) { %>class="index"<% } %>>
+<div id="titlepanel" <% if (is_home()) { %>class="index"<% } %>>
     <h1 class="title"><%- config.author %></h1>
-    <% if (!isIndex) { %>
+    <% if (!is_home()) { %>
         <div class="profile-pic">
         </div>
         <section class="bio">

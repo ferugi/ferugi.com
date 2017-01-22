@@ -1,10 +1,12 @@
 // Colour Scheme
-colour-light = #f6f7eb
-colour-light-dark = #878781
-colour-blue-light = #739FC2
-colour-blue = #3f7cac
-colour-dark = #000
+$base = #f6f7eb
+$base-dark = desaturate(darken($base, 45%), 95%)
+
+$feature = #3f7cac
+$feature-light = desaturate(lighten($feature, 27%), 15%)
+
+$text = #000
 
 // Images
-bio-background-url = "../images/bio-background.png"
-profile-pic-url = "../images/profile_golden.png"
+$titlescreen-background = "../images/bio-background.png"
+$profilepic = "../images/profile_golden.png"

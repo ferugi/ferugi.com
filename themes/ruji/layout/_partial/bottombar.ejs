@@ -1,0 +1,12 @@
+<nav id="bottombar" <% if (is_home()) { %>class="index"<% } %>>
+    <% if (!is_home()) { %>
+        <ul>
+            <% Object.keys(theme.links.socialmedia).forEach(function(key){ %>
+                <li><%- link_to(theme.links.socialmedia[key], '<i class="fa fa-' + key.toLowerCase() + '" aria-hidden="true"></i>', {class: "button", external: true, title: key}) %></li>
+            <% }); %>
+            <% if (theme.links.email) { %>
+                <li><%- link_to('mailto:' + theme.links.email, '<i class="fa fa-envelope" aria-hidden="true"></i>', {class: "button", title: "Email"}) %></li>
+            <% } %>
+        </ul>
+    <% } %>
+</nav>

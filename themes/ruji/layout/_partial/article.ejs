@@ -16,12 +16,8 @@
         <time>
                 <%- item.date.toDate().toDateString() %>
         </time>
-        <% if (index) { %><a href="<%- config.root %><%- item.path %>"><% } %>
         <h1 class="article-title"><%- item.title %></h1>
-        <% if (index) { %></a><% } %>
-
         <div class="artile-sub-header">
-            
         </div>
     </header>
     <div class="entry">
@@ -34,6 +30,9 @@
     <footer>
         <% if (index && item.excerpt) { %>
             <a class="button" href="<%- config.root %><%- item.path %>">Read more <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+        <% } %>
+        <% if (is_post()) { %>
+            <%- partial('_partial/pagination') %>
         <% } %>
     </footer>
 </article>

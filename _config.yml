@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://ferugi.com
+url: ferugi.com
 root: /
 permalink: blog/:title/
 permalink_defaults: 
@@ -20,9 +20,9 @@ permalink_defaults:
 # Directory
 source_dir: source
 public_dir: public
-tag_dir: tags
-archive_dir: archives
-category_dir: categories
+tag_dir: blog/tags
+archive_dir: blog
+category_dir: blog/categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
@@ -77,3 +77,29 @@ deploy:
   ignore: 
   connections: 1
   verbose: false
+
+# Enable when generating final build
+html_minifier:
+  enable: false
+  exclude: 
+
+css_minifier:
+  enable: false
+  exclude: 
+    - '*.min.css'
+
+js_minifier:
+  enable: false
+  mangle: true
+  output:
+  compress:
+  exclude: 
+    - '*.min.js'
+
+image_minifier:
+  enable: false
+  interlaced: false
+  multipass: false
+  optimizationLevel: 2
+  pngquant: false
+  progressive: false
