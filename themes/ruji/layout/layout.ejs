@@ -9,7 +9,9 @@
         <main  <% if (is_home()) { %>class="index"<% } %>>
             <%- body %>
             <footer class="site-footer">
-                <p>Copyright <%- config.author %> 2016-<%- new Date().getFullYear() %></p>
+                <% if (theme.show_copyright) { %>
+                    <p>Copyright <%- config.author %> 2016-<%- new Date().getFullYear() %></p>
+                <% } %>
             </footer>
         </main>
         <%- partial('_partial/bottombar') %>

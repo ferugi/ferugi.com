@@ -6,6 +6,7 @@
     "version": "3.2.2"
   },
   "dependencies": {
+    "@types/jquery": "^2.0.39",
     "hexo": "^3.1.0",
     "hexo-admin": "^2.0.0",
     "hexo-all-minifier": "0.0.14",

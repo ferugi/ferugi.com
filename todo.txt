@@ -1,19 +1,18 @@
-DO NOW
-    blog-post side & top bar
-    scroll down menu
-    navigation
+To go live 22 January 2017
 
+DO NOW
+    add categories & tags
+    add pagination
+    increase font size of nav bars    
 
 DO LAST
-    resolve URL naming
-    resolve comments page ID's
-    get high quality picture
-    clean up CSS - devise solid structure
-    finalise colour scheme
-    get criticism
-
+    import FB comments to Disqus
 
 DO FUTURE
+    seperate repo - put theme on github
+    clean up CSS - devise solid structure
+    get criticism
+    get high quality picture
     include bio page
     low res contact buttons
 

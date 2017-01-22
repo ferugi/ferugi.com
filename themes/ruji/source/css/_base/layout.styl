@@ -71,19 +71,18 @@ img
     a
         margin: 1em
 
-#articles
-    padding: 1em
-
 main
     width: auto
     transition: 0.25s
     overflow: hidden
+    padding 5em 1em
 
 .title
     font-family: 'Nunito Sans', sans-serif
     text-align: center
         
 #titlepanel
+    z-index: 1
     background: $feature
     transition: width 0.25s
     color: $base
@@ -160,17 +159,15 @@ main
         background: $feature-light
 
 #topbar, #bottombar
+    z-index: 1
     width: 100%
     background: $feature
     
     position: fixed
     color: $base
 
-    .title-min
-        position: absolute
-
     .iconpic
-        display: inline-block
+        position: absolute
         height: 2em
         width: 2em
         margin: 0.7em 0 0 0.7em
@@ -179,10 +176,9 @@ main
         background-position: 0em 20%
         background-size: 100% auto
 
-    h1
-        float:left
-        margin: auto
-        font-family: 'Nunito Sans', sans-serif
+        h1
+            margin: 0.2em 2em
+            font-family: 'Nunito Sans', sans-serif
 
     .button, .button:visited
         color: $base
@@ -255,6 +251,16 @@ main
     #titlepanel.index
         height: 100vh
         width: 100%
+
+// Article Min-Width
+@media only screen and (max-width: 46em)
+    .iconpic
+        h1
+            display: none
+
+    article
+        .icon
+            display: none        
 
 // Extreme Portait
 @media only screen and (max-aspect-ratio: 8/13)

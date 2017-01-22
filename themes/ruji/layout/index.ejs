@@ -1,7 +1,4 @@
 <section id="articles">
-    <header>
-        <h1 class="title"><%- theme.blogtitle %></h1>
-    </header>
     <% page.posts.each(function(item){ %>
         <%- partial('_partial/article', {item: item, index: true}) %>
     <% }); %>
