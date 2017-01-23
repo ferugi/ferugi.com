@@ -529,19 +529,11 @@
 			}
 		},
 		{
-			"file": "source/index.md",
+			"file": "/C/Users/Ferugi/Desktop/extract/email.html",
 			"settings":
 			{
-				"buffer_size": 37,
+				"buffer_size": 308325,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "source/resume/index.md",
-			"settings":
-			{
-				"buffer_size": 754,
-				"line_ending": "Unix"
 			}
 		}
 	],
@@ -767,11 +759,11 @@
 		"/C/Users/Ferugi/Documents/www/ferugi/source",
 		"/C/Users/Ferugi/Documents/www/ferugi/source/_data",
 		"/C/Users/Ferugi/Documents/www/ferugi/source/_drafts",
-		"/C/Users/Ferugi/Documents/www/ferugi/source/about",
-		"/C/Users/Ferugi/Documents/www/ferugi/source/resume"
+		"/C/Users/Ferugi/Documents/www/ferugi/source/about"
 	],
 	"file_history":
 	[
+		"/C/Users/Ferugi/Documents/www/ferugi/source/index.md",
 		"/C/Users/Ferugi/Downloads/nodejs-on-godaddy-shared-cpanel",
 		"/C/Users/Ferugi/AppData/Local/Temp/Temp1_font-awesome-4.7.0.zip/font-awesome-4.7.0/css/font-awesome.css",
 		"/C/Users/Ferugi/Documents/www/ferugi/node_modules/hexo-server/README.md",
@@ -898,8 +890,7 @@
 		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/themes/links.html",
 		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/content/links.html",
 		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/content/blog/page.md",
-		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Core/Utility.php",
-		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Event.php"
+		"/C/Program Files (x86)/EasyPHP-DevServer-14.1VC11/data/localweb/projects/Ferugi.com/lib/Phile/Core/Utility.php"
 	],
 	"find":
 	{
@@ -914,7 +905,7 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
 			"0.0.0.0",
@@ -1108,7 +1099,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1136,59 +1127,29 @@
 						"translation.y": 79.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "source/index.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 37,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/MarkdownEditing/MarkdownEditor.tmTheme",
-							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "source/resume/index.md",
-					"semi_transient": true,
+					"buffer": 1,
+					"file": "/C/Users/Ferugi/Desktop/extract/email.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 754,
+						"buffer_size": 308325,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								342,
-								342
+								5745,
+								5752
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/MarkdownEditing/MarkdownEditor.tmTheme",
-							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage"
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

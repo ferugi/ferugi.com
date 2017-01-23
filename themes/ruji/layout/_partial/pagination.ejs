@@ -1,18 +1,8 @@
 <nav class="pagination">
-
-    <% if (is_post()) { %>
-        <% if (page.prev) { %>
-            <%- link_to(page.prev.path, '<i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Previous Post', {class: "button pull-left", title: "Previous Post"}) %>
-        <% } %>
-        <% if (page.next) { %>
-            <%- link_to(page.next.path, 'Next Post <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>', {class: "button pull-right", title: "Next Post"}) %>
-        <% } %>
-    <% } else { %>
-        <% if (page.prev) { %>
-            <%- link_to(page.prev.path, '<i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Previous Page', {class: "button", title: "Previous Page"}) %>
-        <% } %>
-        <% if (page.next) { %>
-            <%- link_to(page.next.path, 'Next Page <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>', {class: "button", title: "Next Page"}) %>
-        <% } %>
+    <% if (page.prev) { %>
+        <%- link_to(page.prev_link, '<i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Previous Page', {class: "button", title: "Previous Page"}) %>
+    <% } %>
+    <% if (page.next) { %##>
+        <%- link_to(page.next_link, 'Next Page <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>', {class: "button", title: "Next Page"}) %>
     <% } %>
 </nav>

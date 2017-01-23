@@ -1,8 +1,8 @@
 To go live 22 January 2017
 
 DO NOW
-    add categories & tags
     add pagination
+    add categories & tags
     increase font size of nav bars    
 
 DO LAST
