@@ -203,14 +203,47 @@ main
 
     .contact-links
         text-align: right
-.pagination
-    padding: 0
 
+.pagination
+    max-width: 32em
+    margin: auto
+    padding: 0
+    text-align: center
+
+
+    .page-number
+        margin: auto 0.5em
+        font-size: 0.875em
+        font-weight: bold
+        padding: 0.3em 0.6em
+        border-radius: 0.25em
+
+        &.current
+            color: $base
+            background: $base-dark
+
+    a
+        margin: auto 0.5em
+        background: $feature
+        color: $base
+        font-size: 0.875em
+        padding: 0.3em 0.6em
+        border-radius: 0.25em
+
+        &:hover
+            text-decoration: none
+            background: $feature-light
+        
 .pull-right
     float: right
 
 .pull-left
     float: left
+
+
+#categories, #tags
+    max-width: 40em
+    margin: 0 auto
 
 // Media Rules
 
@@ -240,8 +273,6 @@ main
                 margin-left: 6em
 
     main
-        //margin-left: 20%
-
         &.index
             margin-left: 50%
 

@@ -1,15 +1,15 @@
 To go live 22 January 2017
 
 DO NOW
-    add pagination
-    add categories & tags
-    increase font size of nav bars    
+    
 
 DO LAST
     import FB comments to Disqus
 
 DO FUTURE
     seperate repo - put theme on github
+    increase font size of nav bars
+    improve categories & tags
     clean up CSS - devise solid structure
     get criticism
     get high quality picture

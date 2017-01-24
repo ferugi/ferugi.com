@@ -29,14 +29,14 @@
     </div>
     <footer>
         <% if (index && item.excerpt) { %>
-            <a class="button" href="<%- config.root %><%- item.path %>">Read more <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            <a class="button" href="<%- config.root %><%- item.path %>">Read more <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
         <% } %>
         <% if (is_post()) { %>
             <% if (page.prev) { %>
-                <%- link_to(page.prev.path, '<i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Previous Post', {class: "button pull-left", title: "Previous Post"}) %>
+                <%- link_to(page.prev.path, '<i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous Post', {class: "button pull-left", title: "Previous Post"}) %>
             <% } %>
             <% if (page.next) { %>
-                <%- link_to(page.next.path, 'Next Post <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>', {class: "button pull-right", title: "Next Post"}) %>
+                <%- link_to(page.next.path, 'Next Post <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>', {class: "button pull-right", title: "Next Post"}) %>
             <% } %>
         <% } %>
     </footer>

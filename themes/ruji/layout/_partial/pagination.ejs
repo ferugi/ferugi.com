@@ -1,8 +1,6 @@
 <nav class="pagination">
-    <% if (page.prev) { %>
-        <%- link_to(page.prev_link, '<i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Previous Page', {class: "button", title: "Previous Page"}) %>
-    <% } %>
-    <% if (page.next) { %##>
-        <%- link_to(page.next_link, 'Next Page <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>', {class: "button", title: "Next Page"}) %>
-    <% } %>
+    <%- paginator({
+        prev_text: '<i class="fa fa-chevron-left" aria-hidden="true"></i> Previous',
+        next_text: 'Next <i class="fa fa-chevron-right" aria-hidden="true"></i>'
+        }) %>
 </nav>

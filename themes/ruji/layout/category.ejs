@@ -1,0 +1,6 @@
+<section id="article">
+    <% page.posts.each(function(item){ %>
+        <%- partial('_partial/article', {item: item, index: true}) %>
+    <% }); %>
+    <%- partial('_partial/pagination') %>
+</section>
