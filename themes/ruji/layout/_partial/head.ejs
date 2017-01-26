@@ -6,15 +6,22 @@
         if (page.tag) title.push(page.tag);
         if (page.category) title.push(page.category);
         if (page.archive) {
+            title.push("Blog")
             // Add archive stuff...
         }
-        if (config.title) title.push(config.title);
         if (page.current > 1) title.push("Page " + page.current);
+        if (config.title) title.push(config.title);
     %>
     <title><%= title.join(" | ") %></title>
-    <% if (page.excerpt) { %>
+    <% if (page.description) {%>
+        <meta name="description" content="<%= page.description %>">
+        <meta property="og:description" content="<%= page.description %>">
+    <% } else if (page.excerpt) { %>
         <meta name="description" content="<%= strip_html(page.excerpt).replace(/^\s*/, '').replace(/\s*$/, '') %>">
         <meta property="og:description" content="<%= strip_html(page.excerpt).replace(/^\s*/, '').replace(/\s*$/, '') %>">
+    <% } else if (config.description) { %>
+        <meta name="description" content="<%= config.description %>">
+        <meta property="og:description" content="<%= config.description %>">
     <% } %>
     <% if (config.author) { %><meta name="author" content="<%- config.author %>"><% } %>
     <% if (page.keywords) { %><meta name="keywords" content="<%- page.keyword %>"><% } %>
@@ -30,6 +37,7 @@
     <% } %>
     <meta property="og:url" content="<%- url.replace(/index\.html$/, '') %>">
     <meta property="og:site_name" content="<%- config.title %>">
+    <% if (theme.comments.facebook.app_id) { %><meta property="fb:app_id" content="<%- theme.comments.facebook.app_id %>"><% } %>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1">
     <link rel="icon" href="<%- url_for('/favicon.png') %>">
     <%- css('css/style.css', 'css/font-awesome.css', 'https://fonts.googleapis.com/css?family=Open+Sans:400,600|Nunito+Sans:700') %>

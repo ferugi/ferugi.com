@@ -1,5 +1,3 @@
-blogtitle: Blog
-
 show_copyright: false
 
 links:
@@ -13,7 +11,7 @@ links:
 comments:
     using: facebook     #   "facebook" or "disqus"
     facebook:
-        appId: 929230953797958
+        app_id: 929230953797958
         count: 5
-        width: 512
+        width: 100%
         colorscheme: light

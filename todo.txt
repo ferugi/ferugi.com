@@ -1,14 +1,15 @@
 To go live 22 January 2017
 
 DO NOW
-    Improve header & SEO elements. - use https://developers.facebook.com/tools/debug/
 
 DO LAST
-    import FB comments to Disqus
+    add tags and categories to the article
 
 DO FUTURE
     seperate repo - put theme on github
+    obfuscate email with javascript
     generate default cover images based off title
+    twitter card/open graph stuff
     add site cover image
     increase font size of nav bars
     improve categories & tags
