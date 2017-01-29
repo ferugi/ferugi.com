@@ -1,9 +1,0 @@
-<nav id="topbar" <% if (is_home()) { %>class="index"<% } %>>
-    <a href="<%- url_for('/') %>"><div class="iconpic"><h1><%- config.title %></h1></div></a>
-    <ul>
-        <li><%- link_to("/", '<i class="fa fa-home" aria-hidden="true"></i> Home', {title: "Home", class: "button"}) %></li>
-        <li><%- link_to("/blog/", '<i class="fa fa-file-text" aria-hidden="true"></i> Blog', {title: "Blog", class: "button"}) %></li>
-        <li><%- link_to("/blog/categories/", '<i class="fa fa-folder-open" aria-hidden="true"></i> Categories', {title: "Categories", class: "button"}) %></li>
-        <li><%- link_to("/blog/tags/", '<i class="fa fa-tags" aria-hidden="true"></i> Tags', {title: "Tags", class: "button"}) %></li>
-    </ul>
-</nav>

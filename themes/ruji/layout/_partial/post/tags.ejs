@@ -1,8 +1,0 @@
-<% if(page.tags && page.tags.length > 0) { %>
-    <ul class="tags">
-    <i class="fa fa-tags" aria-hidden="true"></i> 
-    <% page.tags.forEach(function(tag){ %>
-        <li><%- link_to(tag.path, tag.name) %></li>
-    <% }); %>
-    </ul>
-<% } %>
