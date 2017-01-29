@@ -1,23 +1,17 @@
-To go live 22 January 2017
-
 DO NOW
-
-DO LAST
-    add tags and categories to the article
+    seperate repo - put theme on github
+    include bio page
 
 DO FUTURE
-    seperate repo - put theme on github
-    obfuscate email with javascript
-    generate default cover images based off title
     twitter card/open graph stuff
-    add site cover image
+    improve scroll script
+    obfuscate email with javascript
+    generate default cover images#
     increase font size of nav bars
     improve categories & tags
     clean up CSS - devise solid structure
-    get criticism
     get high quality picture
-    include bio page
-    low res contact buttons
+    add on page navigation / contents
 
 INSPIRATION
     https://xcoder.in/

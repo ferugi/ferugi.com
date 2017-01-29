@@ -9,7 +9,7 @@ description: The things that enthuse me to the point of actually writing about t
 author: Ferugi El Heri
 language: en-GB
 timezone:
-coverimage: #Ideally 1200px * 627px - no less than 400px * 209px
+coverimage: images/sitecover.jpg #Ideally 1200px * 627px - no less than 400px * 209px
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -49,6 +49,10 @@ default_category: uncategorized
 category_map:
 tag_map:
 
+#Stylus
+stylus:
+  compress: true
+
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
@@ -81,16 +85,16 @@ deploy:
 
 # Enable when generating final build
 html_minifier:
-  enable: true
+  enable: false
   exclude: 
 
 css_minifier:
-  enable: true
+  enable: false
   exclude: 
     - '*.min.css'
 
 js_minifier:
-  enable: true
+  enable: false
   mangle: true
   output:
   compress:
@@ -98,7 +102,7 @@ js_minifier:
     - '*.min.js'
 
 image_minifier:
-  enable: true
+  enable: false
   interlaced: false
   multipass: false
   optimizationLevel: 2

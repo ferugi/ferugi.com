@@ -12,6 +12,9 @@
             <% } %>
         </a>
     </div>
+    <!-- WORK IN PROGRESS<nav class="page-nav">
+        <%- link_to("#comments", "<i class='fa fa-comments-o' aria-hidden='true'></i> Comments") %>
+    </nav>-->
     <header>
         <time>
                 <%- item.date.toDate().toDateString() %>
@@ -32,6 +35,9 @@
             <a class="button" href="<%- config.root %><%- item.path %>">Read more <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
         <% } %>
         <% if (is_post()) { %>
+            <hr />
+            <%- partial('_partial/post/tags') %>
+            <%- partial('_partial/post/categories') %>
             <% if (page.prev) { %>
                 <%- link_to(page.prev.path, '<i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous Post', {class: "button pull-left", title: "Previous Post"}) %>
             <% } %>
@@ -43,6 +49,6 @@
 </article>
 <% if (!index) { %>
     <section id="comments">
-        <%- partial('_partial/comments', {fbcommentlink: item.fbcommentlink }) %>
+        <%- partial('_partial/post/comments', {fbcommentlink: item.fbcommentlink }) %>
     </section>
 <% } %>

@@ -1,0 +1,8 @@
+<% if(page.categories && page.categories.length > 0) { %>
+    <ul class="categories">
+    <i class="fa fa-folder-open" aria-hidden="true"></i> 
+    <% page.categories.forEach(function(category){ %>
+        <li><%- link_to(category.path, category.name) %></li>
+    <% }); %>
+    </ul>
+<% } %>
