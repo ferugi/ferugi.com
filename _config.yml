@@ -85,16 +85,16 @@ deploy:
 
 # Enable when generating final build
 html_minifier:
-  enable: false
+  enable: true
   exclude: 
 
 css_minifier:
-  enable: false
+  enable: true
   exclude: 
     - '*.min.css'
 
 js_minifier:
-  enable: false
+  enable: true
   mangle: true
   output:
   compress:
@@ -102,7 +102,7 @@ js_minifier:
     - '*.min.js'
 
 image_minifier:
-  enable: false
+  enable: true
   interlaced: false
   multipass: false
   optimizationLevel: 2

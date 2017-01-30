@@ -6,6 +6,7 @@
         "**/.hg": true,
         "**/.DS_Store": true,
         "node_modules": true,
+        "themes": true,
         "*.sublime*": true,
         "desktop.ini": true,
         ".gitignore": true,
