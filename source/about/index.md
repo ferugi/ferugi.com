@@ -1,7 +1,11 @@
-My name's Ferugi.
+// This should be the short bio.
+Hi! My name's Ferugi and I'm a programmer, IT analyst and all-around problem solver currently working at Harlands Group. My skillet includes front-end technologies such as Javascrip, 
+HTML, CSS, WPF and Photoshop, back-end coding using .NET, Node.JS, and others, and creative tools such as Adobe Photoshop. 
+
+// Then write the long one... not as important
 
 I'm a self taugh programmer currently working as an IT analyst, having previously studied Film & Video Production. 
-I'm comfortable with a range of software tools and techniques, and *what I've found `really matters` above all else is being willing and able to learn.*
+I'm comfortable with a range of software tools and techniques, and **what I've found *really matters* above all else is being willing and able to learn.**
 
 I get a thrill from learning and implementing new technologies.
 Similarly, it's satisfying as hell to take an existing system and work in optimizations.
@@ -9,18 +13,20 @@ Similarly, it's satisfying as hell to take an existing system and work in optimi
 As much as I push myself to improve on a daily basis, I strive to encourage the same among my peers. 
 Seeing the expressions on collegues faces when you cut gruling tasks from hours to minutes is it's own reward.
 
-That said, it's all well and good pushing for the optimal solution, but in the end work needs to be done. 
+That said, it's all well and good pushing for the optimal solution, but in the end work needs to be done.  
 
-My skillset includes:
+My skillset includes:  
 * C#
 * WPF
 * ASP.NET
 * Node.JS
 * Javascript
 * C
+* UX
 
-Coming from study in Film, I find my knowledge of creative techniques and tools can be invaluable. I'm also comfortable with:
+Coming from study in Film, I find my knowledge of creative techniques and tools can be invaluable. I'm also comfortable with:  
 * Photoshop & GIMP
+* Final Cut Pro & Premiere Pro
 * After Effects
 * Audacity
 * Blender 3D
