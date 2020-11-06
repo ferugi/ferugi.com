@@ -1,0 +1,11 @@
+personal site
+    home page
+        elevator pitch
+        photo
+        social media links  
+            linkedin
+            instagram
+            github
+            email
+    cv/resume
+    testemonials

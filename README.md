@@ -1,0 +1,1 @@
+This is the Next JS version of https://ferugi.com .
