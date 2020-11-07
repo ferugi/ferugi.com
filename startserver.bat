@@ -1,1 +1,0 @@
-start /MIN hexo server && start LocalSite.url

@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;700&display=swap');
+
+@page {
+    margin: 16mm 18mm 10mm 18mm;
+}
+
+@media print {
+    .printFooter {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        font-family: 'Merriweather', serif;
+        font-size: 11px;
+    }
+
+    .printFooter .left {
+        text-align: left;
+    }
+
+    .printFooter .center {
+        text-align: center;
+    }
+    
+    .printFooter .right {
+        text-align: right;
+    }
+
+    .experience {
+        break-inside: avoid;
+    }
+
+    .cv a {
+        color: unset;
+        text-decoration: none;
+    }
+}
+
+@media screen {
+
+    .cvContainer {
+        background-color: grey;
+        height: 100%;
+        padding: 2em 0;
+    }
+
+    .cv {
+        background: #fff;
+        padding: 16mm 18mm 10mm 18mm;
+        margin: auto;
+        box-shadow: black 5px 5px 15px;
+    }
+
+    .printFooter {
+        display: none;
+    }
+}
+
+.cv {
+    font-family: 'Merriweather', serif;
+    max-width: 21cm;
+    font-size: 12px;
+}
+
+.cvHeader {
+    display: grid;
+    grid-template-columns: auto 10em;
+}
+
+.name {
+    font-size: 2em;
+    font-weight: normal;
+    margin: 0;
+}
+
+.jobTitle{
+    font-size: 1.4em;
+    margin-top: -0.5em;
+    font-weight: normal;
+    margin: 0;
+}
+
+.titleBlock {
+    display: grid;
+    line-height: 1;
+    grid-template-rows: 3em auto;
+}
+
+.contactDetails {
+    line-height: 1.5;
+    display: grid;
+    margin: 0;
+    padding-inline-start: unset;
+}
+
+.contactDetails li {
+    display: unset
+}
+
+.experience h3 {
+    margin-bottom: 0;
+    margin-top: 1.5em;
+    padding-top: 1px;
+    display: flex;
+    line-height: 1;
+    font-weight: 700;
+}
+.experience h3 .experienceTitle {
+    margin-left: 0.5em;
+    flex-grow: 1;
+}
+
+.experience h3 .startEndDate {
+    text-align: right;
+    font-weight: 400;
+}
+
+.experienceContents {
+    border-left: 2px solid #c6c6c6;
+    padding-left: 1em;
+    margin-left: 0.5em;
+}
+
+.experienceContents li {
+    margin-bottom: 0.5em;
+}
+
+.experienceDescription ul {
+    padding-inline-start: 1.5em;
+}
+
+
+.technologies h4 {
+    margin-bottom: unset;
+}
+
+.technologies ul {
+    margin: 0;
+    padding-inline-start: unset;
+}
+
+.technologies ul li {
+    display: inline-block;
+    border: 0.5px dotted black;
+    padding: 0px 3px;
+    margin: 2px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+}
+
+.technologies ul li.highlight {
+    font-weight: 700;
+    border: 1px solid black;
+}
