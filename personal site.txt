@@ -7,5 +7,17 @@ personal site
             instagram
             github
             email
-    cv/resume
-    testemonials
+    cv
+    resume
+
+concepts:
+
+lots of images
+one large shirt/professional looking images
+noise background
+
+colors
+
+grey-blue
+grey
+light beige

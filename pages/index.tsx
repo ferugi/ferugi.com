@@ -5,7 +5,7 @@ import { getAllBlogPosts, PostData } from '../lib/blog/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
-import { getIndexContentAndData, SiteDetails, ContactData as ContactData } from '../lib/index'
+import { getIndexContentAndData, SiteDetails, ContactData as ContactData } from '../lib/home'
 import { ContentsWith } from '../lib/md-html-parser'
 
 export default function Home({ indexContentAndData, allPostData }: Props) {

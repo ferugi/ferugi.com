@@ -1,3 +1,4 @@
+---
 title: Building A Better Mouse
 categories:
   - Mice
@@ -7,8 +8,9 @@ tags:
   - DIY
   - Arduino
   - Gaming
-date: 2016-02-17 12:24:00
+date: '2016-02-17'
 ---
+
 Introduction
     the problem
     the attempts

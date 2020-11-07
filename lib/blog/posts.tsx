@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { getContentsWithData, ContentsWith } from '../md-html-parser'
 
-const postsDirectory = path.join(process.cwd(), 'text/blog/posts')
+const postsDirectory = path.join(process.cwd(), 'content/blog/posts')
 
 export async function getAllBlogPosts(): Promise<ContentsWith<PostData>[]> {
 

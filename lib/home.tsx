@@ -3,7 +3,7 @@ import { getContentsWithData } from './md-html-parser'
 
 export async function getIndexContentAndData() {
 
-    const fileName = path.join(process.cwd(), 'text/index.md')
+    const fileName = path.join(process.cwd(), 'content/home.md')
 
     return await getContentsWithData<SiteDetails>(fileName)
 }

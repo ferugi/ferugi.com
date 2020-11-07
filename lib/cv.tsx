@@ -3,7 +3,7 @@ import path from 'path'
 import { getContentsWithData } from './md-html-parser'
 
 export async function getSummary() {
-  const summaryPath = path.join(process.cwd(), 'text/cv/summary.md')
+  const summaryPath = path.join(process.cwd(), 'content/cv/summary.md')
 
   const summary = await getContentsWithData<Summary>(summaryPath)
 
@@ -11,7 +11,7 @@ export async function getSummary() {
 }
 
 export async function getExperiences() {
-  const experiencesDirectory = path.join(process.cwd(), 'text/cv/experience')
+  const experiencesDirectory = path.join(process.cwd(), 'content/cv/experience')
 
   const fileNames = fs.readdirSync(experiencesDirectory)
 

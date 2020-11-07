@@ -1,0 +1,36 @@
+backend:
+  name: github
+  repo: ferugi/ferugi.com
+media_folder: public/images
+public_folder: public/images
+site_url: https://ferugi-com.vercel.app
+show_preview_links: false
+collections:
+  - name: "Pages"
+    label: "pages"
+    files:
+    - label: "Home"
+      name: "home"
+      file: "content/home.md"
+      fields:
+        - { label: "Author", name: "author", widget: "string"}
+        - { label: "Site Title", name: "siteTitle", widget: "string"}
+        - label: 'Contact Data'
+          name: "contactData"
+          widget: list
+          fields:
+            - { label: "Title", name: "title", widget: "string"}
+            - { label: "URL", name: "url", widget: "string"}
+            - { label: "Fontawesome Icon Class", name: "faIcon", widget: "string"}
+        - { label: "Body", name: "body", widget: "markdown"}
+  - name: "blog-posts"
+    label: "Blog Posts"
+    folder: "content/blog/posts"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Facebook Comment Link", name: "fbcommentlink", widget: "hidden" }
+      - { label: "Categories", name: "categories", widget: "list" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Body", name: "body", widget: "markdown" }
