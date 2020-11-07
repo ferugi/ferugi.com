@@ -1,14 +1,13 @@
 import fs from 'fs'
-import matter from 'gray-matter'
 import path from 'path'
-import remark from 'remark'
-import html from 'remark-html'
+import { getContentsWithData } from './md-html-parser'
 
 export async function getSummary() {
   const summaryPath = path.join(process.cwd(), 'text/cv/summary.md')
-  const summaryData = await getDataAndContent(summaryPath) as SummaryData & { contentHtml: string }
 
-  return summaryData
+  const summary = await getContentsWithData<Summary>(summaryPath)
+
+  return summary
 }
 
 export async function getExperiences() {
@@ -19,27 +18,18 @@ export async function getExperiences() {
   const allExperiences = fileNames.map(async fileName => {
     const fullPath = path.join(experiencesDirectory, fileName)
 
-    return await getDataAndContent(fullPath)
+    return await getContentsWithData<Experience>(fullPath)
   })
 
-  return await Promise.all(allExperiences)
-}
+  const sortedExperiences = (await Promise.all(allExperiences)).sort((a, b) => {
+    if (a.startDate < b.startDate) {
+      return 1
+    } else {
+      return -1
+    }
+  })
 
-async function getDataAndContent(filePath: string) {
-  const fileContents = fs.readFileSync(filePath, 'utf8')
-
-  const matterResult = matter(fileContents)
-
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content)
-    
-  const contentHtml = processedContent.toString()
-
-  return {
-    contentHtml: contentHtml,
-    ...(matterResult.data)
-  }
+  return await Promise.all(sortedExperiences)
 }
 
 export interface Experience {
@@ -53,7 +43,7 @@ export interface Experience {
   technologies: string[]
 }
 
-export interface SummaryData {
+export interface Summary {
   fullName: string
   title: string
   contactDetails: ContactDetails
@@ -62,5 +52,6 @@ export interface SummaryData {
 export interface ContactDetails {
   email: string
   phone: string
+  linkedIn: string
   location: string
 }

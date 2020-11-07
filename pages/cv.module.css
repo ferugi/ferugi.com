@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+@page {
+    margin: 10mm 16mm 10mm 16mm;
+}
+
+@media print {
+    .printFooter {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+
+    .printFooter .left {
+        text-align: left;
+    }
+
+    .printFooter .center {
+        text-align: center;
+    }
+    
+    .printFooter .right {
+        text-align: right;
+    }
+
+    .experience {
+        break-inside: avoid;
+    }
+}
+
+@media screen {
+
+    .cvContainer {
+        background-color: grey;
+        height: 100%;
+        padding: 2em 0;
+    }
+
+    .cv {
+        background: #fff;
+        padding: 10mm 16mm 10mm 16mm;
+        margin: auto;
+        box-shadow: black 5px 5px 15px;
+    }
+}
+
+.printFooter {
+    display: none;
+}
+
+.cv {
+    font-family: 'Merriweather', serif;
+    max-width: 21cm;
+    font-size: 12px;
+}
+
+.cvHeader {
+    display: grid;
+    grid-template-columns: auto 10em;
+}
+
+.name {
+    font-size: 2em;
+    font-weight: normal;
+    margin: 0;
+}
+
+.jobTitle{
+    font-size: 1.4em;
+    margin-top: -0.5em;
+    font-weight: normal;
+    margin: 0;
+}
+
+.titleBlock {
+    display: grid;
+    line-height: 2em;
+    grid-template-rows: 3em auto;
+}
+
+.contactDetails {
+    line-height: 2em;
+    display: grid;
+    margin: 0;
+    padding-inline-start: unset;
+}
+
+.contactDetails li {
+    display: unset
+}
+
+.experienceContents {
+    border-left: 1px dotted black;
+    padding-left: 1em;
+    margin-left: 0.5em;
+}
+
+.experienceDescription ul {
+    padding-inline-start: 1.5em;
+}
+
+.experienceTitle {
+    margin-left: 0.5em;
+}
+
+.technologies h4 {
+    margin-bottom: unset;
+}
+
+.technologies ul {
+    margin: 0;
+    padding-inline-start: unset;
+    text-align: justify;
+}
+
+.technologies li {
+    display: inline
+}
+
+.technologies li::after {
+    content: ' / ';
+}
+
+
+.technologies li:last-child::after {
+    content: unset;
+}

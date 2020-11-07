@@ -1,42 +1,100 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import { Experience, getExperiences } from '../lib/cv'
+import { Experience, getExperiences, Summary, getSummary } from '../lib/cv'
 import { ContentsWith } from '../lib/md-html-parser'
+import styles from './cv.module.css'
 
-export default function Cv({ experiences }: { experiences : ContentsWith<Experience>[] }) {
+export default function Cv({ summary, experiences }: {
+  summary : ContentsWith<Summary>
+  experiences : ContentsWith<Experience>[] 
+}) {
   return (
       <>
         <Head>
-            <title>Ferugi El Heri - Full Stack Developer</title>
+            <title>{summary.fullName}: {summary.title} - CV</title>
+            <link rel="stylesheet" href="" />
         </Head>
-        <section>
-          <h2>About Me</h2>
-        </section>
-        <section>
-          <h2>Experience</h2>
-          { experiences.map((experience, index) => <ExperienceSection experience={experience} key={index}/> ) }
-        </section>
+        <main className={styles.cvContainer}>
+          <div className={styles.cv}>
+            <header className={styles.cvHeader}>
+              <div className={styles.titleBlock}>
+                <h1 className={styles.name}>{summary.fullName}</h1>
+                <h2 className={styles.jobTitle}>{summary.title}</h2>
+              </div>
+              <ul className={styles.contactDetails}>
+                <li><i className="fas fa-envelope" aria-hidden={true} /> {summary.contactDetails.email}</li>
+                <li><i className="fas fa-phone" aria-hidden={true} /> {summary.contactDetails.phone}</li>
+                <li><i className="fab fa-linkedin-in" aria-hidden={true} /> {summary.contactDetails.linkedIn}</li>
+                <li><i className="fas fa-map-marker-alt" aria-hidden={true} /> {summary.contactDetails.location}</li>
+              </ul>
+            </header>
+            <section>
+              <div dangerouslySetInnerHTML={{ __html: summary.contentHtml }} />
+            </section>
+            <section>
+              <h2>Experience</h2>
+              { experiences.map((experience, index) => <ExperienceSection experience={experience} key={index}/> ) }
+            </section>
+          </div>
+        </main>
+        <div className={styles.printFooter}>
+          <div className={styles.left}>TEST LEFT</div>
+          <div className={styles.center}>TEST CENTER</div>
+          <div className={styles.right}>TEST RIGHT</div>
+        </div>
       </>
   )
 }
 
 export function ExperienceSection({ experience }: { experience: ContentsWith<Experience> }) {
   return (
-    <article>
+    <article className={styles.experience}>
       <h3>
-        {experience.title}
+        <i className={getExperienceIconCass(experience.type)} aria-hidden={true} /> 
+        <span className={styles.experienceTitle}>{experience.title}</span>
+        { experience.company && <span> at {experience.company}</span> }
+        { experience.institute && <span> at {experience.institute}</span> }
       </h3>
-      <div dangerouslySetInnerHTML={{ __html: experience.contentHtml }} />
+      <div className={styles.experienceContents}>
+        <div className={styles.experienceDescription} dangerouslySetInnerHTML={{ __html: experience.contentHtml }} /> 
+        { 
+          experience.technologies && 
+          <div className={styles.technologies}>
+            <h4>Key Technologies</h4>
+            <ul>
+              {experience.technologies.map(technology => <li>{technology}</li>)}
+            </ul>
+          </div>
+        }
+      </div>
     </article>
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-    const experiences = await getExperiences()
+function getExperienceIconCass(type: string) {
+  switch (type) {
+    case 'job':
+      return 'fas fa-briefcase'
+    
+    case 'study':
+      return 'fas fa-graduation-cap'
 
-    return {
-      props: {
-        experiences
-      }
+    case 'project':
+      return 'fas fa-project-diagram'
+
+    default:
+      return ''
+  }
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const summary = await getSummary()
+  const experiences = await getExperiences()
+
+  return {
+    props: {
+      summary,
+      experiences
     }
+  }
 }
