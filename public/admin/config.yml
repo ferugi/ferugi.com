@@ -1,6 +1,7 @@
 backend:
   name: github
   repo: ferugi/ferugi.com
+  branch: master
 media_folder: public/images
 public_folder: public/images
 site_url: https://ferugi-com.vercel.app
