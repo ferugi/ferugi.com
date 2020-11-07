@@ -17,12 +17,7 @@ export default function Layout({
       </Head>
       <header className={styles.header}>
         <Link href="/">
-          <a>
-            <img
-              src="/images/profile.jpg"
-              className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-            />
-          </a>
+          <a>← Back to home</a>
         </Link>
       </header>
       <main>{children}</main>
