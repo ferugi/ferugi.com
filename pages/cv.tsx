@@ -1,12 +1,13 @@
 import Head from 'next/head'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps, GetStaticProps } from 'next'
 import { Experience, getExperiences, Summary, getSummary } from '../lib/cv'
 import { ContentsWith } from '../lib/md-html-parser'
 import styles from './cv.module.css'
 
-export default function Cv({ summary, experiences }: {
+export default function Cv({ summary, experiences, highlights }: {
   summary : ContentsWith<Summary>
   experiences : ContentsWith<Experience>[] 
+  highlights: string[]
 }) {
   return (
       <>
@@ -22,9 +23,21 @@ export default function Cv({ summary, experiences }: {
                 <h2 className={styles.jobTitle}>{summary.title}</h2>
               </div>
               <ul className={styles.contactDetails}>
-                <li><i className="fas fa-envelope" aria-hidden={true} /> {summary.contactDetails.email}</li>
-                <li><i className="fas fa-phone" aria-hidden={true} /> {summary.contactDetails.phone}</li>
-                <li><i className="fab fa-linkedin-in" aria-hidden={true} /> {summary.contactDetails.linkedIn}</li>
+                <li>
+                  <a href={'mailto:' + summary.contactDetails.email}>
+                    <i className="fas fa-envelope" aria-hidden={true} /> {summary.contactDetails.email}
+                  </a>
+                </li>
+                <li>
+                  <a href={'tel:' + summary.contactDetails.phone}>
+                    <i className="fas fa-phone" aria-hidden={true} /> {summary.contactDetails.phone}
+                  </a>
+                </li>
+                <li>
+                  <a href={'https://linkedin.com/in/' + summary.contactDetails.linkedIn}>
+                  <i className="fab fa-linkedin-in" aria-hidden={true} /> {summary.contactDetails.linkedIn}
+                  </a>
+                </li>
                 <li><i className="fas fa-map-marker-alt" aria-hidden={true} /> {summary.contactDetails.location}</li>
               </ul>
             </header>
@@ -33,36 +46,35 @@ export default function Cv({ summary, experiences }: {
             </section>
             <section>
               <h2>Experience</h2>
-              { experiences.map((experience, index) => <ExperienceSection experience={experience} key={index}/> ) }
+              { experiences.map((experience, index) => <ExperienceSection experience={experience} highlights={highlights} key={index}/> ) }
             </section>
           </div>
         </main>
-        <div className={styles.printFooter}>
-          <div className={styles.left}>TEST LEFT</div>
-          <div className={styles.center}>TEST CENTER</div>
-          <div className={styles.right}>TEST RIGHT</div>
-        </div>
       </>
   )
 }
 
-export function ExperienceSection({ experience }: { experience: ContentsWith<Experience> }) {
+export function ExperienceSection({ experience, highlights }: { experience: ContentsWith<Experience>, highlights: string[] }) {
+
   return (
     <article className={styles.experience}>
       <h3>
         <i className={getExperienceIconCass(experience.type)} aria-hidden={true} /> 
-        <span className={styles.experienceTitle}>{experience.title}</span>
-        { experience.company && <span> at {experience.company}</span> }
-        { experience.institute && <span> at {experience.institute}</span> }
+        <span className={styles.experienceTitle}>{experience.title}
+          { experience.company && <> at {experience.company}</> }
+          { experience.institute && <> at {experience.institute}</> }
+        </span>
+        <span className={styles.startEndDate}>{experience.startDate} – {experience.endDate || 'present'}</span>
       </h3>
       <div className={styles.experienceContents}>
         <div className={styles.experienceDescription} dangerouslySetInnerHTML={{ __html: experience.contentHtml }} /> 
         { 
           experience.technologies && 
           <div className={styles.technologies}>
-            <h4>Key Technologies</h4>
             <ul>
-              {experience.technologies.map(technology => <li>{technology}</li>)}
+              {experience.technologies.map(technology => <li className={highlights?.includes(technology.toLowerCase()) ? styles.highlight : ''}>
+                {technology}
+              </li>)}
             </ul>
           </div>
         }
@@ -71,13 +83,39 @@ export function ExperienceSection({ experience }: { experience: ContentsWith<Exp
   )
 }
 
+function getFooter(summary: Summary) {
+  return (
+    <div className={styles.printFooter}>
+      <div className={styles.left}>{getLeftFooter()}</div>
+      <div className={styles.center}>{summary.fullName}</div>
+      <div className={styles.right}><span id="pageNumber"></span> page</div>
+    </div>
+  )
+}
+
+function getLeftFooter() {
+  const currentDate = new Date(Date.now());
+  const dateOptions = { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  }
+
+  const locale = 'en-GB'
+
+  return currentDate.toLocaleString(locale, dateOptions)
+}
+
 function getExperienceIconCass(type: string) {
   switch (type) {
     case 'job':
       return 'fas fa-briefcase'
     
-    case 'study':
+    case 'degree':
       return 'fas fa-graduation-cap'
+
+    case 'study':
+      return 'fas fa-book-open'
 
     case 'project':
       return 'fas fa-project-diagram'
@@ -87,14 +125,23 @@ function getExperienceIconCass(type: string) {
   }
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async(context) => {
+
   const summary = await getSummary()
   const experiences = await getExperiences()
+  const highlightQuery = context.query.highlight
+
+  let highlights: string[] = []
+
+  if (typeof(highlightQuery) === 'string'){
+    highlights = highlightQuery.toLowerCase().split(',')
+  }
 
   return {
     props: {
       summary,
-      experiences
+      experiences,
+      highlights
     }
   }
 }

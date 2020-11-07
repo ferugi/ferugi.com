@@ -12,4 +12,4 @@ I have over 4 years of experience building front and back-end applications with 
 
 I believe in the strength of teamwork, and am a more than capable self-starter. I enjoy reviewing code and sharing knowledge. I write clean, understandable code that is built with a firm understanding of object orientated programming principles. 
 
-Outside of work I keep up my development knowledge and connections through self-study and by  regularly attending developer meetups like Brighton Alt.NET, .NET South East, and Async.
+Outside of work I keep up my development knowledge and connections through self-study and by  regularly attending developer meetups like [Brighton Alt.NET](http://brightonalt.net/), [.NET South East](http://www.dotnetsoutheast.co.uk/), and [Async](https://asyncjs.com/).

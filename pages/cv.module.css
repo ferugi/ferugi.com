@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;700&display=swap');
 
 @page {
-    margin: 10mm 16mm 10mm 16mm;
+    margin: 16mm 16mm 10mm 16mm;
 }
 
 @media print {
@@ -10,7 +10,9 @@
         bottom: 0;
         width: 100%;
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        font-family: 'Merriweather', serif;
+        font-size: 11px;
     }
 
     .printFooter .left {
@@ -28,6 +30,11 @@
     .experience {
         break-inside: avoid;
     }
+
+    .cv a {
+        color: unset;
+        text-decoration: none;
+    }
 }
 
 @media screen {
@@ -40,14 +47,14 @@
 
     .cv {
         background: #fff;
-        padding: 10mm 16mm 10mm 16mm;
+        padding: 16mm 16mm 10mm 16mm;
         margin: auto;
         box-shadow: black 5px 5px 15px;
     }
-}
 
-.printFooter {
-    display: none;
+    .printFooter {
+        display: none;
+    }
 }
 
 .cv {
@@ -91,19 +98,38 @@
     display: unset
 }
 
+.experience h3 {
+    margin-bottom: 0;
+    margin-top: 1.5em;
+    padding-top: 1px;
+    display: flex;
+    line-height: 1;
+    font-weight: 700;
+}
+.experience h3 .experienceTitle {
+    margin-left: 0.5em;
+    flex-grow: 1;
+}
+
+.experience h3 .startEndDate {
+    text-align: right;
+    font-weight: 400;
+}
+
 .experienceContents {
-    border-left: 1px dotted black;
+    border-left: 2px solid #c6c6c6;
     padding-left: 1em;
     margin-left: 0.5em;
+}
+
+.experienceContents li {
+    margin-bottom: 0.5em;
 }
 
 .experienceDescription ul {
     padding-inline-start: 1.5em;
 }
 
-.experienceTitle {
-    margin-left: 0.5em;
-}
 
 .technologies h4 {
     margin-bottom: unset;
@@ -112,18 +138,18 @@
 .technologies ul {
     margin: 0;
     padding-inline-start: unset;
-    text-align: justify;
 }
 
-.technologies li {
-    display: inline
+.technologies ul li {
+    display: inline-block;
+    border: 0.5px dotted black;
+    padding: 0px 3px;
+    margin: 2px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
 }
 
-.technologies li::after {
-    content: ' / ';
-}
-
-
-.technologies li:last-child::after {
-    content: unset;
+.technologies ul li.highlight {
+    font-weight: 700;
+    border: 1px solid black;
 }

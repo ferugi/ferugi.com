@@ -1,5 +1,5 @@
 ---
-type: study
+type: degree
 title: BA Film and Video Production
 institute: University of South Wales
 location: Cardiff
