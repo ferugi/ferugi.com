@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;700&display=swap');
 
 @page {
-    margin: 16mm 16mm 10mm 16mm;
+    margin: 16mm 18mm 10mm 18mm;
 }
 
 @media print {
@@ -47,7 +47,7 @@
 
     .cv {
         background: #fff;
-        padding: 16mm 16mm 10mm 16mm;
+        padding: 16mm 18mm 10mm 18mm;
         margin: auto;
         box-shadow: black 5px 5px 15px;
     }
@@ -83,12 +83,12 @@
 
 .titleBlock {
     display: grid;
-    line-height: 2em;
+    line-height: 1;
     grid-template-rows: 3em auto;
 }
 
 .contactDetails {
-    line-height: 2em;
+    line-height: 1.5;
     display: grid;
     margin: 0;
     padding-inline-start: unset;
