@@ -2,13 +2,15 @@ backend:
   name: github
   repo: ferugi/ferugi.com
   branch: master
+  base_url: # env var: NETLIFY_AUTH_BASE_URL 
+  auth_endpoint: api/netlify-auth/begin
 media_folder: public/images
 public_folder: public/images
-site_url: https://ferugi-com.vercel.app
-show_preview_links: false
+site_url: # env var: NETLIFY_BASE_URL
+show_preview_links: true
 collections:
-  - name: "Pages"
-    label: "pages"
+  - label: "Pages"
+    name: "pages"
     files:
     - label: "Home"
       name: "home"
@@ -24,8 +26,8 @@ collections:
             - { label: "URL", name: "url", widget: "string"}
             - { label: "Fontawesome Icon Class", name: "faIcon", widget: "string"}
         - { label: "Body", name: "body", widget: "markdown"}
-  - name: "blog-posts"
-    label: "Blog Posts"
+  - label: "Blog Posts"
+    name: "blog-posts"
     folder: "content/blog/posts"
     create: true
     fields:
