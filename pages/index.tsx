@@ -6,7 +6,6 @@ import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
 import { getIndexContentAndData, SiteDetails, ContactData as ContactData } from '../lib/home'
-import { ContentsWith } from '../lib/md-html-parser'
 
 export default function Home({ indexContentAndData, allPosts }: Props) {
   return (
@@ -67,6 +66,6 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 interface Props {
-  indexContentAndData: ContentsWith<SiteDetails>
+  indexContentAndData: SiteDetails
   allPosts: PostWithContents[]
 }

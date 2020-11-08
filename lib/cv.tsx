@@ -41,12 +41,14 @@ export interface Experience {
   company: string
   institute: string
   technologies: string[]
+  contentHtml: string
 }
 
 export interface Summary {
   fullName: string
   title: string
   contactDetails: ContactDetails
+  contentHtml: string
 }
 
 export interface ContactDetails {

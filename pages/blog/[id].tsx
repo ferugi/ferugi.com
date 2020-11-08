@@ -4,9 +4,8 @@ import Head from 'next/head'
 import Date from '../../components/date'
 import utilStyles from '../../styles/utils.module.css'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import { ContentsWith } from '../../lib/md-html-parser'
 
-export default function Post({ post }: {  post: ContentsWith<PostWithContents> }) {
+export default function Post({ post }: {  post: PostWithContents }) {
   return (
     <Layout>
       <Head>

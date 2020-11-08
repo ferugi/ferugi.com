@@ -1,12 +1,11 @@
 import Head from 'next/head'
-import { GetServerSideProps, GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { Experience, getExperiences, Summary, getSummary } from '../lib/cv'
-import { ContentsWith } from '../lib/md-html-parser'
 import styles from './cv.module.css'
 
 export default function Cv({ summary, experiences, highlights }: {
-  summary : ContentsWith<Summary>
-  experiences : ContentsWith<Experience>[] 
+  summary : Summary
+  experiences : Experience[] 
   highlights: string[]
 }) {
   return (
@@ -54,7 +53,7 @@ export default function Cv({ summary, experiences, highlights }: {
   )
 }
 
-export function ExperienceSection({ experience, highlights }: { experience: ContentsWith<Experience>, highlights: string[] }) {
+export function ExperienceSection({ experience, highlights }: { experience: Experience, highlights: string[] }) {
 
   return (
     <article className={styles.experience}>
