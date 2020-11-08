@@ -29,7 +29,7 @@ collections:
 
     - label: "CV"
       name: cv
-      file: "content/cv"
+      file: "content/cv.md"
       fields:
         - { label: "Full Name", name: "fullName", widget: "string"}
         - { label: "Title", name: "title", widget: "string"}
