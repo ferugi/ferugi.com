@@ -1,14 +1,14 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
-import { getAllBlogPosts, PostData } from '../lib/blog/posts'
+import { getAllBlogPosts, PostWithContents, PostData } from '../lib/blog/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
 import { getIndexContentAndData, SiteDetails, ContactData as ContactData } from '../lib/home'
 import { ContentsWith } from '../lib/md-html-parser'
 
-export default function Home({ indexContentAndData, allPostData }: Props) {
+export default function Home({ indexContentAndData, allPosts }: Props) {
   return (
     <Layout home>
       <Head>
@@ -23,22 +23,22 @@ export default function Home({ indexContentAndData, allPostData }: Props) {
           Blog
         </h2>
         <ul className={utilStyles.list}>
-          { allPostData.map(postData => <PostDisplay postData={postData} key={postData.id} />)}
+          { allPosts.map(post => <PostDisplay post={post} key={post.id} />)}
         </ul>
       </section>
     </Layout>
   )
 }
 
-function PostDisplay({ postData }: { postData: PostData }) {
+function PostDisplay({ post }: { post: PostWithContents }) {
   return (
     <li className={utilStyles.listItem}>
-      <Link href={`/blog/${postData.id}`}>
-        <a>{postData.title}</a>
+      <Link href={`/blog/${post.id}`}>
+        <a>{post.title}</a>
       </Link>
       <br />
       <small className={utilStyles.lightText}>
-        <Date dateString={postData.date} />
+        <Date dateString={post.date as string} />
       </small>
     </li>
   )
@@ -55,18 +55,18 @@ function ContactIconDisplay({ contactData }: { contactData: ContactData }){
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostData = await getAllBlogPosts()
+  const allPosts = await getAllBlogPosts()
   const indexContentAndData = await getIndexContentAndData()
 
   return {
     props: {
       indexContentAndData,
-      allPostData,
+      allPosts,
     }
   };
 }
 
 interface Props {
   indexContentAndData: ContentsWith<SiteDetails>
-  allPostData: ContentsWith<PostData>[]
+  allPosts: PostWithContents[]
 }

@@ -12,6 +12,7 @@ export interface SiteDetails {
     author: string
     siteTitle: string
     contactData: ContactData[]
+    contentHtml: string
 }
 
 export interface ContactData {

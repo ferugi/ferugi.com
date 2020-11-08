@@ -1,12 +1,12 @@
 import Layout from '../../components/layout'
-import { getAllBlogPostIds, getPostPost as getPost, PostData } from '../../lib/blog/posts'
+import { getAllBlogPostIds, getPostById as getPost, PostWithContents } from '../../lib/blog/posts'
 import Head from 'next/head'
 import Date from '../../components/date'
 import utilStyles from '../../styles/utils.module.css'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { ContentsWith } from '../../lib/md-html-parser'
 
-export default function Post({ post }: {  post: ContentsWith<PostData> }) {
+export default function Post({ post }: {  post: ContentsWith<PostWithContents> }) {
   return (
     <Layout>
       <Head>
@@ -15,7 +15,7 @@ export default function Post({ post }: {  post: ContentsWith<PostData> }) {
       <article>
         <h1 className={utilStyles.headingXl}>{post.title}</h1>
         <div className={utilStyles.lightText}>
-          <Date dateString={post.date} />
+          <Date dateString={post.date as string} />
         </div>
         <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
       </article>
@@ -40,7 +40,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = await getPost(params?.id as string)
-
+  post.date = post.date.toString()
+  
   return {
     props: {
       post
