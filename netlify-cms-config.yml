@@ -26,6 +26,24 @@ collections:
             - { label: "URL", name: "url", widget: "string"}
             - { label: "Fontawesome Icon Class", name: "faIcon", widget: "string"}
         - { label: "Body", name: "body", widget: "markdown"}
+
+    - label: "CV"
+      name: cv
+      file: "content/cv"
+      fields:
+        - { label: "Full Name", name: "fullName", widget: "string"}
+        - { label: "Title", name: "title", widget: "string"}
+        - label: "Contact Details"
+          name: "contactDetails"
+          widget: "object"
+          collapsed: true
+          fields:
+            - { label: "Email Address", name: "email", widget: "string"}
+            - { label: "Phone Number", name: "phone", widget: "string"}
+            - { label: "LinkedIn Slug", name: "linkedIn", widget: "string"}
+            - { label: "Location", name: "location", widget: "string"}
+        - { label: "Summary", name: "summary", widget: "markdown"}
+        
   - label: "Blog Posts"
     name: "blog-posts"
     folder: "content/blog/posts"
