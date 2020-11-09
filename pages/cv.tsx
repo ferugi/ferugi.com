@@ -58,7 +58,7 @@ export function ExperienceSection({ experience, highlights }: { experience: Expe
   return (
     <article className={styles.experience}>
       <h3>
-        <i className={getExperienceIconCass(experience.type)} aria-hidden={true} /> 
+        <i className={getExperienceIconClass(experience.type)} aria-hidden={true} /> 
         <span className={styles.experienceTitle}>{experience.title}
           { experience.company && <> at {experience.company}</> }
           { experience.institute && <> at {experience.institute}</> }
@@ -105,7 +105,7 @@ function getLeftFooter() {
   return currentDate.toLocaleString(locale, dateOptions)
 }
 
-function getExperienceIconCass(type: string) {
+function getExperienceIconClass(type: string) {
   switch (type) {
     case 'job':
       return 'fas fa-briefcase'

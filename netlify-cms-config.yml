@@ -44,11 +44,11 @@ collections:
             - { label: "Location", name: "location", widget: "string"}
         - { label: "About Me", name: "body", widget: "markdown"}
         - label: Experiences #TODO: Fix this widget
-          name: experiences
+          name: "experiences"
           widget: "relation"
           collection: "experiences"
           value_field: "title"
-          search_fields: ["Title"]
+          search_fields: ["title"]
           multiple: true
 
   - label: "CV Experiences"
