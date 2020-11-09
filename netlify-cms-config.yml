@@ -49,13 +49,7 @@ collections:
           search_fields: ["title"]
           #multiple: true
         - { label: "About Me", name: "body", widget: "markdown"}
-        - label: "Blog Post"
-          name: "blogPost"
-          widget: "relation"
-          collection: "blogPosts"
-          search_fields: ["title"]
-          value_field: "title"
-          display_fields: ["title"]
+
   - label: "Blog Posts"
     name: "blogPosts"
     folder: "content/blog/posts"
@@ -67,7 +61,14 @@ collections:
       - { label: "Categories", name: "categories", widget: "list", required: false }
       - { label: "Tags", name: "tags", widget: "list", required: false}
       - { label: "Body", name: "body", widget: "markdown" }
-
+      - label: "Related Post"
+        name: "relatedPost"
+        widget: "relation"
+        collection: "blogPosts"
+        search_fields: ["title"]
+        value_field: "title"
+        display_fields: ["title"]
+        
   - label: "CV Experiences"
     name: "cvExperiences"
     folder: "content/cv/experiences"
