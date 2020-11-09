@@ -6,9 +6,8 @@ contactDetails:
   linkedIn: ferugi
   location: Brighton
   phone: +44 7425 175092
-summary: |-
+about: |-
   Test Summary Edit
 
   ... Testing line breaks.
 ---
-

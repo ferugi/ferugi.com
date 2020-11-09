@@ -42,8 +42,36 @@ collections:
             - { label: "Phone Number", name: "phone", widget: "string"}
             - { label: "LinkedIn Slug", name: "linkedIn", widget: "string"}
             - { label: "Location", name: "location", widget: "string"}
-        - { label: "Summary", name: "summary", widget: "markdown"}
-        
+        - { label: "About Me", name: "about", widget: "markdown"}
+        - label: Experiences
+          name: experiences
+          widget: "relation"
+          collection: "experiences"
+          value_field: "title"
+          search_fields: ["Title"]
+          multiple: true
+
+  - label: "CV Experiences"
+    name: "experiences"
+    folder: "content/cv/experiences"
+    create: true
+    fields:
+      - label: "Type"
+        name: "type"
+        widget: "select"
+        options: 
+          - {label: "Job", value: "job"}
+          - {label: "Project", value: "project"}
+          - {label: "Study", value: "study"}
+          - {label: "University Degree", value: "degree"}
+      - { label: "Title", name: "title", widget: "string"}
+      - { label: "Location", name: "location", widget: "string", required: false}
+      - { label: "Institute", name: "institute", widget: "string", required: false}
+      - { label: "Start Date", name: "startDate", widget: "string", required: false}
+      - { label: "End Date", name: "endDate", widget: "string", required: false}
+      - { label: "Description", name: "description", widget: "markdown"}
+      - { label: "Technologies", name: "technologies", widget: "list", required: false}
+
   - label: "Blog Posts"
     name: "blog-posts"
     folder: "content/blog/posts"
@@ -51,7 +79,7 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Facebook Comment Link", name: "fbcommentlink", widget: "hidden" }
-      - { label: "Categories", name: "categories", widget: "list" }
-      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Facebook Comment Link", name: "fbcommentlink", widget: "hidden", required: false }
+      - { label: "Categories", name: "categories", widget: "list", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false}
       - { label: "Body", name: "body", widget: "markdown" }

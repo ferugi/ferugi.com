@@ -11,7 +11,7 @@ export async function getSummary() {
 }
 
 export async function getExperiences() {
-  const experiencesDirectory = path.join(process.cwd(), 'content/cv/experience')
+  const experiencesDirectory = path.join(process.cwd(), 'content/cv/experiences')
 
   const fileNames = fs.readdirSync(experiencesDirectory)
 
