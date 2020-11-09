@@ -42,8 +42,8 @@ collections:
             - { label: "Phone Number", name: "phone", widget: "string"}
             - { label: "LinkedIn Slug", name: "linkedIn", widget: "string"}
             - { label: "Location", name: "location", widget: "string"}
-        - { label: "About Me", name: "about", widget: "markdown"}
-        - label: Experiences
+        - { label: "About Me", name: "body", widget: "markdown"}
+        - label: Experiences #TODO: Fix this widget
           name: experiences
           widget: "relation"
           collection: "experiences"
@@ -70,7 +70,7 @@ collections:
       - { label: "Start Date", name: "startDate", widget: "string", required: false}
       - { label: "End Date", name: "endDate", widget: "string", required: false}
       - { label: "Technologies", name: "technologies", widget: "list", required: false}
-      - { label: "Body", name: "body", widget: "markdown"}
+      - { label: "Description", name: "body", widget: "markdown"}
 
   - label: "Blog Posts"
     name: "blog-posts"
