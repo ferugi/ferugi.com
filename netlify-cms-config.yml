@@ -9,50 +9,20 @@ public_folder: public/images
 site_url: # env var: NETLIFY_BASE_URL
 show_preview_links: true
 collections:
-  - label: "Pages"
-    name: "pages"
-    files:
-    - label: "Home"
-      name: "home"
-      file: "content/home.md"
-      fields:
-        - { label: "Author", name: "author", widget: "string"}
-        - { label: "Site Title", name: "siteTitle", widget: "string"}
-        - label: 'Contact Data'
-          name: "contactData"
-          widget: list
-          fields:
-            - { label: "Title", name: "title", widget: "string"}
-            - { label: "URL", name: "url", widget: "string"}
-            - { label: "Fontawesome Icon Class", name: "faIcon", widget: "string"}
-        - { label: "Body", name: "body", widget: "markdown"}
-
-    - label: "CV"
-      name: cv
-      file: "content/cv.md"
-      fields:
-        - { label: "Full Name", name: "fullName", widget: "string"}
-        - { label: "Title", name: "title", widget: "string"}
-        - label: "Contact Details"
-          name: "contactDetails"
-          widget: "object"
-          collapsed: true
-          fields:
-            - { label: "Email Address", name: "email", widget: "string"}
-            - { label: "Phone Number", name: "phone", widget: "string"}
-            - { label: "LinkedIn Slug", name: "linkedIn", widget: "string"}
-            - { label: "Location", name: "location", widget: "string"}
-        - { label: "About Me", name: "body", widget: "markdown"}
-        - label: Experiences #TODO: Fix this widget
-          name: "experiences"
-          widget: "relation"
-          collection: "experiences"
-          value_field: "title"
-          search_fields: ["title"]
-          multiple: true
+  - label: "Blog Posts"
+    name: "blog-posts"
+    folder: "content/blog/posts"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Facebook Comment Link", name: "fbcommentlink", widget: "hidden", required: false }
+      - { label: "Categories", name: "categories", widget: "list", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false}
+      - { label: "Body", name: "body", widget: "markdown" }
 
   - label: "CV Experiences"
-    name: "experiences"
+    name: "cvExperiences"
     folder: "content/cv/experiences"
     create: true
     fields:
@@ -72,14 +42,46 @@ collections:
       - { label: "Technologies", name: "technologies", widget: "list", required: false}
       - { label: "Description", name: "body", widget: "markdown"}
 
-  - label: "Blog Posts"
-    name: "blog-posts"
-    folder: "content/blog/posts"
-    create: true
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Facebook Comment Link", name: "fbcommentlink", widget: "hidden", required: false }
-      - { label: "Categories", name: "categories", widget: "list", required: false }
-      - { label: "Tags", name: "tags", widget: "list", required: false}
-      - { label: "Body", name: "body", widget: "markdown" }
+  - label: "Pages"
+    name: "pages"
+    files:
+
+    - label: "Home"
+      name: "home"
+      file: "content/home.md"
+      fields:
+        - { label: "Author", name: "author", widget: "string"}
+        - { label: "Site Title", name: "siteTitle", widget: "string"}
+        - label: 'Contact Data'
+          name: "contactData"
+          widget: list
+          fields:
+            - { label: "Title", name: "title", widget: "string"}
+            - { label: "URL", name: "url", widget: "string"}
+            - { label: "Fontawesome Icon Class", name: "faIcon", widget: "string"}
+        - { label: "Body", name: "body", widget: "markdown"}
+        
+    - label: "CV"
+      name: cv
+      file: "content/cv.md"
+      fields:
+        - { label: "Full Name", name: "fullName", widget: "string"}
+        - { label: "Title", name: "title", widget: "string"}
+        - label: "Contact Details"
+          name: "contactDetails"
+          widget: "object"
+          collapsed: true
+          fields:
+            - { label: "Email Address", name: "email", widget: "string"}
+            - { label: "Phone Number", name: "phone", widget: "string"}
+            - { label: "LinkedIn Slug", name: "linkedIn", widget: "string"}
+            - { label: "Location", name: "location", widget: "string"}
+        - { label: "About Me", name: "body", widget: "markdown"}
+        - label: Experiences #TODO: Fix this widget
+          name: "experiences"
+          widget: "relation"
+          collection: "cvExperiences"
+          value_field: "title"
+          search_fields: ["title"]
+          multiple: true
+
