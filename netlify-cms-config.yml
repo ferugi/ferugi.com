@@ -41,14 +41,8 @@ collections:
             - { label: "Phone Number", name: "phone", widget: "string"}
             - { label: "LinkedIn Slug", name: "linkedIn", widget: "string"}
             - { label: "Location", name: "location", widget: "string"}
-        - label: Experiences #TODO: Fix this widget
-          name: "experiences"
-          widget: "relation"
-          collection: "cvExperiences"
-          value_field: "{{slug}}"
-          search_fields: ["title"]
-          #multiple: true
         - { label: "About Me", name: "body", widget: "markdown"}
+        - { label: Experiences, name: experiences, widget: relation, collection: cvExperiences, value_field: title}
 
   - label: "Blog Posts"
     name: "blogPosts"
@@ -61,19 +55,13 @@ collections:
       - { label: "Categories", name: "categories", widget: "list", required: false }
       - { label: "Tags", name: "tags", widget: "list", required: false}
       - { label: "Body", name: "body", widget: "markdown" }
-      - label: "Related Post"
-        name: "relatedPost"
-        widget: "relation"
-        collection: "blogPosts"
-        search_fields: ["title"]
-        value_field: "title"
-        display_fields: ["title"]
-        
+
   - label: "CV Experiences"
     name: "cvExperiences"
     folder: "content/cv/experiences"
     create: true
     fields:
+      - { label: "Title", name: "title", widget: "string"}
       - label: "Type"
         name: "type"
         widget: "select"
@@ -82,7 +70,6 @@ collections:
           - {label: "Project", value: "project"}
           - {label: "Study", value: "study"}
           - {label: "University Degree", value: "degree"}
-      - { label: "Title", name: "title", widget: "string"}
       - { label: "Location", name: "location", widget: "string", required: false}
       - { label: "Institute", name: "institute", widget: "string", required: false}
       - { label: "Start Date", name: "startDate", widget: "string", required: false}
