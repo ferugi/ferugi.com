@@ -49,9 +49,15 @@ collections:
           search_fields: ["title"]
           #multiple: true
         - { label: "About Me", name: "body", widget: "markdown"}
-
+        - label: "Blog Post"
+          name: "blogPost"
+          widget: "relation"
+          collection: "blogPosts"
+          search_fields: ["title"]
+          value_field: "title"
+          display_fields: ["title"]
   - label: "Blog Posts"
-    name: "blog-posts"
+    name: "blogPosts"
     folder: "content/blog/posts"
     create: true
     fields:
