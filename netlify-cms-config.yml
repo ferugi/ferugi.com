@@ -41,14 +41,14 @@ collections:
             - { label: "Phone Number", name: "phone", widget: "string"}
             - { label: "LinkedIn Slug", name: "linkedIn", widget: "string"}
             - { label: "Location", name: "location", widget: "string"}
-        - { label: "About Me", name: "body", widget: "markdown"}
         - label: Experiences #TODO: Fix this widget
           name: "experiences"
           widget: "relation"
           collection: "cvExperiences"
-          value_field: "title"
+          value_field: "{{slug}}"
           search_fields: ["title"]
           #multiple: true
+        - { label: "About Me", name: "body", widget: "markdown"}
 
   - label: "Blog Posts"
     name: "blog-posts"
