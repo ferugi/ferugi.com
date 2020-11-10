@@ -6,6 +6,12 @@ contactDetails:
   linkedIn: ferugi
   location: Brighton
   phone: +44 7425 175092
+experiences:
+  - web-developer-into
+  - gametweak-project
+  - it-analyst-harlands
+  - self-study-software
+  - film-video-degree
 ---
 
 I have over 4 years of experience building front and back-end applications with frameworks such as Angular and .NET that serve users around the world. I’ve tackled challenges that include internationalization, performance, data-security, and have delivered best-practice solutions in architectures ranging from monolithic to microservice.
