@@ -41,7 +41,7 @@ export default function Cv({ summary, experiences, highlights }: {
               </ul>
             </header>
             <section>
-              <div dangerouslySetInnerHTML={{ __html: summary.contentHtml }} />
+              <div dangerouslySetInnerHTML={{ __html: summary.body }} />
             </section>
             <section>
               <h2>Experience</h2>
@@ -66,7 +66,7 @@ export function ExperienceSection({ experience, highlights }: { experience: Expe
         <span className={styles.startEndDate}>{experience.startDate} – {experience.endDate || 'present'}</span>
       </h3>
       <div className={styles.experienceContents}>
-        <div className={styles.experienceDescription} dangerouslySetInnerHTML={{ __html: experience.contentHtml }} /> 
+        <div className={styles.experienceDescription} dangerouslySetInnerHTML={{ __html: experience.body }} /> 
         { 
           experience.technologies && 
           <div className={styles.technologies}>

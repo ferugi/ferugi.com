@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
-import { getAllBlogPosts, PostWithContents, PostData } from '../lib/blog/posts'
+import { getAllBlogPosts, PostWithContents } from '../lib/blog/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
-import { getIndexContentAndData, SiteDetails, ContactData as ContactData } from '../lib/home'
+import { getIndexContentAndData, HomePageEntry, ContactData as ContactData } from '../lib/home'
 
 export default function Home({ indexContentAndData, allPosts }: Props) {
   return (
@@ -16,7 +16,7 @@ export default function Home({ indexContentAndData, allPosts }: Props) {
       <ul className={utilStyles.list}>
         { indexContentAndData.contactData.map(contactData => (<ContactIconDisplay contactData={contactData} key={contactData.title} />)) }
       </ul>
-      <section dangerouslySetInnerHTML={{ __html: indexContentAndData.contentHtml }} />
+      <section dangerouslySetInnerHTML={{ __html: indexContentAndData.body }} />
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>
           Blog
@@ -66,6 +66,6 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 interface Props {
-  indexContentAndData: SiteDetails
+  indexContentAndData: HomePageEntry
   allPosts: PostWithContents[]
 }

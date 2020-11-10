@@ -1,18 +1,17 @@
 import path from 'path'
-import { getContentsWithData } from './md-html-parser'
+import { Entry, getEntryWithBody } from './entry-utils'
 
 export async function getIndexContentAndData() {
 
     const fileName = path.join(process.cwd(), 'content/home.md')
 
-    return await getContentsWithData<SiteDetails>(fileName)
+    return await getEntryWithBody<HomePageEntry>(fileName)
 }
 
-export interface SiteDetails {
+export interface HomePageEntry extends Entry {
     author: string
     siteTitle: string
     contactData: ContactData[]
-    contentHtml: string
 }
 
 export interface ContactData {

@@ -1,11 +1,11 @@
 import fs from 'fs'
 import path from 'path'
-import { getContentsWithData } from './md-html-parser'
+import { Entry, getEntryWithBody, HtmlString } from './entry-utils'
 
 export async function getSummary() {
   const summaryPath = path.join(process.cwd(), 'content/cv/summary.md')
 
-  const summary = await getContentsWithData<Summary>(summaryPath)
+  const summary = await getEntryWithBody<Summary>(summaryPath)
 
   return summary
 }
@@ -18,7 +18,7 @@ export async function getExperiences() {
   const allExperiences = fileNames.map(async fileName => {
     const fullPath = path.join(experiencesDirectory, fileName)
 
-    return await getContentsWithData<Experience>(fullPath)
+    return await getEntryWithBody<Experience>(fullPath)
   })
 
   const sortedExperiences = (await Promise.all(allExperiences)).sort((a, b) => {
@@ -32,7 +32,7 @@ export async function getExperiences() {
   return await Promise.all(sortedExperiences)
 }
 
-export interface Experience {
+export interface Experience extends Entry {
   type: string
   title: string
   location: string
@@ -41,14 +41,12 @@ export interface Experience {
   company: string
   institute: string
   technologies: string[]
-  contentHtml: string
 }
 
-export interface Summary {
+export interface Summary extends Entry {
   fullName: string
   title: string
   contactDetails: ContactDetails
-  contentHtml: string
 }
 
 export interface ContactDetails {

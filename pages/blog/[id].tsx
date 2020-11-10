@@ -16,7 +16,7 @@ export default function Post({ post }: {  post: PostWithContents }) {
         <div className={utilStyles.lightText}>
           <Date dateString={post.date as string} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+        <div dangerouslySetInnerHTML={{ __html: post.body }} />
       </article>
     </Layout>
   )
