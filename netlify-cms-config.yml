@@ -42,7 +42,14 @@ collections:
             - { label: "LinkedIn Slug", name: "linkedIn", widget: "string"}
             - { label: "Location", name: "location", widget: "string"}
         - { label: "About Me", name: "body", widget: "markdown"}
-        - { label: Experiences, name: experiences, widget: relation, collection: cvExperiences, value_field: title}
+        - label: Experiences
+          name: experiences
+          widget: relation
+          collection: cvExperiences
+          value_field: "{{slug}}"
+          search_fields: [title]
+          display_fields: [title]
+          multiple: true
 
   - label: "Blog Posts"
     name: "blogPosts"
