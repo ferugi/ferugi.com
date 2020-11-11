@@ -1,0 +1,152 @@
+export default {
+  backend: {
+    name: "github",
+    repo: "ferugi/ferugi.com",
+    branch: "master",
+    base_url: null,
+    auth_endpoint: "api/netlify-auth/begin",
+  },
+  media_folder: "public/images",
+  public_folder: "public/images",
+  site_url: null,
+  show_preview_links: true,
+  collections: [
+    {
+      label: "Pages",
+      name: "pages",
+      files: [
+        {
+          label: "Home",
+          name: "home",
+          file: "content/home.md",
+          fields: [
+            { label: "Author", name: "author", widget: "string" },
+            { label: "Site Title", name: "siteTitle", widget: "string" },
+            {
+              label: "Contact Data",
+              name: "contactData",
+              widget: "list",
+              fields: [
+                { label: "Title", name: "title", widget: "string" },
+                { label: "URL", name: "url", widget: "string" },
+                {
+                  label: "Fontawesome Icon Class",
+                  name: "faIcon",
+                  widget: "string",
+                },
+              ],
+            },
+            { label: "Body", name: "body", widget: "markdown" },
+          ],
+        },
+        {
+          label: "CV",
+          name: "cv",
+          file: "content/cv.md",
+          fields: [
+            { label: "Full Name", name: "fullName", widget: "string" },
+            { label: "Title", name: "title", widget: "string" },
+            {
+              label: "Contact Details",
+              name: "contactDetails",
+              widget: "object",
+              collapsed: true,
+              fields: [
+                { label: "Email Address", name: "email", widget: "string" },
+                { label: "Phone Number", name: "phone", widget: "string" },
+                { label: "LinkedIn Slug", name: "linkedIn", widget: "string" },
+                { label: "Location", name: "location", widget: "string" },
+              ],
+            },
+            { label: "About Me", name: "body", widget: "markdown" },
+            {
+              label: "Experiences",
+              name: "experiences",
+              widget: "relation",
+              collection: "cvExperiences",
+              value_field: "{{slug}}",
+              search_fields: ["title"],
+              display_fields: ["title"],
+              multiple: true,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      label: "Blog Posts",
+      name: "blogPosts",
+      folder: "content/blog/posts",
+      create: true,
+      fields: [
+        { label: "Title", name: "title", widget: "string" },
+        { label: "Publish Date", name: "date", widget: "datetime" },
+        {
+          label: "Facebook Comment Link",
+          name: "fbcommentlink",
+          widget: "hidden",
+          required: false,
+        },
+        {
+          label: "Categories",
+          name: "categories",
+          widget: "list",
+          required: false,
+        },
+        { label: "Tags", name: "tags", widget: "list", required: false },
+        { label: "Body", name: "body", widget: "markdown" },
+      ],
+    },
+    {
+      label: "CV Experiences",
+      name: "cvExperiences",
+      folder: "content/cv/experiences",
+      create: true,
+      fields: [
+        { label: "Title", name: "title", widget: "string" },
+        {
+          label: "Type",
+          name: "type",
+          widget: "select",
+          options: [
+            { label: "Job", value: "job" },
+            { label: "Project", value: "project" },
+            { label: "Study", value: "study" },
+            { label: "University Degree", value: "degree" },
+          ],
+        },
+        {
+          label: "Location",
+          name: "location",
+          widget: "string",
+          required: false,
+        },
+        {
+          label: "Institute",
+          name: "institute",
+          widget: "string",
+          required: false,
+        },
+        {
+          label: "Start Date",
+          name: "startDate",
+          widget: "string",
+          required: false,
+        },
+        {
+          label: "End Date",
+          name: "endDate",
+          widget: "string",
+          required: false,
+        },
+        {
+          label: "Technologies",
+          name: "technologies",
+          widget: "list",
+          required: false,
+        },
+        { label: "Description", name: "body", widget: "markdown" },
+      ],
+    },
+  ],
+} as const;

@@ -25,7 +25,8 @@
     "remark": "^12.0.1",
     "remark-html": "^12.0.0",
     "tailwindcss": "^1.9.6",
-    "yaml": "^1.10.0"
+    "yaml": "^1.10.0",
+    "yaml-template": "^1.0.0"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.11",
