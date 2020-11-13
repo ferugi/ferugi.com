@@ -3,23 +3,23 @@ import { config } from '../__generated__/netlify-cms-config/config'
 type GetType<TField extends CmsField, TName extends string> = TField extends { name: TName } 
     ? (
           TField extends { widget: "boolean" } ? Boolean 
-        : TField extends { widget: "code", output_code_only?: true } ? String 
+        : TField extends { widget: "code", output_code_only?: true } ? string 
         : TField extends { widget: "code" } ? Object
         : TField extends { widget: "color" } ? Object
         : TField extends { widget: "date" } ? Date
         : TField extends { widget: "datetime" } ? Date
-        : TField extends { widget: "file" } ? String
+        : TField extends { widget: "file" } ? string
         : TField extends { widget: "hidden" } ? any
-        : TField extends { widget: "image" } ? String
-        : TField extends { widget: "list" } ? String[] | any[] // TODO: Improve typing from this
-        : TField extends { widget: "map" } ? String
-        : TField extends { widget: "markdown" } ? String
-        : TField extends { widget: "number" } ? String | number // TODO: Improve typing from this
+        : TField extends { widget: "image" } ? string
+        : TField extends { widget: "list" } ? string[] | any[] // TODO: Improve typing from this
+        : TField extends { widget: "map" } ? string
+        : TField extends { widget: "markdown" } ? string
+        : TField extends { widget: "number" } ? string | number // TODO: Improve typing from this
         : TField extends { widget: "object", fields: Readonly<CmsField[]> } ? ContentFromFields<TField["fields"]>
         : TField extends { widget: "relation" } ? any // TODO: Improve typing from this
         : TField extends { widget: "select" } ? GetFromOptions<TField>
-        : TField extends { widget: "string" } ? String
-        : TField extends { widget: "text" } ? String
+        : TField extends { widget: "string" } ? string
+        : TField extends { widget: "text" } ? string
         : never
     ) : never
 
