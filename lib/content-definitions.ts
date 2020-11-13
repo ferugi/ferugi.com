@@ -1,92 +1,74 @@
-import yaml from 'yaml-template'
-import { Project } from 'ts-morph'
-export const test = yaml`
-    test: 1
-`
+import { config } from '../__generated__/netlify-cms-config/config'
 
-// TODO: Use `ts-morph` to generate interfaces from YAML
-// 
-const project = new Project({ compilerOptions: {  outDir: "__generated__", declaration: true } })
+type GetType<TField extends StrictCmsField, TName extends string> = TField extends { name: TName } 
+    ? (
+          TField extends { widget: "boolean" } ? Boolean 
+        : TField extends { widget: "code", output_code_only?: true } ? String 
+        : TField extends { widget: "code" } ? Object
+        : TField extends { widget: "color" } ? Object
+        : TField extends { widget: "date" } ? Date
+        : TField extends { widget: "datetime" } ? Date
+        : TField extends { widget: "file" } ? String
+        : TField extends { widget: "hidden" } ? any
+        : TField extends { widget: "image" } ? String
+        : TField extends { widget: "list" } ? String[] | any[] // TODO: Improve typing from this
+        : TField extends { widget: "map" } ? String
+        : TField extends { widget: "markdown" } ? String
+        : TField extends { widget: "number" } ? String | number // TODO: Improve typing from this
+        //: TField extends { widget: "object", fields: Readonly<StrictCmsField[]> } ? ContentFromFields<TField["fields"]>
+        : TField extends { widget: "relation" } ? any // TODO: Improve typing from this
+        : TField extends { widget: "select", options: { value: string }[] } ? GetFromOptionsObject<TField>
+        : TField extends { widget: "select" } ? GetFromOptionsObject<TField>
+        : TField extends { widget: "string" } ? String
+        : TField extends { widget: "text" } ? String
+        : never
+    ) : never
 
-const file = project.createSourceFile("myFile.ts")
+type GetFromOptionsObject<T extends { options: { value: string }[] }> = T["options"][number]["value"]: K extends
+type GetFromOptionsString<T extends { options: string[] }> = T["options"][number]
 
-type Field<TName> = {
-    label?: string,
-    name: TName,
-    widget: string,
-    required?: boolean,
-    hint?: string,
-    pattern?: RegExp
-}
+type GetKey<T extends StrictCmsField> = T extends { name: infer TName } ? TName : never
+type GetRequiredKey<T extends StrictCmsField> = T extends { name: infer TName, required: true } ? TName : undefined
  
-type BoleanField<TName> = Field<TName> & {
-    widget: "code",
-    default?: boolean
-}
-
-type CodeField<TName> = Field<TName> & {
-    widget: "code",
-    output_code_only?: boolean
-}
+type GetRequiredKeys<T extends Readonly<StrictCmsField[]>> = GetRequiredKey<T[number]>
+type GetOptionalKeys<T extends Readonly<StrictCmsField[]>> = Exclude<GetKey<T[number]>, GetRequiredKeys<T>>
  
-type TextField<TName> =  Field<TName> & {
-    widget: "text"
-}
+type ContentFromFields<TFields extends Readonly<StrictCmsField[]>> = 
+    { [K in GetOptionalKeys<TFields>]?: GetType<TFields[number], K> } & 
+    { [K in GetRequiredKeys<TFields>]: GetType<TFields[number], K> }
 
-type GetType<TField, TName extends string> = 
-    TField extends Field<TName> & { widget: "boolean" } ? Boolean 
-    : TField extends CodeField<TName> & { output_code_only?: true } ? String 
-    : TField extends CodeField<TName> ? Object
-    : TField extends Field<TName> & { widget: "color" } ? String
-    : TField extends Field<TName> & { widget: "date" } ? Date
-    : TField extends Field<TName> & { widget: "datetime" } ? Date
-    : TField extends Field<TName> & { widget: "file" } ? String
-    : TField extends Field<TName> & { widget: "hidden" } ? any
-    : TField extends Field<TName> & { widget: "image" } ? String
-    : TField extends Field<TName> & { widget: "list" } ? String[] | any[] // TODO: Improve typing from this
-    : TField extends Field<TName> & { widget: "map" } ? String
-    : TField extends Field<TName> & { widget: "markdown" } ? String
-    : TField extends Field<TName> & { widget: "number" } ? String | number // TODO: Improve typing from this
-    : TField extends Field<TName> & { widget: "object", fields: Readonly<Field<string>[]> } ? CmsCollectionContentFromFields<TField["fields"]>
-    : TField extends Field<TName> & { widget: "relation" } ? any // TODO: Improve typing from this
-    : TField extends Field<TName> & { widget: "select", multiple?: true } ? String[]
-    : TField extends Field<TName> & { widget: "select", multiple?: false | null } ? String
-    : TField extends Field<TName> & { widget: "string" } ? String
-    : TField extends TextField<TName> ? String
-    : never
- 
-type GetKey<T> = T extends Field<infer TName> ? TName : never
-type GetRequiredKey<T> = T extends Field<infer TName> & { required: true } ? TName : undefined
- 
-type GetAllRequiredKeys<T extends Readonly<Field<string>[]>> = GetRequiredKey<T[number]>
-type GetAllKeys<T extends Readonly<Field<string>[]>> = Exclude<GetKey<T[number]>, GetAllRequiredKeys<T>>
- 
-type CmsCollection = {
-    label?: string,
-    name?: string,
-    identifier_field?: string,
-    folder?: string
-    create?: boolean,
-    fields: Readonly<Field<string>[]> 
-}
-
-type CmsCollectionContentFromFields<TFields extends Readonly<Field<string>[]>> = {
-    [K in GetAllKeys<TFields>]?: GetType<TFields[number], K>
-} & {
-    [K in GetAllRequiredKeys<TFields>]: GetType<TFields[number], K>
-}
-
-type CmsCollectionContent<TContent extends CmsCollection> = CmsCollectionContentFromFields<TContent["fields"]>
+type CmsCollectionContent<TCollection extends ExtendedCollectionType> = ContentFromFields<TCollection["fields"]>
 
 const exampleCollection = {
-    label: "test label",
     fields: [
-        { name: "body", widget: "markdown" },
+        { name: "body", widget: "boolean" },
         { name: "details", widget: "text", required: true},
-    ] as const
+    ]
+} as const
+
+type ExtendedCollectionType = { readonly fields: Readonly<StrictCmsField[]> }
+
+type StrictCmsField = {
+    readonly name: Readonly<string>,
+    readonly fields?: Readonly<StrictCmsField>[]
 }
 
-const exampleContentType: CmsCollectionContent<typeof exampleCollection> = {
-    body: 23,
-    details: new Date()
+type Test = typeof config["collections"][2]["fields"]
+
+const exampleContentType: CmsCollectionContent<typeof config["collections"]["2"]> = {
+    type: [{
+        label: "Job",
+        value: "job"
+    }, {
+        label: "Project",
+        value: "project"
+    }, {
+        label: "Study",
+        value: "study"
+    }, {
+        label: "University Degree",
+        value: "degree"
+    }]
+    // TODO: fix this..
 }
+
