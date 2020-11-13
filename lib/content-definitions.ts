@@ -1,8 +1,14 @@
 import yaml from 'yaml-template'
-
+import { Project } from 'ts-morph'
 export const test = yaml`
     test: 1
 `
+
+// TODO: Use `ts-morph` to generate interfaces from YAML
+// 
+const project = new Project({ compilerOptions: {  outDir: "__generated__", declaration: true } })
+
+const file = project.createSourceFile("myFile.ts")
 
 type Field<TName> = {
     label?: string,
@@ -79,7 +85,7 @@ const exampleCollection = {
         { name: "details", widget: "text", required: true},
     ] as const
 }
- 
+
 const exampleContentType: CmsCollectionContent<typeof exampleCollection> = {
     body: 23,
     details: new Date()
