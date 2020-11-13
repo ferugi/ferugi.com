@@ -1,6 +1,6 @@
 import { config } from '../__generated__/netlify-cms-config/config'
 
-type GetType<TField extends StrictCmsField, TName extends string> = TField extends { name: TName } 
+type GetType<TField extends CmsField, TName extends string> = TField extends { name: TName } 
     ? (
           TField extends { widget: "boolean" } ? Boolean 
         : TField extends { widget: "code", output_code_only?: true } ? String 
@@ -15,60 +15,38 @@ type GetType<TField extends StrictCmsField, TName extends string> = TField exten
         : TField extends { widget: "map" } ? String
         : TField extends { widget: "markdown" } ? String
         : TField extends { widget: "number" } ? String | number // TODO: Improve typing from this
-        //: TField extends { widget: "object", fields: Readonly<StrictCmsField[]> } ? ContentFromFields<TField["fields"]>
+        : TField extends { widget: "object", fields: Readonly<CmsField[]> } ? ContentFromFields<TField["fields"]>
         : TField extends { widget: "relation" } ? any // TODO: Improve typing from this
-        : TField extends { widget: "select", options: { value: string }[] } ? GetFromOptionsObject<TField>
-        : TField extends { widget: "select" } ? GetFromOptionsObject<TField>
+        : TField extends { widget: "select" } ? GetFromOptions<TField>
         : TField extends { widget: "string" } ? String
         : TField extends { widget: "text" } ? String
         : never
     ) : never
 
-type GetFromOptionsObject<T extends { options: { value: string }[] }> = T["options"][number]["value"]: K extends
-type GetFromOptionsString<T extends { options: string[] }> = T["options"][number]
+type GetFromOptions<T> =  
+      T extends { options: readonly string[] } ? T["options"][number]
+    : T extends { options: readonly { value: string }[] } ? T["options"][number]["value"]
+    : never
 
-type GetKey<T extends StrictCmsField> = T extends { name: infer TName } ? TName : never
-type GetRequiredKey<T extends StrictCmsField> = T extends { name: infer TName, required: true } ? TName : undefined
+type GetKey<T extends CmsField> = T extends { name: infer TName } ? TName : undefined
+type GetRequiredKey<T extends CmsField> = T extends { name: infer TName, required: true } ? TName : undefined
  
-type GetRequiredKeys<T extends Readonly<StrictCmsField[]>> = GetRequiredKey<T[number]>
-type GetOptionalKeys<T extends Readonly<StrictCmsField[]>> = Exclude<GetKey<T[number]>, GetRequiredKeys<T>>
+type GetRequiredKeys<T extends Readonly<CmsField[]>> = GetRequiredKey<T[number]>
+type GetOptionalKeys<T extends Readonly<CmsField[]>> = Exclude<GetKey<T[number]>, GetRequiredKeys<T>>
  
-type ContentFromFields<TFields extends Readonly<StrictCmsField[]>> = 
+type ContentFromFields<TFields extends Readonly<CmsField[]>> = 
     { [K in GetOptionalKeys<TFields>]?: GetType<TFields[number], K> } & 
     { [K in GetRequiredKeys<TFields>]: GetType<TFields[number], K> }
 
-type CmsCollectionContent<TCollection extends ExtendedCollectionType> = ContentFromFields<TCollection["fields"]>
+type CmsCollectionContent<TCollection extends CollectionType> = ContentFromFields<TCollection["fields"]>
 
-const exampleCollection = {
-    fields: [
-        { name: "body", widget: "boolean" },
-        { name: "details", widget: "text", required: true},
-    ]
-} as const
+type CollectionType = { readonly fields: Readonly<CmsField[]> }
 
-type ExtendedCollectionType = { readonly fields: Readonly<StrictCmsField[]> }
-
-type StrictCmsField = {
+type CmsField = {
     readonly name: Readonly<string>,
-    readonly fields?: Readonly<StrictCmsField>[]
+    readonly fields?: Readonly<CmsField>[]
 }
-
-type Test = typeof config["collections"][2]["fields"]
 
 const exampleContentType: CmsCollectionContent<typeof config["collections"]["2"]> = {
-    type: [{
-        label: "Job",
-        value: "job"
-    }, {
-        label: "Project",
-        value: "project"
-    }, {
-        label: "Study",
-        value: "study"
-    }, {
-        label: "University Degree",
-        value: "degree"
-    }]
-    // TODO: fix this..
+    type: "job"
 }
-
