@@ -1,5 +1,3 @@
-import { config } from '../__generated__/netlify-cms-config/config'
-
 type GetType<TField extends CmsField, TName extends string> = TField extends { name: TName } 
     ? (
           TField extends { widget: "boolean" } ? Boolean 
@@ -33,20 +31,21 @@ type GetRequiredKey<T extends CmsField> = T extends { name: infer TName, require
  
 type GetRequiredKeys<T extends Readonly<CmsField[]>> = GetRequiredKey<T[number]>
 type GetOptionalKeys<T extends Readonly<CmsField[]>> = Exclude<GetKey<T[number]>, GetRequiredKeys<T>>
- 
+
 type ContentFromFields<TFields extends Readonly<CmsField[]>> = 
     { [K in GetOptionalKeys<TFields>]?: GetType<TFields[number], K> } & 
     { [K in GetRequiredKeys<TFields>]: GetType<TFields[number], K> }
 
-type CmsCollectionContent<TCollection extends CollectionType> = ContentFromFields<TCollection["fields"]>
-
-type CollectionType = { readonly fields: Readonly<CmsField[]> }
 
 type CmsField = {
     readonly name: Readonly<string>,
     readonly fields?: Readonly<CmsField>[]
 }
 
-const exampleContentType: CmsCollectionContent<typeof config["collections"]["2"]> = {
-    type: "job"
+export type CmsCollectionContent<TCollection extends FolderCollectionType> = ContentFromFields<TCollection["fields"]>
+
+export type FolderCollectionType = { 
+    readonly name: string
+    readonly fields?: Readonly<CmsField[]>
+    readonly folder?: string
 }

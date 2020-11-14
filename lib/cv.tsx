@@ -1,11 +1,11 @@
 import fs from 'fs'
 import path from 'path'
-import { Entry, getEntryWithBody, HtmlString } from './entry-utils'
+import { Entry, getContentWithBody, HtmlString } from './entry-utils'
 
 export async function getSummary() {
   const summaryPath = path.join(process.cwd(), 'content/cv/summary.md')
 
-  const summary = await getEntryWithBody<Summary>(summaryPath)
+  const summary = await getContentWithBody<Summary>(summaryPath)
 
   return summary
 }
@@ -18,7 +18,7 @@ export async function getExperiences() {
   const allExperiences = fileNames.map(async fileName => {
     const fullPath = path.join(experiencesDirectory, fileName)
 
-    return await getEntryWithBody<Experience>(fullPath)
+    return await getContentWithBody<Experience>(fullPath)
   })
 
   const sortedExperiences = (await Promise.all(allExperiences)).sort((a, b) => {

@@ -2,8 +2,7 @@ import fs from 'fs'
 import { watch } from 'chokidar'
 import path from 'path'
 import yaml from 'js-yaml'
-import { Writers, Project, QuoteKind, VariableDeclarationKind } from 'ts-morph'
-import { Field } from './netlify-cms-types'
+import { Project, QuoteKind, VariableDeclarationKind } from 'ts-morph'
 
 export function watchNetlifyCmsConfig(configPath: string) {
     // watch the config file for changes
@@ -45,23 +44,6 @@ function onChange(configPath: string, stats?: fs.Stats) {
     }).setIsExported(true)
 
     configTsFile.saveSync()
-    project.emitSync({ emitOnlyDtsFiles: true })
-
-    import('./__generated__/netlify-cms-config/config').then(({ config }) => {
-        config.collections.forEach(collection => {
-
-            const test: (typeof collection)["fields"]
-
-            if (collection) {
-
-            }
-        })
-    })
-
-    // generate content model dts
-    // TODO
-    
-    // emit
 }
 
 /*

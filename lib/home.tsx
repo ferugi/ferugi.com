@@ -1,11 +1,11 @@
 import path from 'path'
-import { Entry, getEntryWithBody } from './entry-utils'
+import { Entry, getContentWithBody } from './entry-utils'
 
 export async function getIndexContentAndData() {
 
     const fileName = path.join(process.cwd(), 'content/home.md')
 
-    return await getEntryWithBody<HomePageEntry>(fileName)
+    return await getContentWithBody<HomePageEntry>(fileName)
 }
 
 export interface HomePageEntry extends Entry {

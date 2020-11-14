@@ -3,7 +3,7 @@ import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
 
-export async function getEntryWithBody<TEntry extends Entry>(filePath: string) : Promise<TEntry> {
+export async function getContentWithBody<TEntry extends { body: string }>(filePath: string) : Promise<TEntry> {
     const fileContents = fs.readFileSync(filePath, 'utf8')
     const matterResult = matter(fileContents)
 
@@ -11,16 +11,10 @@ export async function getEntryWithBody<TEntry extends Entry>(filePath: string) :
       .use(html)
       .process(matterResult.content)
 
-    const body = processedContent.toString() as HtmlString
+    const body = processedContent.toString()
 
     return {
         body,
         ...matterResult.data
     } as TEntry
-}
-
-export type HtmlString = string
-
-export type Entry = {
-  body: HtmlString
 }

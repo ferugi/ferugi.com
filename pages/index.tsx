@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
-import { getAllBlogPosts, PostWithContents } from '../lib/blog/posts'
+import { PostWithContents } from '../lib/blog/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
 import { getIndexContentAndData, HomePageEntry, ContactData as ContactData } from '../lib/home'
+import { Content } from '../lib/content'
 
 export default function Home({ indexContentAndData, allPosts }: Props) {
   return (
@@ -54,7 +55,7 @@ function ContactIconDisplay({ contactData }: { contactData: ContactData }){
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPosts = await getAllBlogPosts()
+  const allPosts = await Content.blogPosts.getAll()
   const indexContentAndData = await getIndexContentAndData()
 
   return {

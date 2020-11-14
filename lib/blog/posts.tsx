@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { Entry, getEntryWithBody } from '../entry-utils'
+import { Entry, getContentWithBody } from '../entry-utils'
 
 const postsDirectory = path.join(process.cwd(), 'content/blog/posts')
 
@@ -12,7 +12,7 @@ export async function getAllBlogPosts(): Promise<PostWithContents[]> {
     const id = getBlogPostIdFromFileName(fileName)
     const filePath = path.join(postsDirectory, fileName)
 
-    const postData = await getEntryWithBody<PostData & {id: string} >(filePath)
+    const postData = await getContentWithBody<PostData & {id: string} >(filePath)
     
     return {
       id,
@@ -47,7 +47,7 @@ export async function getPostById(id: string): Promise<PostWithContents> {
   }
 
   const filePath = path.join(postsDirectory, `${id}.md`)
-  const postData = await getEntryWithBody<PostData>(filePath)
+  const postData = await getContentWithBody<PostData>(filePath)
   const date = (postData.date instanceof Date && postData.date.toISOString()) || postData.date
 
   return {
