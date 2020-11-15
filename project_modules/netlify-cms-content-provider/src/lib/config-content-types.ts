@@ -42,12 +42,25 @@ type CmsField = {
     readonly fields?: Readonly<CmsField>[]
 }
 
-export type CmsCollectionContent<TCollection extends FolderCollectionType> = ContentFromFields<TCollection["fields"]>
+export declare type CmsCollectionContent<TCollection extends FolderCollectionType> = ContentFromFields<TCollection["fields"]>
 
-export type FolderCollectionType = { 
+export declare type FolderCollectionType = { 
     readonly name: string
     readonly fields?: Readonly<CmsField[]>
     readonly folder?: string
 }
 
-export type ConfigType = { readonly collections: Readonly<FolderCollectionType>[] } 
+export declare type CollectionsType = Readonly<FolderCollectionType>[]
+
+export declare type ConfigType = { readonly collections: CollectionsType }
+
+export type CollectionNames<TCollections extends CollectionsType> = TCollections[number]["name"]
+
+type CollectionTypes<TCollections extends CollectionsType, TCollection extends FolderCollectionType, TName extends CollectionNames<TCollections>> = 
+    TCollection extends { name: TName }
+    ? TCollection
+    : never
+
+export type GetCollectionType<TCollections extends CollectionsType, TName extends CollectionNames<TCollections>> = CollectionTypes<TCollections, TCollections[number], TName>
+
+export type GetCollectionContentModel<TCollections extends CollectionsType, TCollectionName extends CollectionNames<TCollections>> = CmsCollectionContent<GetCollectionType<TCollections, TCollectionName>>

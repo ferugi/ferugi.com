@@ -2,7 +2,7 @@ import fs from 'fs'
 import { watch } from 'chokidar'
 import path from 'path'
 import yaml from 'js-yaml'
-import { Project, QuoteKind, VariableDeclarationKind, Writers } from 'ts-morph'
+import { Project, QuoteKind, ScriptKind, SourceFile, VariableDeclarationKind, Writers } from 'ts-morph'
 
 export function watchNetlifyCmsConfig(configPath: string) {
     // watch the config file for changes
@@ -29,15 +29,15 @@ function onChange(configPath: string, stats?: fs.Stats) {
 
     // Generate Typescript File
     const project = new Project({
-        useInMemoryFileSystem: false,
-        manipulationSettings: {
-            quoteKind: QuoteKind.Single,
-        },
+        compilerOptions: {
+            declaration: true,
+            outDir: outputDir,
+            sourceMap: true
+        }
     })
 
     // TODO: Now output the right files...
-    const configTsFilePath = path.join(outputDir, 'config.ts')
-    const configTsFile = project.createSourceFile(configTsFilePath, "", { overwrite: true, })
+    const configTsFile = project.createSourceFile('generated-config.ts', "", { overwrite: true })
 
     configTsFile.addVariableStatement({
         declarationKind: VariableDeclarationKind.Const, // defaults to "let"
@@ -50,5 +50,5 @@ function onChange(configPath: string, stats?: fs.Stats) {
         }],
     }).setIsExported(true)
 
-    configTsFile.saveSync()
+    const result = project.emitSync()
 }

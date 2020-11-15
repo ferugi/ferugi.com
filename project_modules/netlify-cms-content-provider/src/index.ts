@@ -1,6 +1,7 @@
 import { watchNetlifyCmsConfig } from './lib/config-watcher'
-import { CollectionNames, Repository } from './lib/repository'
-import { config } from './__generated__/config'
+import { Repository } from './lib/repository'
+import { collections } from './__generated__/generated-config'
+import { CollectionNames } from './lib/config-content-types';
 
 type Phase = 
     | "phase-export"
@@ -8,21 +9,20 @@ type Phase =
     | "phase-production-server"
     | "phase-development-server"
 
+
+type Collections = typeof collections
+
 const contentRepositories = {}
 
-function getContentRepositories() {
-    if (Object.keys(contentRepositories).length === 0) {
-        config.collections.forEach(collection => {
+export function content(): { [TName in Collections[number]["name"]]: Repository<Collections, TName> } {
+    if (collections.length === 0) {
+        collections.forEach(collection => {
             contentRepositories[collection.name] = new Repository(collection.name)
         })
     }
 
-    type Config = typeof config
-
-    return contentRepositories as { [TName in CollectionNames<Config>]: Repository<Config, TName> }
+    return contentRepositories as { [TName in CollectionNames<Collections>]: Repository<Collections, TName> }
 }
-
-export default getContentRepositories()
 
 export const withNetlifyCmsContentProvider = (internalConfig: any = {}) => 
     (phase: Phase, params) => {
