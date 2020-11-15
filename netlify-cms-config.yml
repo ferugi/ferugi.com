@@ -9,7 +9,7 @@ public_folder: public/images
 site_url: # env var: NETLIFY_BASE_URL
 show_preview_links: true
 collections:
-  - label: "Pages"
+  - label: "Pages 2"
     name: "pages"
     files:
     - label: "Home"

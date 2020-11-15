@@ -1,33 +1,34 @@
 import path from 'path'
-import { config } from '../__generated__/netlify-cms-config/config'
 import fs from 'fs'
 import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
-import { FolderCollectionType, CmsCollectionContent } from './content-types'
+import { FolderCollectionType, CmsCollectionContent, ConfigType } from './config-content-types'
 
-type ConfigType = typeof config
-type CollectionNames = ConfigType["collections"][number]["name"]
-type CollectionTypes<TCollection extends FolderCollectionType, TName extends CollectionNames> = 
+export type CollectionNames<TConfig extends ConfigType> = TConfig["collections"][number]["name"]
+
+type CollectionTypes<TConfig extends ConfigType, TCollection extends FolderCollectionType, TName extends CollectionNames<TConfig>> = 
     TCollection extends { name: TName }
     ? TCollection
     : never
 
-type GetCollectionType<TName extends CollectionNames> = CollectionTypes<ConfigType["collections"][number], TName>
+type GetCollectionType<TConfig extends ConfigType, TName extends CollectionNames<TConfig>> = CollectionTypes<TConfig, TConfig["collections"][number], TName>
 
-type GetCollectionContentModel<TCollectionName extends CollectionNames> = CmsCollectionContent<GetCollectionType<TCollectionName>>
+type GetCollectionContentModel<TConfig extends ConfigType, TCollectionName extends CollectionNames<TConfig>> = CmsCollectionContent<GetCollectionType<TConfig, TCollectionName>>
 
-class Repository<TCollectionName extends CollectionNames> {
+export class Repository<TConfig extends ConfigType, TCollectionName extends CollectionNames<TConfig>> {
 
-    private cmsCollection: GetCollectionType<TCollectionName>
+    private cmsCollection: GetCollectionType<TConfig, TCollectionName>
 
     constructor(collectionName: TCollectionName){
+        const config = require("__generated__")
+
         this.cmsCollection = config
             .collections
-            .find(collection => collection.name === collectionName) as GetCollectionType<TCollectionName>
+            .find(collection => collection.name === collectionName) as GetCollectionType<TConfig, TCollectionName>
     }
     
-    get(id: string): GetCollectionContentModel<TCollectionName> {
+    get(id: string): GetCollectionContentModel<TConfig, TCollectionName> {
         if ('folder' in this.cmsCollection) {
             const filePath = path.join(process.cwd(), this.cmsCollection.folder, id + '.md')
 
@@ -37,7 +38,7 @@ class Repository<TCollectionName extends CollectionNames> {
         }
     }
 
-    async getAll(): Promise<GetCollectionContentModel<TCollectionName> & { id: string } []> {
+    async getAll(): Promise<GetCollectionContentModel<TConfig, TCollectionName> & { id: string } []> {
         if ('folder' in this.cmsCollection) {
             const folderPath = path.join(process.cwd(), this.cmsCollection.folder)
 
@@ -52,7 +53,7 @@ class Repository<TCollectionName extends CollectionNames> {
               return { id, ...postData }
             })
             
-            return await Promise.all(contentWithIds) as GetCollectionContentModel<TCollectionName> & { id: string } []
+            return await Promise.all(contentWithIds) as GetCollectionContentModel<TConfig, TCollectionName> & { id: string } []
         }
     }
 
@@ -89,15 +90,3 @@ class Repository<TCollectionName extends CollectionNames> {
         return matterResult.data as TEntry
     }
 }
-
-export function GetContentRepositories() {
-    const contentRepositories = {}
-
-    config.collections.forEach(collection => {
-        contentRepositories[collection.name] = new Repository(collection.name)
-    })
-
-    return contentRepositories as { [N in CollectionNames]: Repository<N> }
-}
-
-export const Content = GetContentRepositories()

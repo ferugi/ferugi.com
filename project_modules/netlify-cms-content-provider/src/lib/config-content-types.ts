@@ -49,3 +49,5 @@ export type FolderCollectionType = {
     readonly fields?: Readonly<CmsField[]>
     readonly folder?: string
 }
+
+export type ConfigType = { readonly collections: Readonly<FolderCollectionType>[] } 

@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
 import { getIndexContentAndData, HomePageEntry, ContactData as ContactData } from '../lib/home'
-import { Content } from '../lib/content'
+import content from 'netlify-cms-content-provider'
 
 export default function Home({ indexContentAndData, allPosts }: Props) {
   return (
@@ -55,7 +55,7 @@ function ContactIconDisplay({ contactData }: { contactData: ContactData }){
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPosts = await Content.blogPosts.getAll()
+  const allPosts = await content.blogPosts.getAll()
   const indexContentAndData = await getIndexContentAndData()
 
   return {
