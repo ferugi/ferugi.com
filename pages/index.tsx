@@ -5,10 +5,10 @@ import { PostWithContents } from '../lib/blog/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
-import { getIndexContentAndData, HomePageEntry, ContactData as ContactData } from '../lib/home'
-import { getContentRepositories } from 'netlify-cms-content-provider'
+import { content  } from 'netlify-cms-content-provider'
+import { datesToStrings } from '../lib/dateToStrings'
 
-export default function Home({ indexContentAndData, allPosts }: Props) {
+export default function Home({ indexContentAndData, allPosts }) {
   return (
     <Layout home>
       <Head>
@@ -44,7 +44,7 @@ function PostDisplay({ post }: { post: PostWithContents }) {
   )
 }
 
-function ContactIconDisplay({ contactData }: { contactData: ContactData }){
+function ContactIconDisplay({ contactData }){
   return (
     <li>
       <a href={contactData.url} aria-label={contactData.title} >
@@ -56,18 +56,12 @@ function ContactIconDisplay({ contactData }: { contactData: ContactData }){
 
 export const getStaticProps: GetStaticProps = async () => {
   
-  const allPosts = getContentRepositories().blogPosts.getAll()
-  const indexContentAndData = await getIndexContentAndData()
+  const allPosts = await content().blogPosts.getAll()
 
   return {
     props: {
-      indexContentAndData,
-      allPosts,
+      indexContentAndData: {},
+      allPosts: datesToStrings(allPosts)
     }
   };
-}
-
-interface Props {
-  indexContentAndData: HomePageEntry
-  allPosts: PostWithContents[]
 }

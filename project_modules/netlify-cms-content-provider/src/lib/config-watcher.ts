@@ -7,12 +7,12 @@ import { Project, QuoteKind, ScriptKind, SourceFile, VariableDeclarationKind, Wr
 export function watchNetlifyCmsConfig(configPath: string) {
     // watch the config file for changes
     const watcher = watch(configPath)
-    watcher.on('change', onChange)
+    watcher.on('change', emitConfigTypes)
 }
 
 const outputDir = path.join(__dirname, '../__generated__') 
 
-function onChange(configPath: string, stats?: fs.Stats) {
+export function emitConfigTypes(configPath: string) {
     const fileExtension = path.extname(configPath)
 
     if (fileExtension !== '.yml') {

@@ -1,11 +1,12 @@
 import Layout from '../../components/layout'
-import { getAllBlogPostIds, getPostById as getPost, PostWithContents } from '../../lib/blog/posts'
 import Head from 'next/head'
 import Date from '../../components/date'
 import utilStyles from '../../styles/utils.module.css'
 import { GetStaticProps, GetStaticPaths } from 'next'
+import { content } from 'netlify-cms-content-provider'
+import { datesToStrings } from '../../lib/dateToStrings'
 
-export default function Post({ post }: {  post: PostWithContents }) {
+export default function Post({ post }) {
   return (
     <Layout>
       <Head>
@@ -23,13 +24,18 @@ export default function Post({ post }: {  post: PostWithContents }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllBlogPostIds().map(id => {
-    return {
-      params: {
-        id
+  debugger
+  const test = await content().blogPosts.getAll()
+  const paths =  content()
+    .blogPosts
+    .getAllIds()
+    .map(id => {
+      return {
+        params: {
+          id
+        }
       }
-    }
-  })
+    })
 
   return {
     paths,
@@ -38,12 +44,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = await getPost(params?.id as string)
-  post.date = post.date.toString()
-  
+  const post = await content().blogPosts.get(params?.id as string)
+
+  debugger
   return {
     props: {
-      post
+      post: datesToStrings(post)
     }
   }
 }

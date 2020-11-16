@@ -10,20 +10,22 @@ export class Repository<TCollections extends CollectionsType, TCollectionName ex
     private cmsCollection: GetCollectionType<TCollections, TCollectionName>
 
     constructor(collectionName: TCollectionName){
-        const config = require("__generated__")
+        const config = require("../__generated__/generated-config")
 
         this.cmsCollection = config
             .collections
             .find(collection => collection.name === collectionName) as GetCollectionType<TCollections, TCollectionName>
     }
     
-    get(id: string): GetCollectionContentModel<TCollections, TCollectionName> {
+    async get(id: string): Promise<GetCollectionContentModel<TCollections, TCollectionName>> {
         if ('folder' in this.cmsCollection) {
-            const filePath = path.join(process.cwd(), this.cmsCollection.folder, id + '.md')
-
-            const files = {} as any
-
-            return files
+            const folderPath = path.join(process.cwd(), this.cmsCollection.folder)
+            const fileName = id + '.md'
+            const filePath = path.join(folderPath, fileName)
+        
+            const postData = await this.getContent<any>(filePath)
+            
+            return { id, ...postData }
         }
     }
 
@@ -72,6 +74,7 @@ export class Repository<TCollections extends CollectionsType, TCollectionName ex
 
         if (body) {
             return {
+                body,
                 ...matterResult.data
             } as TEntry & { body: string}
         }

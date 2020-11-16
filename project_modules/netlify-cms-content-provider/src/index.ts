@@ -1,7 +1,7 @@
-import { watchNetlifyCmsConfig } from './lib/config-watcher'
+import { emitConfigTypes, watchNetlifyCmsConfig } from './lib/config-watcher'
 import { Repository } from './lib/repository'
 import { collections } from './__generated__/generated-config'
-import { CollectionNames } from './lib/config-content-types';
+import { CollectionNames, GetCollectionContentModel } from './lib/config-content-types';
 
 type Phase = 
     | "phase-export"
@@ -15,7 +15,7 @@ type Collections = typeof collections
 const contentRepositories = {}
 
 export function content(): { [TName in Collections[number]["name"]]: Repository<Collections, TName> } {
-    if (collections.length === 0) {
+    if (Object.keys(contentRepositories).length === 0) {
         collections.forEach(collection => {
             contentRepositories[collection.name] = new Repository(collection.name)
         })
@@ -26,8 +26,15 @@ export function content(): { [TName in Collections[number]["name"]]: Repository<
 
 export const withNetlifyCmsContentProvider = (internalConfig: any = {}) => 
     (phase: Phase, params) => {
+        
+        const configPath = './netlify-cms-config.yml'
+
+        if (phase !== "phase-production-server"){
+            emitConfigTypes(configPath)
+        }
+
         if (phase === "phase-development-server") {
-            watchNetlifyCmsConfig('./netlify-cms-config.yml')
+            watchNetlifyCmsConfig(configPath)
         }
     
         let internalConfigObj = typeof internalConfig === "function"
@@ -35,3 +42,6 @@ export const withNetlifyCmsContentProvider = (internalConfig: any = {}) =>
 
         return internalConfigObj;
     }
+
+export type GetCollectionContentModelByName<TName extends Collections[number]["name"]> = 
+    GetCollectionContentModel<Collections[number], TName>

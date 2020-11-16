@@ -46,8 +46,17 @@ export declare type CmsCollectionContent<TCollection extends FolderCollectionTyp
 
 export declare type FolderCollectionType = { 
     readonly name: string
-    readonly fields?: Readonly<CmsField[]>
-    readonly folder?: string
+    readonly fields: Readonly<CmsField[]>
+    readonly folder: string
+}
+
+export declare type FileCollectionType = { 
+    readonly name: string
+    readonly files: [{
+        readonly name: string
+        readonly files: string
+        readonly fields: Readonly<CmsField[]>
+    }]
 }
 
 export declare type CollectionsType = Readonly<FolderCollectionType>[]
