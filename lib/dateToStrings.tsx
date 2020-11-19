@@ -9,8 +9,26 @@ type WithoutDate<T extends { [key: string ]: any }> = {
 
 export function datesToStrings<T extends { [prop: string ]: any }>(obj: T): WithoutDate<T> {
 
-    const objAsAny = obj as any 
+    if (obj instanceof Array) {
+        for (let item of obj) {
+
+            // if date convert to string
+            if (item instanceof Date) {
+                const index = obj.indexOf(item)
+                obj[index] = item.toUTCString()
+            }
     
+            // if object call self with object
+            if (item instanceof Object) {
+                return datesToStrings(item)
+            }
+        }
+
+        return
+    }
+    
+    const objAsAny = obj as any 
+
     // for each property 
     for (const propertyName in obj) {
         const value = obj[propertyName] as any
@@ -29,7 +47,6 @@ export function datesToStrings<T extends { [prop: string ]: any }>(obj: T): With
                 if (item instanceof Object) {
                     return datesToStrings(item)
                 }
-
 
                 return item
             })
