@@ -33,12 +33,12 @@ export default function Cv({ summary, experiences, highlights }: {
                 </li>
                 <li>
                   <a href={'tel:' + summary.contactDetails.phone}>
-                    <i className={`${styles.contactIcon} fas fa-phone`} aria-hidden={true} /> {summary.contactDetails.phone}
+                    <i className={`${styles.contactIcon} fas fa-phone-alt`} aria-hidden={true} /> {summary.contactDetails.phone}
                   </a>
                 </li>
                 <li>
                   <a href={'https://linkedin.com/in/' + summary.contactDetails.linkedIn}>
-                  <i className={`${styles.contactIcon} fab fa-linkedin-in`} aria-hidden={true} /> {summary.contactDetails.linkedIn}
+                  <i className={`${styles.contactIcon} fab fa-linkedin`} aria-hidden={true} /> {summary.contactDetails.linkedIn}
                   </a>
                 </li>
                 <li><i className={`${styles.contactIcon} fas fa-map-marker-alt`} aria-hidden={true} /> {summary.contactDetails.location}</li>
