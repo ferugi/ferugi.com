@@ -47,7 +47,7 @@ I develop full-stack, secure, optimized, and internationalised websites and micr
 * Providing technical leadership to new developers on the enrollment process project and assisting with their onboarding to the wider development team.
 * Leading the way in sharing knowledge by delivering well-received presentations to my peers on topics such as ASP.NET Core configuration, web accessibility, GraphQL, and text parsing with C# parser combinators.
 * Presenting to the wider IT department the demonstrable benefits that LaunchDarkly and feature flags have brought to our products.
-* Discovering and highlighting several critical security issues in recently acquired third party code, which I audited and provided solutions for based on my experience with ASP.NET auth.
+* Discovering and highlighting several critical security issues in recently acquired third party code, which I reviewed and provided solutions for based on my experience with ASP.NET auth.
 * Adding unit and integration tests to several projects, with special attention to high risk areas.
 * Developing Azure DevOps build and release pipelines to create and enhance effective CI/CD workflows that ensure well maintained codebases and smooth application delivery.
 * Being a respected team member and viewed by colleagues as a technical expert, in particular with .NET.
