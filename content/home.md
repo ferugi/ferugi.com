@@ -1,6 +1,7 @@
 ---
 author: Ferugi El Heri
 siteTitle: Ferugi El Heri
+headerImage: images/bio-background-2
 contactData:
   - faIcon: fab fa-facebook-f
     title: Facebook
