@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import { Experience, getExperiences, Summary, getSummary } from '../lib/cv'
 import styles from './cv.module.css'
+import { stringify } from 'querystring'
 
 export default function Cv({ summary, experiences, highlights }: {
   summary : Summary
@@ -58,7 +59,7 @@ export function ExperienceSection({ experience, highlights }: { experience: Expe
   return (
     <article className={styles.experience}>
       <h3>
-        <i className={getExperienceIconClass(experience.type)} aria-hidden={true} /> 
+        <i className={`${styles.experienceIcon} ${getExperienceIconClass(experience.type)}`} aria-hidden={true} /> 
         <span className={styles.experienceTitle}>{experience.title}
           { experience.company && <> at {experience.company}</> }
           { experience.institute && <> at {experience.institute}</> }
