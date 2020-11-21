@@ -26,12 +26,13 @@ collections:
             - { label: "URL", name: "url", widget: "string"}
             - { label: "Fontawesome Icon Class", name: "faIcon", widget: "string"}
         - { label: "Body", name: "body", widget: "markdown"}
-    - label: "CV"
-      name: cv
-      file: "content/cv.md"
+    - label: "CV Summary"
+      name: cvSummary
+      file: "content/cv/summary.md"
       fields:
         - { label: "Full Name", name: "fullName", widget: "string"}
         - { label: "Title", name: "title", widget: "string"}
+        - { label: "Website", name: "website", widget: "string"}
         - label: "Contact Details"
           name: "contactDetails"
           widget: "object"
@@ -81,6 +82,7 @@ collections:
       - { label: "Institute", name: "institute", widget: "string", required: false}
       - { label: "Start Date", name: "startDate", widget: "string", required: false}
       - { label: "End Date", name: "endDate", widget: "string", required: false}
+      - { label: "Company", name: "company", widget: "string", required: false}
       - { label: "Technologies", name: "technologies", widget: "list", required: false}
       - { label: "Description", name: "body", widget: "markdown"}
 

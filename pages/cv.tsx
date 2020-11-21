@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
-import { Experience, getExperiences, Summary, getSummary } from '../lib/cv'
 import styles from './cv.module.css'
-import { stringify } from 'querystring'
+import cvSummary, { CvSummary } from 'content?collection=pages/cvSummary&includeBody=true!'
+import cvExperiences, { CvExperience } from 'content?collection=cvExperiences&includeBody=true!'
 
 export default function Cv({ summary, experiences, highlights }: {
-  summary : Summary
-  experiences : Experience[] 
+  summary : CvSummary
+  experiences : CvExperience[] 
   highlights: string[]
 }) {
   return (
@@ -19,29 +19,31 @@ export default function Cv({ summary, experiences, highlights }: {
           <div className={styles.cv}>
             <header className={styles.cvHeader}>
               <div className={styles.titleBlock}>
-                <h1 className={styles.name}>{summary.fullName}</h1>
+                <h1 className={styles.name}>
+                  <a href={summary.website}>{summary.fullName}</a>
+                </h1>
                 <h2 className={styles.jobTitle}>{summary.title}</h2>
               </div>
               <ul className={styles.contactDetails}>
                 <li>
                   <a href={'mailto:' + summary.contactDetails.email}>
-                    <i className="fas fa-envelope" aria-hidden={true} /> {summary.contactDetails.email}
+                    <i className={`${styles.contactIcon} fas fa-envelope`} aria-hidden={true} /> {summary.contactDetails.email}
                   </a>
                 </li>
                 <li>
                   <a href={'tel:' + summary.contactDetails.phone}>
-                    <i className="fas fa-phone" aria-hidden={true} /> {summary.contactDetails.phone}
+                    <i className={`${styles.contactIcon} fas fa-phone`} aria-hidden={true} /> {summary.contactDetails.phone}
                   </a>
                 </li>
                 <li>
                   <a href={'https://linkedin.com/in/' + summary.contactDetails.linkedIn}>
-                  <i className="fab fa-linkedin-in" aria-hidden={true} /> {summary.contactDetails.linkedIn}
+                  <i className={`${styles.contactIcon} fab fa-linkedin-in`} aria-hidden={true} /> {summary.contactDetails.linkedIn}
                   </a>
                 </li>
-                <li><i className="fas fa-map-marker-alt" aria-hidden={true} /> {summary.contactDetails.location}</li>
+                <li><i className={`${styles.contactIcon} fas fa-map-marker-alt`} aria-hidden={true} /> {summary.contactDetails.location}</li>
               </ul>
             </header>
-            <section>
+            <section className={styles.summary}>
               <div dangerouslySetInnerHTML={{ __html: summary.body }} />
             </section>
             <section>
@@ -54,7 +56,7 @@ export default function Cv({ summary, experiences, highlights }: {
   )
 }
 
-export function ExperienceSection({ experience, highlights }: { experience: Experience, highlights: string[] }) {
+export function ExperienceSection({ experience, highlights }: { experience: CvExperience, highlights: string[] }) {
 
   return (
     <article className={styles.experience}>
@@ -83,7 +85,7 @@ export function ExperienceSection({ experience, highlights }: { experience: Expe
   )
 }
 
-function getFooter(summary: Summary) {
+function getFooter(summary: CvSummary) {
   return (
     <div className={styles.printFooter}>
       <div className={styles.left}>{getLeftFooter()}</div>
@@ -126,16 +128,18 @@ function getExperienceIconClass(type: string) {
 }
 
 export const getServerSideProps: GetServerSideProps = async(context) => {
+  
+  const summary = cvSummary
+  const experiences = cvSummary.experiences
+    .map(experienceId => {
+      return cvExperiences.find(cvExperience => cvExperience.filePath.includes(experienceId))
+    })
 
-  const summary = await getSummary()
-  const experiences = await getExperiences()
   const highlightQuery = context.query.highlight
 
-  let highlights: string[] = []
-
-  if (typeof(highlightQuery) === 'string'){
-    highlights = highlightQuery.toLowerCase().split(',')
-  }
+  const highlights = typeof(highlightQuery) === 'string' 
+    ? highlightQuery.toLowerCase().split(',')
+    : []
 
   return {
     props: {
