@@ -5,19 +5,20 @@ import { PostWithContents } from '../lib/blog/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
-import { content  } from 'netlify-cms-content-provider'
 import { datesToStrings } from '../lib/dateToStrings'
+import home from 'content?collection=pages/home&includeBody=true!'
+import blogPosts from 'content?collection=blogPosts!'
 
-export default function Home({ indexContentAndData, allPosts }) {
+export default function Home({ home, allPosts }) {
   return (
     <Layout home>
       <Head>
-        <title>{indexContentAndData.siteTitle}</title>
+        <title>{home.siteTitle}</title>
       </Head>
       <ul className={utilStyles.list}>
-        { indexContentAndData.contactData.map(contactData => (<ContactIconDisplay contactData={contactData} key={contactData.title} />)) }
+        { home.contactData.map(contactData => (<ContactIconDisplay contactData={contactData} key={contactData.title} />)) }
       </ul>
-      <section dangerouslySetInnerHTML={{ __html: indexContentAndData.body }} />
+      <section dangerouslySetInnerHTML={{ __html: home.body }} />
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>
           Blog
@@ -55,13 +56,10 @@ function ContactIconDisplay({ contactData }){
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  
-  const allPosts = await content().blogPosts.getAll()
-
   return {
     props: {
-      indexContentAndData: {},
-      allPosts: datesToStrings(allPosts)
+      home: datesToStrings(home),
+      allPosts: [datesToStrings(blogPosts)]
     }
   };
 }

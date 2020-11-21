@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import styles from './cv.module.css'
-import cvSummary, { CvSummary } from 'content?collection=pages/cvSummary&includeBody=true!'
-import cvExperiences, { CvExperience } from 'content?collection=cvExperiences&includeBody=true!'
+import { CvSummary, CvExperience } from 'content-types'
+import cvSummary from 'content?collection=pages/cvSummary&includeBody=true!'
+import cvExperiences from 'content?collection=cvExperiences&includeBody=true!'
 
 export default function Cv({ summary, experiences, highlights }: {
   summary : CvSummary

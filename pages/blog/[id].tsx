@@ -3,8 +3,9 @@ import Head from 'next/head'
 import Date from '../../components/date'
 import utilStyles from '../../styles/utils.module.css'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import { content } from 'netlify-cms-content-provider'
 import { datesToStrings } from '../../lib/dateToStrings'
+import blogPosts from 'content?collection=blogPosts!'
+import path from 'path'
 
 export default function Post({ post }) {
   return (
@@ -24,12 +25,10 @@ export default function Post({ post }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  debugger
-  const test = await content().blogPosts.getAll()
-  const paths =  content()
-    .blogPosts
-    .getAllIds()
-    .map(id => {
+  const paths = blogPosts
+    .map(blogPost => {
+      const id = idFromPath(blogPost.filePath)
+
       return {
         params: {
           id
@@ -44,12 +43,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = await content().blogPosts.get(params?.id as string)
-
-  debugger
+  const filePath = (params?.id as string) + '.md'
+  const post = await import(`content?collection=blogPosts&filePath=${filePath}!`)
+  
   return {
     props: {
       post: datesToStrings(post)
     }
   }
+}
+
+function idFromPath(filePath: string) {
+  return path.basename(filePath, path.extname(filePath))
 }

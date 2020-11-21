@@ -1,12 +1,36 @@
-type EntryBase = {
-    hasBody: boolean,
-    filePath: string
+
+
+declare module 'content?collection=pages/home&includeBody=true*' {
+    export default {} as Homepage
 }
 
-declare module 'content?pages/homePage!*' {
+declare module 'content?collection=pages/cvSummary&includeBody=true*' {
+    export default {} as CvSummary
+}
+
+declare module 'content?collection=blogPosts&filePath=*' {
+    export default {} as BlogPost
+}
+
+declare module 'content?collection=blogPosts*' {
+    export default {} as BlogPost[]
+}
+
+declare module 'content?collection=cvExperiences&includeBody=true*' {
+
+    export default {} as CvExperience[]
+}
+
+declare module 'content-types' {
+    export type EntryBase = {
+        hasBody: boolean,
+        filePath: string
+    }
+    
     export type Homepage = EntryBase & {
         author: string
         siteTitle: string
+        headerImage: string
         contactData: {
             title: string
             url: string
@@ -14,11 +38,16 @@ declare module 'content?pages/homePage!*' {
         }[]
         body: string
     }
+    
+    export type BlogPost = EntryBase & {
+        title: string
+        date: Date
+        fbcommentlink?: string
+        categories?: string[]
+        tags?: string[]
+        body: string
+    }
 
-    export default {} as Homepage
-}
-
-declare module 'content?collection=pages/cvSummary&includeBody=true!' {
     export type CvSummary = EntryBase & {
         fullName: string
         title: string
@@ -32,24 +61,7 @@ declare module 'content?collection=pages/cvSummary&includeBody=true!' {
         body: string
         experiences: string[]
     }
-
-    export default {} as CvSummary
-}
-
-declare module 'content?blogPosts!*' {
-    export type BlogPost = EntryBase & {
-        title: string
-        date: Date
-        fbcommentlink?: string
-        categories?: string[]
-        tags?: string[]
-        body: string
-    }
-
-    export default {} as BlogPost[]
-}
-
-declare module 'content?collection=cvExperiences&includeBody=true!' {
+    
     export type CvExperience = EntryBase & {
         title: string
         type: string
@@ -61,10 +73,4 @@ declare module 'content?collection=cvExperiences&includeBody=true!' {
         technologies?: string[]
         body: string
     }
-
-    export default {} as CvExperience[]
-}
-
-declare module 'content?*' {
-    export default {} as any
 }
