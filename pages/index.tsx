@@ -73,7 +73,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       home: datesToStrings(homePageEntry),
-      allPosts: [datesToStrings(allBlogPostEntries)]
+      allPosts: allBlogPostEntries.map(blogPostEntry => datesToStrings(blogPostEntry))
     }
   };
 }

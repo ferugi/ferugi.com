@@ -3,16 +3,16 @@ author: Ferugi El Heri
 siteTitle: Ferugi El Heri
 headerImage: images/bio-background-2
 contactData:
-  - faIcon: fab fa-facebook-f
-    title: Facebook
-    url: 'https://facebook.com/ferugi'
   - faIcon: fab fa-linkedin-in
     title: LinkedIn
     url: 'https://www.linkedin.com/in/ferugi'
   - faIcon: fab fa-github
     title: GitHub
     url: 'https://github.com/ferugi'
-  - faIcon: fas fa-envelope
+  - faIcon: fab fa-instagram
+    title: Instagram
+    url: 'https://instagram.com/ferugie'
+  - faIcon: far fa-envelope
     title: Email
     url: 'mailto:me:ferugi.com'
 ---
