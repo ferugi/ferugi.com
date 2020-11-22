@@ -1,44 +1,55 @@
 import Head from 'next/head'
-import Layout from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import { PostWithContents } from '../lib/blog/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
 import { datesToStrings } from '../lib/dateToStrings'
-import home from 'content?collection=pages/home&includeBody=true!'
-import blogPosts from 'content?collection=blogPosts!'
+import styles from './home.module.css'
+import content from '../lib/content'
 
 export default function Home({ home, allPosts }) {
   return (
-    <Layout home>
+    <>
       <Head>
         <title>{home.siteTitle}</title>
       </Head>
-      <ul className={utilStyles.list}>
-        { home.contactData.map(contactData => (<ContactIconDisplay contactData={contactData} key={contactData.title} />)) }
-      </ul>
-      <section dangerouslySetInnerHTML={{ __html: home.body }} />
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>
-          Blog
-        </h2>
-        <ul className={utilStyles.list}>
-          { allPosts.map(post => <PostDisplay post={post} key={post.id} />)}
-        </ul>
-      </section>
-    </Layout>
+      <main className="grid lg:grid-cols-2 min-h-screen">
+        <section className={styles.titleSection}>
+          <h1 className={styles.siteTitle}>
+            {home.siteTitle}
+          </h1>
+          <ul className={styles.contactLinks}>
+            { home.contactData.map(contactData => (<ContactIconDisplay contactData={contactData} key={contactData.title} />)) }
+          </ul>
+        </section>
+        <div>
+          <section>
+            <h2>
+              About Me
+            </h2>
+            <div dangerouslySetInnerHTML={{ __html: home.body }} />
+          </section>
+          <section>
+            <h2>
+              Blog
+            </h2>
+            <ul>
+              { allPosts.map(post => <PostDisplay post={post} key={post.id} />)}
+            </ul>
+          </section>
+        </div>
+      </main>
+    </>
   )
 }
 
-function PostDisplay({ post }: { post: PostWithContents }) {
+function PostDisplay({ post }: { post: any }) {
   return (
-    <li className={utilStyles.listItem}>
+    <li>
       <Link href={`/blog/${post.id}`}>
         <a>{post.title}</a>
       </Link>
       <br />
-      <small className={utilStyles.lightText}>
+      <small>
         <Date dateString={post.date as string} />
       </small>
     </li>
@@ -56,10 +67,13 @@ function ContactIconDisplay({ contactData }){
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const homePageEntry = await content.getHomePage()
+  const allBlogPostEntries = await content.getBlogPosts()
+
   return {
     props: {
-      home: datesToStrings(home),
-      allPosts: [datesToStrings(blogPosts)]
+      home: datesToStrings(homePageEntry),
+      allPosts: [datesToStrings(allBlogPostEntries)]
     }
   };
 }

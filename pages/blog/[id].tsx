@@ -1,11 +1,9 @@
 import Layout from '../../components/layout'
 import Head from 'next/head'
 import Date from '../../components/date'
-import utilStyles from '../../styles/utils.module.css'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { datesToStrings } from '../../lib/dateToStrings'
-import blogPosts from 'content?collection=blogPosts!'
-import path from 'path'
+import content from '../../lib/content'
 
 export default function Post({ post }) {
   return (
@@ -14,8 +12,8 @@ export default function Post({ post }) {
         <title>{post.title}</title>
       </Head>
       <article>
-        <h1 className={utilStyles.headingXl}>{post.title}</h1>
-        <div className={utilStyles.lightText}>
+        <h1>{post.title}</h1>
+        <div>
           <Date dateString={post.date as string} />
         </div>
         <div dangerouslySetInnerHTML={{ __html: post.body }} />
@@ -25,13 +23,11 @@ export default function Post({ post }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = blogPosts
+  const paths = (await content.getBlogPosts())
     .map(blogPost => {
-      const id = idFromPath(blogPost.filePath)
-
       return {
         params: {
-          id
+          id: blogPost.id
         }
       }
     })
@@ -43,16 +39,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const filePath = (params?.id as string) + '.md'
-  const post = await import(`content?collection=blogPosts&filePath=${filePath}!`)
+  const post = await content.getBlogPost(params?.id as string)
   
   return {
     props: {
       post: datesToStrings(post)
     }
   }
-}
-
-function idFromPath(filePath: string) {
-  return path.basename(filePath, path.extname(filePath))
 }

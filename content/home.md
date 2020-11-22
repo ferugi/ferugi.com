@@ -16,7 +16,6 @@ contactData:
     title: Email
     url: 'mailto:me:ferugi.com'
 ---
-# About Me
 
 My name’s Ferugi, I’m a self taught software developer.
 

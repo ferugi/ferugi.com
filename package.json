@@ -19,7 +19,6 @@
     "js-yaml": "^3.14.0",
     "latest": "^0.2.0",
     "netlify-cms-app": "^2.13.3",
-    "netlify-cms-loader": "^0.7.3",
     "netlify-cms-oauth-provider-node": "^1.1.0",
     "next": "^9.5.5",
     "postcss-flexbugs-fixes": "^4.2.1",

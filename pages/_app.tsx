@@ -1,4 +1,5 @@
 import '../styles/global.css'
+import '../styles/tailwind.css'
 import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
 
 import { AppProps } from 'next/app'

@@ -1,13 +1,11 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 import styles from './cv.module.css'
-import { CvSummary, CvExperience } from 'content-types'
-import cvSummary from 'content?collection=pages/cvSummary&includeBody=true!'
-import cvExperiences from 'content?collection=cvExperiences&includeBody=true!'
+import content, { CvSummaryEntry, CvExperienceEntry } from '../lib/content'
 
 export default function Cv({ summary, experiences, highlights }: {
-  summary : CvSummary
-  experiences : CvExperience[] 
+  summary : CvSummaryEntry
+  experiences : CvExperienceEntry[] 
   highlights: string[]
 }) {
   return (
@@ -33,7 +31,7 @@ export default function Cv({ summary, experiences, highlights }: {
                 </li>
                 <li>
                   <a href={'tel:' + summary.contactDetails.phone}>
-                    <i className={`${styles.contactIcon} fas fa-phone-alt`} aria-hidden={true} /> {summary.contactDetails.phone}
+                    <i className={`${styles.contactIcon} fas fa-phone-alt`} aria-hidden={true} /><code>{summary.contactDetails.phone}</code> 
                   </a>
                 </li>
                 <li>
@@ -57,7 +55,7 @@ export default function Cv({ summary, experiences, highlights }: {
   )
 }
 
-export function ExperienceSection({ experience, highlights }: { experience: CvExperience, highlights: string[] }) {
+export function ExperienceSection({ experience, highlights }: { experience: CvExperienceEntry, highlights: string[] }) {
 
   return (
     <article className={styles.experience}>
@@ -86,7 +84,7 @@ export function ExperienceSection({ experience, highlights }: { experience: CvEx
   )
 }
 
-function getFooter(summary: CvSummary) {
+function getFooter(summary: CvSummaryEntry) {
   return (
     <div className={styles.printFooter}>
       <div className={styles.left}>{getLeftFooter()}</div>
@@ -130,10 +128,12 @@ function getExperienceIconClass(type: string) {
 
 export const getServerSideProps: GetServerSideProps = async(context) => {
   
-  const summary = cvSummary
-  const experiences = cvSummary.experiences
+  const summary = await content.getCvSummary()
+  const allCvExperiences = await content.getCvExperiences()
+
+  const experiences = summary.experiences
     .map(experienceId => {
-      return cvExperiences.find(cvExperience => cvExperience.filePath.includes(experienceId))
+      return allCvExperiences.find(cvExperience => experienceId === cvExperience.id)
     })
 
   const highlightQuery = context.query.highlight
