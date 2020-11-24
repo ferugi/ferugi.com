@@ -73,9 +73,11 @@ export function ExperienceSection({ experience, highlights }: { experience: CvEx
           experience.technologies && 
           <div className={styles.technologies}>
             <ul>
-              {experience.technologies.map(technology => <li className={highlights?.includes(technology.toLowerCase()) ? styles.highlight : ''}>
-                {technology}
-              </li>)}
+              {experience.technologies.map(technology => 
+                  <li className={highlights?.includes(technology.toLowerCase()) ? styles.highlight : ''} key={technology}>
+                    {technology}
+                  </li>
+                )}
             </ul>
           </div>
         }
