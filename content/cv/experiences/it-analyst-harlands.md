@@ -1,6 +1,6 @@
 ---
 type: job
-title: IT Analyst
+title: IT Analyst (Web Development)
 company: Harlands Group
 location: Haywards Heath
 startDate: '2016-06'
@@ -15,7 +15,7 @@ technologies:
     - Regex
 ---
 
-Permanently hired as “IT Analyst”, from temp “IT Support” role. My day to day involved configuring ASP.NET Web Forms in an agile environment. In the front-end I worked with CSS, HTML, and JS, and VB.NET and XML for the back-end. I communicated with clients and partner organisations via email, and in meetings when necessary. My highlights include:
+My day to day involved configuring ASP.NET Web Forms in an agile environment. In the front-end I worked with CSS, HTML, and JS, and VB.NET and XML for the back-end. I communicated with clients and partner organisations via email, and in meetings when necessary. My highlights include:
 
 * First to receive a quarterly award, “Harlands Hero”, for work ethic and contribution. 
 * Saved weeks of manual work using C# to transform data from Excel workbooks into Web Forms pages and XML configuration files. 

@@ -19,4 +19,4 @@ I have over 4 years of experience building front and back-end applications with 
 
 I actively grow my development knowledge inside and out of work, and regularly keep in contact with my local development community through meetup groups like [Brighton Alt.NET](http://brightonalt.net/), [.NET South East](http://www.dotnetsoutheast.co.uk/), and [Async](https://asyncjs.com/).
 
-> Ferugi has been an important part of the Digital System team's ability to deliver quality software in 2019/2020. He has written a good amount of code that will most likely stand the test of time. **He's undoubtedly one of our strongest developers.** <cite>David Haslam, Development Manager at INTO University Partnerships</cite>
+> Ferugi has been an important part of the Digital System team's ability to deliver quality software. He has written a good amount of code that will most likely stand the test of time.<br /> **He's undoubtedly one of our strongest developers.** <cite>David Haslam, Development Manager at INTO University Partnerships</cite>
