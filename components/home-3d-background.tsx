@@ -2,12 +2,12 @@
 import * as THREE from 'three'
 import dynamic from 'next/dynamic'
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
-import { EdgesGeometry, Geometry, WireframeGeometry } from 'three'
+import { EdgesGeometry } from 'three'
 
-const DynamicElement = dynamic(async () => {
+const DynamicBackground = dynamic(async () => {
     try {
         const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader')
-        const { Canvas, useLoader } = await import('react-three-fiber')
+        const { Canvas } = await import('react-three-fiber')
     
         const loader = new GLTFLoader()
         const gltf = await loader.loadAsync('./models/myface.glb') as GLTF
@@ -18,7 +18,7 @@ const DynamicElement = dynamic(async () => {
         var mat = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth: 2 } );
 
         return () => (
-            <Canvas camera={{ position: [3, 0, 0] }} style={{minHeight: "100vh", backgroundColor: "#000"}}>
+            <Canvas camera={{ position: [3, 0, 0] }} style={{minHeight: "100vh", minWidth: "100vw", backgroundColor: "#000"}}>
                 <ambientLight intensity={1} />
                 <pointLight position={[40, 40, 40]} />
                 <lineSegments geometry={lineGeo} material={mat} position={[0,0,1.5]} rotation={[0, 1.75*Math.PI/2, 0]} />
@@ -33,11 +33,8 @@ const DynamicElement = dynamic(async () => {
 
 }, { ssr: false })
 
-export default function Test() {
+export default function Home3DBackground() {
     return (
-        <>
-            <DynamicElement />
-        </>
+        <DynamicBackground />
     )
 }
-  

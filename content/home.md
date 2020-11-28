@@ -3,7 +3,7 @@ author: Ferugi El Heri
 siteTitle: Ferugi El Heri
 headerImage: images/bio-background-2
 contactData:
-  - faIcon: fab fa-linkedin-in
+  - faIcon: fab fa-linkedin
     title: LinkedIn
     url: 'https://www.linkedin.com/in/ferugi'
   - faIcon: fab fa-github
@@ -15,6 +15,9 @@ contactData:
   - faIcon: far fa-envelope
     title: Email
     url: 'mailto:me:ferugi.com'
+  - faIcon: far fa-file-alt
+    title: CV
+    url: '/cv'
 ---
 
 My name’s Ferugi, I’m a self taught software developer.

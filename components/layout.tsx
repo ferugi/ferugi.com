@@ -1,32 +1,18 @@
 import Head from 'next/head'
-import styles from './layout.module.css'
 import Link from 'next/link'
+import React from 'react'
+import styles from './layout.module.css'
 
-export default function Layout({
-  children,
-  home
-}: {
-  children: React.ReactNode
-  home?: boolean
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className={styles.header}>
-        <Link href="/">
-          <a>← Back to home</a>
-        </Link>
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
+      {children}
+      <div className={styles.footer}>
+        Site designed and built by Ferugi El Heri using <Link href="https://nextjs.org/"><a>Next.js</a></Link> 
+      </div>
     </div>
   )
 }
