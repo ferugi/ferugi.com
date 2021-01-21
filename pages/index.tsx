@@ -5,7 +5,7 @@ import { datesToStrings } from '../lib/dateToStrings'
 import styles from './home.module.css'
 import content from '../lib/content'
 import React from 'react'
-import Home3DBackground from '../components/home-3d-background'
+import { Home3DBackground } from '../components/home-3d-background'
 import Layout from '../components/layout'
 
 export default function Home({ home }) {
@@ -15,7 +15,7 @@ export default function Home({ home }) {
         <title>{home.siteTitle}</title>
       </Head>
       <div className={styles.canvasContainer}>
-        <Home3DBackground  />
+        <Home3DBackground />
       </div>
       <main className={styles.home}>
         <section className={styles.aboutMe}>

@@ -1,40 +1,41 @@
-
-import * as THREE from 'three'
 import dynamic from 'next/dynamic'
-import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
-import { EdgesGeometry } from 'three'
+import React, { Suspense } from 'react'
+import { useFrame } from 'react-three-fiber'
+import { HeadAndHair } from './dynamic/test-component'
 
-const DynamicBackground = dynamic(async () => {
-    try {
-        const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader')
-        const { Canvas } = await import('react-three-fiber')
-    
-        const loader = new GLTFLoader()
-        const gltf = await loader.loadAsync('./models/myface.glb') as GLTF
-        const mesh = gltf.scene.getObjectByName('FaceBuilderHead') as any
+export const Home3DBackground = dynamic(async () => {
+    const { Canvas } = await import('react-three-fiber')
 
-        const material = new THREE.MeshStandardMaterial({ color: new THREE.Color('#2a2a2a'), roughness: 0, metalness: 0.0 })
-        const lineGeo = new EdgesGeometry( mesh.geometry )
-        var mat = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth: 2 } );
-
-        return () => (
-            <Canvas camera={{ position: [3, 0, 0] }} style={{minHeight: "100vh", minWidth: "100vw", backgroundColor: "#000"}}>
-                <ambientLight intensity={1} />
-                <pointLight position={[40, 40, 40]} />
-                <lineSegments geometry={lineGeo} material={mat} position={[0,0,1.5]} rotation={[0, 1.75*Math.PI/2, 0]} />
+    return () => {
+        return (
+            <Canvas camera={{ position: [6.25, 0, 0], fov: 30 }} shadowMap>
+                <InnerBackground/>
             </Canvas>
         ) as any
-        //<mesh name="Object_0" position={[0,0,1.5]} rotation={[0, 1.5*Math.PI/2, 0]} geometry={mesh.geometry} material={material}/>
-    } catch (err) {
-        return () => (<div>
-            {JSON.stringify(err, null, '\n')}
-        </div>)
     }
-
 }, { ssr: false })
 
-export default function Home3DBackground() {
+const InnerBackground = () => {
+    
+    useFrame(({ camera, mouse }) => {
+        camera.position.z = (mouse.x * window.innerWidth) / 4000;
+        camera.position.y = -(mouse.y * window.innerHeight) / 4000;
+    })
+
     return (
-        <DynamicBackground />
+        <group position={[1, -.25, -1]}>
+            <ambientLight intensity={0.6} />
+            <directionalLight 
+                position={[40, 40, 40]} 
+                intensity={1} 
+                castShadow/>
+            <Suspense fallback={null}>
+                <HeadAndHair />
+            </Suspense>
+            <mesh rotation={[0, Math.PI * 0.5, 0]} position={[0,0,1]} receiveShadow>
+                <circleGeometry args={[4, 64]} />
+                <meshBasicMaterial color="lightblue" />
+            </mesh>
+        </group>
     )
 }
