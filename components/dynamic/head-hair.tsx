@@ -10,7 +10,7 @@ export function HeadAndHair() {
     const material = new THREE.MeshStandardMaterial({ color: new THREE.Color('#fff'), roughness: 1, metalness: 0 })
     
     return (
-        <group position={[0, 0, 0]} rotation={[0, (Math.PI * 0.35), 0]}>
+        <group position={[0, -0.25, 0]} rotation={[0, (Math.PI * 0.35), 0]}>
             <mesh name="head" geometry={head.geometry} material={material} receiveShadow castShadow />
             <mesh name="hair" scale={[1.05, 1.05, 1.05]} position={[0, -0.05, 0]} geometry={hair.geometry} material={material} receiveShadow castShadow />
         </group>
