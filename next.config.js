@@ -1,6 +1,6 @@
 const withTM = require('next-transpile-modules')(['@react-three/drei', 'three'])
 
-const nextConfig =  {
+const nextConfig = {
   webpack: (config) => {
 
     // Netlify CMS loader
@@ -13,6 +13,14 @@ const nextConfig =  {
       use: 'yaml-loader'
     })
     
+    // SVG Loader
+    config.module.rules.push({
+      test: /\.svg$/,
+      issuer: {
+        test: /\.(js|ts)x?$/,
+      },
+      use: ['@svgr/webpack'],
+    })
 
     return config
   }
