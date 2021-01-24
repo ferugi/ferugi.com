@@ -6,14 +6,6 @@
     z-index: -1;
 }
 
-.home {
-    color: #fff;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    min-height: 100vh;
-    padding: 60px;
-}
 
 .aboutMe {
     display: flex;
