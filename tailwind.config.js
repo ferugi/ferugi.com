@@ -11,12 +11,12 @@ module.exports = {
         'primary': 'rgba(0,0,0, 0.8)'
       },
       extend: {
-        width: {
+        maxWidth: {
           'text': '80ch',
-          'text-1/2': '40ch',
-          'text-2/5': '32ch',
+          'text-12': '12ch',
+          'text-32': '32ch',
         }
-       }
+      }
     },
     purge: [
       // Use *.tsx if using TypeScript

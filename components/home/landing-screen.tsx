@@ -11,24 +11,26 @@ type LandingScreenProps = {
 
 export const LandingScreen = ({ entry } : LandingScreenProps) => {
     return (
-        <section style={{ height: '90vh' }}>
-            <FaceCanvas style={{ position: 'absolute', height: '90vh' }} />
-            <div className="relative top-0 h-full flex flex-col">
-                <section className="flex-grow mt-32 ml-32">
-                    <h1 className="text-8xl font-bold font-display mb-6 w-text-2/5">
+        <>
+            <FaceCanvas style={{ position: 'absolute'}} />
+            <div className="relative top-80 lg:top-0 w-full flex flex-col p-4 lg:p-32 h-96 lg:h-full text-center lg:text-left">
+                <section className="flex-grow">
+                    <h1 className="text-6xl mb-3 lg:text-8xl font-bold font-display lg:mb-6 lg:max-w-text-12">
                         {entry.title}
                     </h1>
-                    <h2 className="text-3xl font-display-mono mb-6 w-text-2/5">
+                    <h2 className="text-xl lg:text-3xl font-display-mono mb-6 lg:max-w-text-32">
                         {entry.tagline}
                     </h2>
                 </section>
-                <section className="flex-none mb-32 ml-32">
-                    <h2 className="text-4xl font-semibold font-display mb-1 w-text">Want to talk?</h2>
-                    <span className="text-2xl font-display-mono w-text">Send an email to <a href={'mailto:' + entry.contactLinks.email}>{entry.contactLinks.email}</a> or connect via:</span>
+                <section className="flex-none">
+                    <h2 className="text-4xl mb-2 lg:text-4xl font-semibold font-display mb-1 lg:max-w-text">Want to talk?</h2>
+                    <p className="text-xl mb-2 lg:text-2xl font-display-mono lg:max-w-text">
+                        Send an email to <a href={'mailto:' + entry.contactLinks.email}>{entry.contactLinks.email}</a> or connect via: <br/>
+                    </p>
                     <SocialMediaLinks {...entry.contactLinks} />
                 </section>
             </div>
-        </section>
+        </>
     )
 }
 
@@ -40,7 +42,7 @@ type SocialMediaLinksProps = {
 
 const SocialMediaLinks = ({linkedIn, gitHub, instagram} : SocialMediaLinksProps) => {
     return (
-        <ul className="list-none grid grid-flow-col auto-cols-max gap-2">
+        <ul className="list-none inline-grid grid-flow-col auto-cols-max gap-2">
             {linkedIn && <li>
                 <a href={linkedIn}><LinkedInIcon className="h-8 w-8"/></a>
             </li>}

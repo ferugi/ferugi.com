@@ -4,6 +4,7 @@ import Date from '../../components/date'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { datesToStrings } from '../../lib/dateToStrings'
 import content from '../../lib/content'
+import styles from './blog.module.scss'
 
 export default function Post({ post }) {
   return (
@@ -11,7 +12,7 @@ export default function Post({ post }) {
       <Head>
         <title>{post.title}</title>
       </Head>
-      <article>
+      <article className={styles.blogPost}>
         <h1>{post.title}</h1>
         <div>
           <Date dateString={post.date as string} />
