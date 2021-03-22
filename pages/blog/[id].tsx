@@ -12,13 +12,15 @@ export default function Post({ post }) {
       <Head>
         <title>{post.title}</title>
       </Head>
-      <article className={styles.blogPost}>
-        <h1>{post.title}</h1>
-        <div>
-          <Date dateString={post.date as string} />
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: post.body }} />
-      </article>
+      <main className="container max-w-text mx-auto py-14">
+        <article>
+          <header className="mb-5">
+            <h1 className="text-5xl font-display font-bold">{post.title}</h1>
+            <Date className="font-body text-xs" dateString={post.date as string} />
+          </header>
+          <div className={styles.postBody} dangerouslySetInnerHTML={{ __html: post.body }} />
+        </article>
+      </main>
     </Layout>
   )
 }

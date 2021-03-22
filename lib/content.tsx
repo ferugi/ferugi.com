@@ -2,6 +2,7 @@ import path from "path"
 import fs from "fs"
 import remark from "remark"
 import html from "remark-html"
+import breaks from "remark-breaks"
 import matter from "gray-matter"
 
 const contentRoot = 'content'
@@ -41,6 +42,7 @@ async function getContent(filePath: string) : Promise<any> {
     const matterResult = matter(fileContents)
 
     const processedContent = await remark()
+      .use(breaks)
       .use(html)
       .process(matterResult.content)
 

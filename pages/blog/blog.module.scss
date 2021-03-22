@@ -1,5 +1,59 @@
-.blogPost {
+.postBody {
+    p {
+        @apply my-2;
+    }
+
     h1 {
-        @extend h1;
+        @apply text-5xl mt-12 mb-4 font-display font-bold;
+    }
+
+    h2 {
+        @apply text-3xl font-bold mt-10 mb-3;  
+    }
+
+    h3 {
+        @apply text-xl font-semibold mt-8 mb-2.5;  
+    }
+
+    h4 {
+        @apply text-xl mt-6 mb-2;  
+    }
+
+    h5 {
+        @apply text-lg mt-4 mb-1.5;  
+    }
+
+    h6 {
+        @apply font-bold mt-3 mb-1;  
+    }
+
+    a {
+        @apply font-semibold text-light-blue-600;
+
+        &:visited {
+            @apply text-purple-900;
+        }
+    }
+
+    code {
+        @apply py-1 px-3 mb-1 text-sm font-mono bg-opacity-10 bg-black inline-block;
+    }
+
+    ol,
+    ul {
+        @apply my-3 pl-6 list-inside;
+
+    }
+
+    ol {
+        @apply list-decimal;
+    }
+
+    ul {
+        @apply list-disc;
+    }
+
+    li {
+        @apply my-2;
     }
 }
