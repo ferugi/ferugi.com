@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 import styles from './layout.module.css'
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function HomeLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="font-body text-black text-opacity-80 bg-beige">
       <Head>

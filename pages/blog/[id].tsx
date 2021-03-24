@@ -1,4 +1,4 @@
-import Layout from '../../components/layout'
+import ArticleLayout from "../../components/article-layout"
 import Head from 'next/head'
 import Date from '../../components/date'
 import { GetStaticProps, GetStaticPaths } from 'next'
@@ -8,20 +8,18 @@ import styles from './blog.module.scss'
 
 export default function Post({ post }) {
   return (
-    <Layout>
+    <ArticleLayout>
       <Head>
         <title>{post.title}</title>
       </Head>
-      <main className="container max-w-text mx-auto py-14">
-        <article>
-          <header className="mb-5">
-            <h1 className="text-5xl font-display font-bold">{post.title}</h1>
-            <Date className="font-body text-xs" dateString={post.date as string} />
-          </header>
-          <div className={styles.postBody} dangerouslySetInnerHTML={{ __html: post.body }} />
-        </article>
-      </main>
-    </Layout>
+      <article>
+        <header className="mb-5">
+          <h1 className={styles.postTitle}>{post.title}</h1>
+          <Date className="font-body text-xs" dateString={post.date as string} />
+        </header>
+        <div className={styles.postBody} dangerouslySetInnerHTML={{ __html: post.body }} />
+      </article>
+    </ArticleLayout>
   )
 }
 

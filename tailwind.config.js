@@ -5,7 +5,7 @@ module.exports = {
       fontFamily: {
       'display': ['EB Garamond', 'serif'],
       'display-mono': ['PT Mono', 'monospace'],
-      'mono': ['Inconsolata', 'monospace'],
+      'mono': ['monospace'],
       'body': ['Open Sans', 'sans-serif']
       },
       extend: {
