@@ -5,7 +5,7 @@ import styles from './home.module.css'
 import content, { LandingScreenEntry } from '../lib/content'
 import React from 'react'
 import { LandingScreen } from '../components/home/landing-screen'
-import Layout from "../components/article-layout"
+import Layout from "../components/home-layout"
 
 type HomeProps = {
   landingScreenEntry: WithoutDate<LandingScreenEntry>

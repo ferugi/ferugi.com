@@ -2,11 +2,12 @@ import ArticleLayout from "../../components/article-layout"
 import Head from 'next/head'
 import Date from '../../components/date'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import { datesToStrings } from '../../lib/dateToStrings'
-import content from '../../lib/content'
+import { datesToStrings, WithoutDate } from '../../lib/dateToStrings'
+import content, { BlogPostEntry } from '../../lib/content'
 import styles from './blog.module.scss'
+import FacebookComments from "../../components/fb-comments"
 
-export default function Post({ post }) {
+export default function Post({ post }: { post: WithoutDate<BlogPostEntry>}) {
   return (
     <ArticleLayout>
       <Head>
@@ -19,6 +20,8 @@ export default function Post({ post }) {
         </header>
         <div className={styles.postBody} dangerouslySetInnerHTML={{ __html: post.body }} />
       </article>
+      { !!post.fbcommentlink &&  
+        <FacebookComments commentUrl={post.fbcommentlink} orderBy="reverse_time"/> }
     </ArticleLayout>
   )
 }
