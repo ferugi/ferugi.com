@@ -7,7 +7,7 @@ import content, { BlogPostEntry } from '../../lib/content'
 import styles from './blog.module.scss'
 import FacebookComments from "../../components/fb-comments"
 
-export default function Post({ post }: { post: WithoutDate<BlogPostEntry>}) {
+export default function Post({ post }: { post: WithoutDate<BlogPostEntry> }) {
   return (
     <ArticleLayout>
       <Head>
@@ -21,7 +21,7 @@ export default function Post({ post }: { post: WithoutDate<BlogPostEntry>}) {
         <div className={styles.postBody} dangerouslySetInnerHTML={{ __html: post.body }} />
       </article>
       { !!post.fbcommentlink &&  
-        <FacebookComments commentUrl={post.fbcommentlink} orderBy="reverse_time"/> }
+        <FacebookComments commentUrl={post.fbcommentlink} orderBy="reverse_time" width={635}/> }
     </ArticleLayout>
   )
 }
