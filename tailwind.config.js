@@ -17,6 +17,16 @@ module.exports = {
           'text': '67ch',
           'text-12': '12ch',
           'text-32': '32ch',
+        },
+        height: theme => {
+          // Adds vertical heights, 1-100
+          const output = {}
+
+          for (let i = 1; i < 100; i++) {
+            output[`screen-${i}`] = `${i}vh`
+          }
+
+          return output
         }
       }
     },
