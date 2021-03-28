@@ -1,7 +1,7 @@
 import { useGLTF } from '@react-three/drei/core/useGLTF'
 import dynamic from 'next/dynamic'
 import React, { HTMLAttributes, Suspense } from 'react'
-import { ContainerProps, useFrame } from 'react-three-fiber'
+import { ContainerProps, useFrame, useThree } from 'react-three-fiber'
 import * as THREE from 'three'
 
 export const FaceCanvas = dynamic(async () => {
@@ -17,10 +17,14 @@ export const FaceCanvas = dynamic(async () => {
 }, { ssr: false })
 
 const InnerCanvas = () => {
+
+    const { viewport } = useThree() 
     
     useFrame(({ camera, mouse }) => {
-        camera.position.z = (mouse.x * window.innerWidth) / 4000;
-        camera.position.y = -(mouse.y * window.innerHeight) / 4000;
+        // TODO: Gradually rotate face to face cursor, exponentially slowing down.
+
+        var targetX = (mouse.x * viewport.width) / 2;
+        var targetY = -(mouse.y * viewport.height) / 2;
     })
 
     return (
@@ -33,7 +37,7 @@ const InnerCanvas = () => {
                     castShadow/>
             </group>
             <Suspense fallback={null}>
-                <group position={[1, 0, -1]}>
+                <group position={[1, 0, -1]} rotation={[0,0,0]}>
                     <HeadAndHair />
                     <mesh rotation={[0, Math.PI * 0.5, 0]} position={[0,0,0]} receiveShadow>
                         <circleGeometry args={[2.75, 128]} />

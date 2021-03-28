@@ -17,7 +17,7 @@ export default function Home({ landingScreenEntry } : HomeProps) {
       <Head>
         <title>{landingScreenEntry.title}</title>
       </Head>
-      <main className="flex-1 min-h-screen">
+      <main className="min-h-screen relative">
         <LandingScreen entry={landingScreenEntry}  />
       </main>
     </Layout>
