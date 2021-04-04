@@ -12,7 +12,7 @@ type LandingScreenProps = {
 export const LandingScreen = ({ entry } : LandingScreenProps) => {
     return (
         <>
-            <FaceCanvas />
+            <FaceCanvas showAxesHelper={process.env.NODE_ENV === 'development'} />
             <div className="relative w-full flex flex-col p-4 lg:p-32 h-96 lg:h-screen-90 text-center lg:text-left">
                 <section className="flex-grow">
                     <h1 className="text-6xl mb-3 lg:text-8xl font-bold font-display lg:mb-6 lg:max-w-text-12 lg:-ml-1">

@@ -1,0 +1,44 @@
+// Constrains the inner container to the bounds of the page
+// even if it overflows
+.outerContainer {
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+    @apply h-full w-full absolute;
+}
+
+// The actual full background object wrapping
+// face and circles
+.innerContainer {
+    @screen sm {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    @screen md {
+        width: 50rem;
+        height: 50rem;
+        right: -10rem;
+        top: -12.5rem;
+    }
+
+    @screen lg {
+        width: 60rem;
+        height: 60rem;
+        right: -10rem;
+        top: -12.5rem;
+    }
+
+    @screen xl {
+        width: 76rem;
+        height: 76rem;
+        right: -10rem;
+        top: -12.5rem;
+    }
+
+    @apply absolute;
+}
+
+.backgroundCircles {
+    @apply h-full w-full absolute;
+}
