@@ -10,33 +10,40 @@
 // The actual full background object wrapping
 // face and circles
 .innerContainer {
+    @apply absolute;
+
+    width: 22rem;
+    height: 22rem;
+    top: -2rem;
+    left: calc(50vw - 11rem);
+
     @screen sm {
-        width: 10rem;
-        height: 10rem;
+        width: 24rem;
+        height: 24rem;
+        top: -3rem;
+        left: calc(50vw - 12rem)
     }
 
     @screen md {
-        width: 50rem;
-        height: 50rem;
-        right: -10rem;
-        top: -12.5rem;
+        width: 40rem;
+        height: 40rem;
+        top: -7.5rem;
+        right: -9rem;
     }
 
     @screen lg {
-        width: 60rem;
-        height: 60rem;
-        right: -10rem;
-        top: -12.5rem;
+        width: 54rem;
+        height: 54rem;
+        top: -7.5rem;
+        right: -12rem;
     }
 
     @screen xl {
         width: 76rem;
         height: 76rem;
-        right: -10rem;
         top: -12.5rem;
+        right: -10rem;
     }
-
-    @apply absolute;
 }
 
 .backgroundCircles {
