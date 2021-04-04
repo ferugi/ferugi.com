@@ -29,8 +29,8 @@ export const FaceCanvas = dynamic(async () => {
                             alpha: true,
                             antialias: true 
                         }}>
-                        { props.showAxesHelper && <InnerCanvas /> }
-                        <axesHelper position={[0,0,4]} />
+                        <InnerCanvas />
+                        { props.showAxesHelper && <axesHelper position={[0,0,4]} /> }
                     </Canvas>
                 </div>
             </div>
