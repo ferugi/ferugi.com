@@ -1,71 +1,36 @@
 import Head from 'next/head'
-import Layout from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import { getAllBlogPosts, PostWithContents } from '../lib/blog/posts'
-import Link from 'next/link'
-import Date from '../components/date'
 import { GetStaticProps } from 'next'
-import { getIndexContentAndData, HomePageEntry, ContactData as ContactData } from '../lib/home'
+import { datesToStrings, WithoutDate } from '../lib/dateToStrings'
+import styles from './home.module.css'
+import content, { LandingScreenEntry } from '../lib/content'
+import React from 'react'
+import { LandingScreen } from '../components/home/landing-screen'
+import Layout from "../components/layout"
 
-export default function Home({ indexContentAndData, allPosts }: Props) {
+type HomeProps = {
+  landingScreenEntry: WithoutDate<LandingScreenEntry>
+}
+
+export default function Home({ landingScreenEntry } : HomeProps) {
   return (
-    <Layout home>
+    <Layout>
       <Head>
-        <title>{indexContentAndData.siteTitle}</title>
+        <title>{landingScreenEntry.title}</title>
+        <meta name="description" content={landingScreenEntry.description} />
       </Head>
-      <ul className={utilStyles.list}>
-        { indexContentAndData.contactData.map(contactData => (<ContactIconDisplay contactData={contactData} key={contactData.title} />)) }
-      </ul>
-      <section dangerouslySetInnerHTML={{ __html: indexContentAndData.body }} />
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>
-          Blog
-        </h2>
-        <ul className={utilStyles.list}>
-          { allPosts.map(post => <PostDisplay post={post} key={post.id} />)}
-        </ul>
-      </section>
+      <main className="min-h-screen relative">
+        <LandingScreen entry={landingScreenEntry}  />
+      </main>
     </Layout>
   )
 }
 
-function PostDisplay({ post }: { post: PostWithContents }) {
-  return (
-    <li className={utilStyles.listItem}>
-      <Link href={`/blog/${post.id}`}>
-        <a>{post.title}</a>
-      </Link>
-      <br />
-      <small className={utilStyles.lightText}>
-        <Date dateString={post.date as string} />
-      </small>
-    </li>
-  )
-}
-
-function ContactIconDisplay({ contactData }: { contactData: ContactData }){
-  return (
-    <li>
-      <a href={contactData.url} aria-label={contactData.title} >
-        <i className={contactData.faIcon} aria-hidden={true} />
-      </a>
-    </li>
-  )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  const allPosts = await getAllBlogPosts()
-  const indexContentAndData = await getIndexContentAndData()
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const landingScreenEntry = await content.getLandingScreen()
 
   return {
     props: {
-      indexContentAndData,
-      allPosts,
+      landingScreenEntry: datesToStrings(landingScreenEntry),
     }
   };
-}
-
-interface Props {
-  indexContentAndData: HomePageEntry
-  allPosts: PostWithContents[]
 }

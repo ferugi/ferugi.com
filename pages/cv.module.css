@@ -63,51 +63,87 @@
     font-size: 12px;
 }
 
+.cv p {
+    margin: 1em 0;
+}
+
+.cv h2 {
+    margin: 1em 0 0.5em 0;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.cv h3 {
+    margin: 1em 0;
+    font-size: 1.17em;
+}
+
 .cvHeader {
-    display: grid;
-    grid-template-columns: auto 10em;
-}
-
-.name {
-    font-size: 2em;
-    font-weight: normal;
-    margin: 0;
-}
-
-.jobTitle{
-    font-size: 1.4em;
-    margin-top: -0.5em;
-    font-weight: normal;
-    margin: 0;
+    display: flex;
+    margin-bottom: 2em;
 }
 
 .titleBlock {
-    display: grid;
     line-height: 1;
-    grid-template-rows: 3em auto;
+    flex-grow: 1;
+}
+
+.cv .titleBlock .name {
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0 0 0.5em 0;
+}
+
+.cv .titleBlock .jobTitle {
+    font-size: 1.4em;
+    font-weight: 400;
+    margin: 0 0 0 0;
 }
 
 .contactDetails {
     line-height: 1.5;
-    display: grid;
     margin: 0;
+    letter-spacing: 0px;
+    list-style: none;
     padding-inline-start: unset;
 }
 
-.contactDetails li {
-    display: unset
+.contactIcon {
+    width: 16px;
+    text-align: center;
+}
+
+.contactDetails code {
+    display: inline;
+    font-family: 'Consolas', monospace;
+    margin-left: 2px;
+}
+
+.experience {
+    margin-bottom: 1.5em;
+}
+
+.experience:last-child {
+    margin-bottom: 0;
 }
 
 .experience h3 {
-    margin-bottom: 0;
-    margin-top: 1.5em;
+    margin: 0.65em 0 0 0;
     padding-top: 1px;
     display: flex;
-    line-height: 1;
+    line-height: 1.25;
     font-weight: 700;
+    align-items: baseline;
 }
+
+.experienceIcon {
+    width: 1rem;
+    font-size: .9rem;
+    text-align: center;
+}
+
 .experience h3 .experienceTitle {
-    margin-left: 0.5em;
+    margin-left: 0.7rem;
     flex-grow: 1;
 }
 
@@ -117,9 +153,9 @@
 }
 
 .experienceContents {
-    border-left: 2px solid #c6c6c6;
-    padding-left: 1em;
-    margin-left: 0.5em;
+    border-left: 3px double #b3b3b3;
+    padding-left: 1.25rem;
+    margin-left: calc(0.45rem - 0.5px)
 }
 
 .experienceContents li {
@@ -128,6 +164,8 @@
 
 .experienceDescription ul {
     padding-inline-start: 1.5em;
+    list-style: disc;
+    margin: 1em 0;
 }
 
 
@@ -152,4 +190,21 @@
 .technologies ul li.highlight {
     font-weight: 700;
     border: 1px solid black;
+}
+
+.summary blockquote {
+    padding: 0 1em;
+    margin: 0;
+    border: 1px dotted #000;
+}
+
+.summary blockquote cite {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    margin-top: 0.5em;
+}
+
+.summary blockquote cite::before {
+    content: '― ';
 }

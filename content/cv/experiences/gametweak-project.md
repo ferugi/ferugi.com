@@ -24,11 +24,11 @@ technologies:
     - Visual Studio
 ---
 
-Started development of a full stack desktop application which allows players to configure similar games in a single place and store and share their configuration across games and PC’s.
+Started development of a full stack desktop application which allows players to configure similar games in a single place and store and share their configuration across games and devices.
 I used this time to build my software development experience, with the future goal of releasing a product to customers via Steam. 
 The project consisted of the following stack:
 
-* Desktop client built with .NET Framework (later updated to .NET Core), WPF & XAML, Material Design, integrates with Steamworks, and includes UI localization.
+* Desktop client built with .NET Framework (later updated to .NET Core), WPF & XAML, Material Design, integrates with Steamworks, and includes UI localisation.
 * Serverless on AWS using API Gateway, Lambda Functions, DynamoDB, and CloudFormation.
 * Core parsing library built with a TDD approach using Pidgin parser combinator to handle a variety of config files for game engines.
 * Testing with xUnit.

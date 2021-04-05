@@ -1,5 +1,6 @@
 ---
 title: Installing Node.js on GoDaddy Shared Hosting
+description: The steps I took to install Node.js on GoDaddy cPanel Shared hosting.
 date: 2016-02-18
 fbcommentlink: 'http://ferugi.com/2016/02/18/nodejs-on-godaddy-shared-cpanel/index.html'
 categories:
@@ -41,7 +42,9 @@ If they return nothing you're good to carry on.
 I installed this in my home directory i.e. /home/username/ to get here you can enter. 
 To install **enter in bash**:
 
-`curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash`
+```bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+```
 
 *Check the NVM GitHub page for instructions on installing a newer version*
 
@@ -61,8 +64,7 @@ To check that worked **enter in bash**:
 Both should return their versions. Before we get our hopes up, we'll likely need to do some configuration.
 
 ## Configuration
-Once I'd finally got Node.js installed I encountered problems running NPM 
-packages globally. The solution was to add some lines to environment variables. 
+Once I'd finally got Node.js installed I encountered problems running NPM packages globally. The solution was to add some lines to environment variables. 
 ### Step 5: Check NPM Globals
 The default location for global packages is home/yourusername/local/bin . You'll be able to see where your global packages are installed. To check if that's needed **enter in bash**:
 
