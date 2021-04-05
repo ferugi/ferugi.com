@@ -33,7 +33,7 @@
     "remark-html": "^13.0.1",
     "sass": "^1.30.0",
     "tailwindcss": "^2.0.2",
-    "three": "^0.124.0",
+    "three": "^0.125.0",
     "three-gltf-loader": "^1.111.0",
     "yaml": "^1.10.0",
     "yaml-loader": "^0.6.0",
