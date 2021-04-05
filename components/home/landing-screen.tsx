@@ -11,7 +11,7 @@ export const LandingScreen = ({ entry } : LandingScreenProps) => {
     return (
         <>
             <FaceCanvas showAxesHelper={process.env.NODE_ENV === 'development'} />
-            <div className="relative w-full flex flex-col pt-60 p-4 md:p-12 md:pb-2 lg:p-16 xl:p-32 h-96 lg:h-screen-90 text-center md:text-left">
+            <div className="relative h-auto w-full flex flex-col pt-60 p-4 md:p-12 md:pb-2 lg:p-16 xl:p-32 h-96 lg:h-screen-90 text-center md:text-left">
                 <section className="flex-grow md:mb-5">
                     <h1 className="mb-3 text-6xl lg:text-7xl xl:text-8xl font-bold font-display lg:mb-6 lg:max-w-text-12 lg:-ml-1">
                         {entry.title}
