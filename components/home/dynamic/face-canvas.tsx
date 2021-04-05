@@ -13,8 +13,6 @@ const deg = MathUtils.degToRad
 export const FaceCanvas = dynamic(async () => {
     const { Canvas } = await import('react-three-fiber')
 
-    // TODO: Use Tailwind breakpoints to manipulate canvas style
-
     return (props?: HTMLAttributes<HTMLDivElement> & { showAxesHelper: boolean }) => {
         return (
             <div className={styles.outerContainer}>
@@ -39,15 +37,6 @@ export const FaceCanvas = dynamic(async () => {
 }, { ssr: false })
 
 const InnerCanvas = () => {
-    const { camera, gl } = useThree()
-
-    const face = useRef<Group>()
-    const perspectiveCamera = camera as PerspectiveCamera;
-
-    var distance = 1
-    var vFov = (camera as PerspectiveCamera).fov * Math.PI / 180
-    var planeHeight = (2 * Math.tan(vFov / 2) * distance)
-    var planeWidth = planeHeight * perspectiveCamera.aspect
 
     const [mousePoint, setMousePoint] = useState(new Vector2(0,0))
 
@@ -61,10 +50,12 @@ const InnerCanvas = () => {
         setMousePoint(vector);
     })
 
+    const face = useRef<Group>()
+
     useFrame(({ camera }) => {
-        face.current.lookAt(mousePoint.x, mousePoint.y, camera.position.z)
-        gl.shadowMap.type = THREE.PCFSoftShadowMap
-        gl.shadowMap.enabled = true
+        if (!!face.current) {
+            face.current.lookAt(mousePoint.x, mousePoint.y, camera.position.z)
+        }
     })
     
     return  (
@@ -76,12 +67,9 @@ const InnerCanvas = () => {
                     intensity={1}
                     shadow-mapSize-height={2048}
                     shadow-mapSize-width={2048}
-                    //shadow-bias={0.001}
-                    //shadow-radius={4}
                     shadowCameraNear={0}
                     shadowCameraFar={40}
-                    castShadow 
-                    />
+                    castShadow />
             </group>
             <Suspense fallback={null}>
                 <group ref={face}>

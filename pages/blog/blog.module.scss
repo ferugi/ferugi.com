@@ -44,10 +44,11 @@
             @apply text-purple-900;
         }
     }
-    
+
+    pre code,
     code {
         hyphens: none;
-        @apply px-1.5 pt-1 pb-0.5 mb-1 text-sm font-mono bg-opacity-10 bg-black inline-block break-all;
+        @apply px-1.5 pt-1 pb-0.5 mb-1 text-sm font-mono bg-opacity-10 bg-black inline-block break-all whitespace-pre-wrap;
     }
 
     ol,

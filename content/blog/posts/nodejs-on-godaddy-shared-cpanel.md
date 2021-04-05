@@ -1,5 +1,6 @@
 ---
 title: Installing Node.js on GoDaddy Shared Hosting
+description: The steps I took to install Node.js on GoDaddy cPanel Shared hosting.
 date: 2016-02-18
 fbcommentlink: 'http://ferugi.com/2016/02/18/nodejs-on-godaddy-shared-cpanel/index.html'
 categories:

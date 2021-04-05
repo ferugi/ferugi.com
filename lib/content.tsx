@@ -74,6 +74,7 @@ export type LandingScreenEntry = EntryBase & {
     author: string
     title: string
     tagline: string
+    description: string
     contactLinks: {
         email: string
         linkedIn: string
@@ -85,6 +86,7 @@ export type LandingScreenEntry = EntryBase & {
 
 export type BlogPostEntry = EntryBase & {
     title: string
+    description: string
     date: Date
     fbcommentlink?: string
     categories?: string[]

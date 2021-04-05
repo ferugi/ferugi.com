@@ -5,7 +5,7 @@ import styles from './home.module.css'
 import content, { LandingScreenEntry } from '../lib/content'
 import React from 'react'
 import { LandingScreen } from '../components/home/landing-screen'
-import Layout from "../components/home-layout"
+import Layout from "../components/layout"
 
 type HomeProps = {
   landingScreenEntry: WithoutDate<LandingScreenEntry>
@@ -16,6 +16,7 @@ export default function Home({ landingScreenEntry } : HomeProps) {
     <Layout>
       <Head>
         <title>{landingScreenEntry.title}</title>
+        <meta name="description" content={landingScreenEntry.description} />
       </Head>
       <main className="min-h-screen relative">
         <LandingScreen entry={landingScreenEntry}  />
