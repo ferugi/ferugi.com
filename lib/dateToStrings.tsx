@@ -1,4 +1,4 @@
-type WithoutDate<T extends { [key: string ]: any }> = {
+export type WithoutDate<T extends { [key: string ]: any }> = {
     [K in keyof T]
         : T[K] extends Date ? string
         : T[K] extends Date[] ? string[]

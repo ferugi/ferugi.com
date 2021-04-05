@@ -1,4 +1,42 @@
-.titleSection {
-    background: url(../public/images/bio-background-2.png) 50% 10px no-repeat,linear-gradient(133deg,#c5d8e7 0,#739fc2 65%,#3f7cac 100%),#3f7cac;
-    background-size: auto 120%;
+.canvasContainer {
+    height: 100vh;
+    min-width: 100vw;
+    position: absolute;
+    background-color: grey;
+    z-index: -1;
+}
+
+
+.aboutMe {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.aboutMe h1 {
+    font-size: 4em;
+    font-weight: 700;
+}
+
+.description {
+    flex-grow: 1;
+}
+
+.contactLinks {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+    align-items: flex-start;
+}
+
+.contactLink {
+    display: flex;
+    height: 45px;
+    padding: 0 8px;
+    font-size: 36px;
+    align-items: center;
+    color: #000;
+    background-color: #fff;
+    margin-bottom: 24px;
 }

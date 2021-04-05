@@ -2,6 +2,7 @@ import path from "path"
 import fs from "fs"
 import remark from "remark"
 import html from "remark-html"
+import breaks from "remark-breaks"
 import matter from "gray-matter"
 
 const contentRoot = 'content'
@@ -41,6 +42,7 @@ async function getContent(filePath: string) : Promise<any> {
     const matterResult = matter(fileContents)
 
     const processedContent = await remark()
+      .use(breaks)
       .use(html)
       .process(matterResult.content)
 
@@ -57,7 +59,7 @@ async function getContent(filePath: string) : Promise<any> {
 }
 
 export default {
-    getHomePage: async () => await get('home.md') as HomePageEntry,
+    getLandingScreen: async () => await get('home/landing-screen.md') as LandingScreenEntry,
     getCvSummary: async () => await get('cv/summary.md') as CvSummaryEntry,
     getCvExperiences: async () => await getAll('cv/experiences') as CvExperienceEntry[],
     getBlogPost: async (id: string): Promise<BlogPostEntry> => await get(`blog/posts/${id}.md`),
@@ -68,20 +70,23 @@ export type EntryBase = {
     id: string
 }
 
-export type HomePageEntry = EntryBase & {
+export type LandingScreenEntry = EntryBase & {
     author: string
-    siteTitle: string
-    headerImage: string
-    contactData: {
-        title: string
-        url: string
-        faIcon: string
-    }[]
+    title: string
+    tagline: string
+    description: string
+    contactLinks: {
+        email: string
+        linkedIn: string
+        gitHub: string
+        instagram: string
+    }
     body: string
 }
 
 export type BlogPostEntry = EntryBase & {
     title: string
+    description: string
     date: Date
     fbcommentlink?: string
     categories?: string[]
