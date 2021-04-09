@@ -1,5 +1,7 @@
+import { DefaultSeo } from 'next-seo'
 import Head from 'next/head'
 import React from 'react'
+import { defaultOpenGraph } from '../content/site-constants'
 import styles from './layout.module.css'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -12,6 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <link rel="apple-touch-icon" href="apple-touch-icon-180.png" />
         <link rel="manifest" href="/manifest.json" />
       </Head>
+      <DefaultSeo openGraph={defaultOpenGraph} />
       {children}
     </div>
   )
