@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import * as playwright from 'playwright-aws-lambda'
 import ReactDOMServer from 'react-dom/server'
+import * as browsers from 'playwright-core/browsers.json'
 
 type ImageType = 'facebook' | 'twitter'
 
@@ -21,6 +22,11 @@ const ImageProportions: {[k in ImageType]: {
 const TestElement = () => <div>HELLO WORLD</div>
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+
+    if (!browsers) {
+      throw new Error('browsers.json not defined')
+    }
+
     // Process incoming request
     // Get the type the request is for
     // If its a blog post, get the post ID

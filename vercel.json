@@ -1,0 +1,7 @@
+{
+    "functions": {
+        "pages/api/seo-image.tsx": {
+            "includeFiles": "node_modules/playwright-core/browsers.json"
+        }
+    }
+}
