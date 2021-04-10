@@ -18,8 +18,6 @@ const ImageProportions: {[k in ImageType]: {
     }
 }
 
-const TestElement = () => <div>HELLO WORLD</div>
-
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     // Process incoming request
     // Get the type the request is for
