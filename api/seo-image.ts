@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import * as playwright from 'playwright-aws-lambda'
 import ReactDOMServer from 'react-dom/server'
+import { TestElement } from '../components/test'
 
 type ImageType = 'facebook' | 'twitter'
 
@@ -18,7 +19,7 @@ const ImageProportions: {[k in ImageType]: {
     }
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function (req: NextApiRequest, res: NextApiResponse) {
     // Process incoming request
     // Get the type the request is for
     // If its a blog post, get the post ID
@@ -35,7 +36,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       }
     });
 
-    const html = ReactDOMServer.renderToStaticMarkup(TestElement())
+    const html = ReactDOMServer.renderToStaticMarkup(TestElement)
     await page.setContent(html)
 
     const screenshot = await page.screenshot({

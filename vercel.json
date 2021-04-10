@@ -1,6 +1,6 @@
 {
     "functions": {
-        "api/seo-image.tsx": {
+        "api/seo-image.ts": {
             "includeFiles": "node_modules/playwright-core/browsers.json"
         }
     }
