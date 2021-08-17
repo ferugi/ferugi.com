@@ -1,0 +1,39 @@
+.outerCanvas {
+    position: absolute;
+    left: 40%;
+    top: calc(50vh - 37vw);
+    width: 74vw;
+    height: 74vw;
+}
+
+.text {
+    position: absolute;
+    margin: 10vw 20vh;
+    height: 60vh;
+    width: 80vw;
+
+    .title {
+        font-size: 12vw;
+        margin-left: -1vw;
+        line-height: 67%;
+        @apply font-display;
+    }
+    
+    .description {
+        width: 50vw;
+        font-size: 4vw;
+        line-height: 118%;
+        position: absolute;
+        bottom: 0;
+
+        @apply font-display-mono;
+    }
+}
+
+// Facebook
+@media (width: 1200px) {
+    
+    .text {
+    }
+
+}

@@ -9,7 +9,7 @@ import FacebookComments from "../../components/fb-comments"
 
 export default function Post({ post }: { post: WithoutDate<BlogPostEntry> }) {
   return (
-    <Layout>
+    <Layout socialShareComponent={SocialShareComponent(post)}>
       <Head>
         <title>{post.title}</title>
         <meta name="description" content={post.description} />
@@ -54,3 +54,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   }
 }
+
+function SocialShareComponent(post: WithoutDate<BlogPostEntry>) {
+  return (
+    <div className="h-screen w-screen">
+      <h1 className="font-display text-8xl">{post.title}</h1>
+    </div>
+  )
+} 

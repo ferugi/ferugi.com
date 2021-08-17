@@ -75,6 +75,7 @@ export type LandingScreenEntry = EntryBase & {
     title: string
     tagline: string
     description: string
+    socialShareDescription: string
     contactLinks: {
         email: string
         linkedIn: string

@@ -42,6 +42,9 @@ const nextConfig = {
   },
   redirects,
   webpack,
+  publicRuntimeConfig: {
+    HOST: process.env.HOST
+  }
 }
 
 module.exports = withTM(nextConfig)

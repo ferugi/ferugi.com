@@ -6,6 +6,7 @@ import content, { LandingScreenEntry } from '../lib/content'
 import React from 'react'
 import { LandingScreen } from '../components/home/landing-screen'
 import Layout from "../components/layout"
+import HomeSocialShare from '../components/home/home-social-share'
 
 type HomeProps = {
   landingScreenEntry: WithoutDate<LandingScreenEntry>
@@ -13,7 +14,7 @@ type HomeProps = {
 
 export default function Home({ landingScreenEntry } : HomeProps) {
   return (
-    <Layout>
+    <Layout socialShareComponent={HomeSocialShare(landingScreenEntry)}>
       <Head>
         <title>{landingScreenEntry.title}</title>
         <meta name="description" content={landingScreenEntry.description} />

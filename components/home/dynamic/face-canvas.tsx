@@ -2,9 +2,9 @@ import { useGLTF } from '@react-three/drei/core/useGLTF'
 import useEventListener from '@use-it/event-listener'
 import dynamic from 'next/dynamic'
 import React, { HTMLAttributes, Suspense, useRef, useState } from 'react'
-import { useFrame, useThree } from 'react-three-fiber'
+import { useFrame } from 'react-three-fiber'
 import * as THREE from 'three'
-import { Group, PerspectiveCamera, Vector2, MathUtils } from 'three'
+import { Group, Vector2, MathUtils } from 'three'
 import BackgroundCircles from '../../../public/background-circle.svg'
 import styles from './face-canvas.module.scss'
 
@@ -15,30 +15,33 @@ export const FaceCanvas = dynamic(async () => {
 
     return (props?: HTMLAttributes<HTMLDivElement> & { showAxesHelper: boolean }) => {
         return (
-            <div className={styles.outerContainer}>
-                <div className={styles.innerContainer}>
-                    <BackgroundCircles className={styles.backgroundCircles} />
-                    <Canvas
-                        {...props}
-                        camera={{ position: [0, 0, 7.5], fov: 36 }}
-                        style={{ position: 'absolute' }}
-                        shadowMap
-                        gl={{
-                            alpha: true,
-                            antialias: true 
-                        }}>
-                        <InnerCanvas />
-                        { props.showAxesHelper && <axesHelper position={[0,0,4]} /> }
-                    </Canvas>
-                </div>
-            </div>
+            <>
+                <BackgroundCircles className={styles.backgroundCircles} />
+                <Canvas
+                    {...props}
+                    camera={{ position: [0, 0, 7.5], fov: 36 }}
+                    style={{ position: 'absolute' }}
+                    shadowMap
+                    gl={{
+                        alpha: true,
+                        antialias: true 
+                    }}>
+                    <InnerCanvas />
+                    { props.showAxesHelper && <axesHelper position={[0,0,4]} /> }
+                </Canvas>
+            </>
         )
     }
 }, { ssr: false })
 
 const InnerCanvas = () => {
 
+    const idleTarget = new Vector2(0,0);
+
+    const [lastMousePoint, setLastMousePoint] = useState(new Vector2(0,0))
     const [mousePoint, setMousePoint] = useState(new Vector2(0,0))
+    const [currentlyLookingAt, setCurrentlyLookingAt] = useState(new Vector2(0,0))
+    const [mouseLastMoved, setMouseLastMoved] = useState(0)
 
     useEventListener('mousemove', (event : MouseEvent) => {
         const windowWidth = window.innerWidth / 2
@@ -47,15 +50,46 @@ const InnerCanvas = () => {
         const mouseX = (event.x - windowWidth) / windowWidth
         const mouseY = (windowHeight - event.y) / windowHeight
         const vector = new Vector2(mouseX, mouseY)
+
         setMousePoint(vector);
+        setMouseLastMoved(Date.now())
     })
 
     const face = useRef<Group>()
 
     useFrame(({ camera }) => {
-        if (!!face.current) {
-            face.current.lookAt(mousePoint.x, mousePoint.y, camera.position.z)
+
+        let targetToLookAt = currentlyLookingAt;
+
+        // mouse is moving
+        if (mousePoint !== lastMousePoint) {
+            const alpha = Math.min(
+                currentlyLookingAt.distanceTo(mousePoint) * 0.2  + 0.01,
+                currentlyLookingAt.distanceTo(idleTarget) * 0.2  + 0.01,
+                1
+            )
+
+            // target to look at = somewhere between current position and mouse
+            targetToLookAt = currentlyLookingAt.lerp(mousePoint, alpha);
         }
+        // mouse is not moving
+        else if ((mouseLastMoved + 350) < Date.now()) {
+            const alpha = Math.min(
+                currentlyLookingAt.distanceTo(mousePoint) * 0.02 + 0.01,
+                currentlyLookingAt.distanceTo(idleTarget) * 0.02 + 0.01,
+                1
+            )
+
+            // target to look at is somewhere between current position and idle position
+            targetToLookAt = currentlyLookingAt.lerp(idleTarget, alpha);
+        }
+
+        if (!!face.current) {
+            face.current.lookAt(targetToLookAt.x, targetToLookAt.y, camera.position.z);
+        }
+
+        setCurrentlyLookingAt(targetToLookAt);
+        setLastMousePoint(mousePoint);
     })
     
     return  (
