@@ -9,7 +9,7 @@ export async function seoImageHandler(req: NextApiRequest, res: NextApiResponse)
 
   const { path , type } = getValidPathAndTypeFromQuery(req);
   
-  const screenshot = await screenshotSeoPage(path, type);
+  const screenshot = await screenshotSeoPage(type, path);
   
   setResponseValues(res, screenshot);
 }
