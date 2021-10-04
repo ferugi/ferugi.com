@@ -1,3 +1,3 @@
-import { SeoImageHandler } from '../../lib/seo-image'
+import { seoImageHandler } from '../../lib/seo/seo-image'
 
-export default SeoImageHandler
+export default seoImageHandler

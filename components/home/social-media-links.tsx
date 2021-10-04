@@ -8,7 +8,7 @@ type SocialMediaLinksProps = {
     instagram: string
 }
 
-export const SocialMediaLinks = ({linkedIn, gitHub, instagram} : SocialMediaLinksProps) => {
+export default function SocialMediaLinks ({linkedIn, gitHub, instagram} : SocialMediaLinksProps) {
     return (
         <ul className="list-none inline-grid grid-flow-col auto-cols-max gap-5">
             {linkedIn && <li>

@@ -1,6 +1,7 @@
 import { OpenGraph } from "next-seo/lib/types";
+import { getSeoUrl } from "./seo-image-helpers";
 
-export function DefaultOpenGraph(host: string): OpenGraph
+export function defaultOpenGraph(): OpenGraph
 {
     return {
         type: 'website',
@@ -14,6 +15,6 @@ export function DefaultOpenGraph(host: string): OpenGraph
             lastName: 'El Heri',
             gender: 'Male'
         },
-        images: [{ url: `${host}/api/seo-image` }]
+        images: [{ url: getSeoUrl('/', 'facebook') }]
     }
 }

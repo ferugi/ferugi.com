@@ -1,14 +1,14 @@
 import React from 'react'
 import { LandingScreenEntry } from '../../lib/content'
 import { FaceCanvas } from './dynamic/face-canvas'
-import { SocialMediaLinks } from './social-media-links'
+import SocialMediaLinks from './social-media-links'
 import styles from './landing-screen.module.scss'
 
 type LandingScreenProps = {
     entry: LandingScreenEntry
 }
 
-export const LandingScreen = ({ entry } : LandingScreenProps) => {
+export default function LandingScreen ({ entry } : LandingScreenProps) {
     return (
         <>
             <div className={styles.outerContainer}>

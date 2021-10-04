@@ -1,15 +1,16 @@
 import Layout from "../../components/layout"
 import Head from 'next/head'
-import Date from '../../components/date'
+import Date from '../../components/shared/date'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { datesToStrings, WithoutDate } from '../../lib/dateToStrings'
 import content, { BlogPostEntry } from '../../lib/content'
 import styles from './blog.module.scss'
-import FacebookComments from "../../components/fb-comments"
+import FacebookComments from "../../components/blog/fb-comments"
+import { BlogSocialShareImage } from "../../components/blog/blog-social-share-image"
 
 export default function Post({ post }: { post: WithoutDate<BlogPostEntry> }) {
   return (
-    <Layout socialShareComponent={SocialShareComponent(post)}>
+    <Layout socialShareImageComponent={BlogSocialShareImage(post)}>
       <Head>
         <title>{post.title}</title>
         <meta name="description" content={post.description} />
@@ -54,11 +55,3 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   }
 }
-
-function SocialShareComponent(post: WithoutDate<BlogPostEntry>) {
-  return (
-    <div className="h-screen w-screen">
-      <h1 className="font-display text-8xl">{post.title}</h1>
-    </div>
-  )
-} 

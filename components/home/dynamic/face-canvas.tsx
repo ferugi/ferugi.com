@@ -8,9 +8,7 @@ import { Group, Vector2, MathUtils } from 'three'
 import BackgroundCircles from '../../../public/background-circle.svg'
 import styles from './face-canvas.module.scss'
 
-const deg = MathUtils.degToRad
-
-export const FaceCanvas = dynamic(async () => {
+export const FaceCanvas = dynamic(async function() {
     const { Canvas } = await import('react-three-fiber')
 
     return (props?: HTMLAttributes<HTMLDivElement> & { showAxesHelper: boolean }) => {
@@ -34,7 +32,7 @@ export const FaceCanvas = dynamic(async () => {
     }
 }, { ssr: false })
 
-const InnerCanvas = () => {
+function InnerCanvas() {
 
     const idleTarget = new Vector2(0,0);
 
@@ -114,7 +112,7 @@ const InnerCanvas = () => {
     )
 }
 
-const HeadAndHair = () => {
+function HeadAndHair() {
     const { scene } = useGLTF('./models/myface.glb')
     
     const head = scene.getObjectByName('Head') as any
@@ -125,9 +123,9 @@ const HeadAndHair = () => {
         roughness: 1,
         blending: THREE.NoBlending
     })
-    
+
     return (
-        <group position={[0, -0.25, 0]} rotation={[0, deg(-10), 0]} visible={true}>
+        <group position={[0, -0.25, 0]} rotation={[0, MathUtils.degToRad(-10), 0]} visible={true}>
             <mesh name="head" geometry={head.geometry} material={material} receiveShadow castShadow />
             <mesh name="hair" scale={[1.05, 1.05, 1.05]} position={[0, -0.05, 0]} geometry={hair.geometry}
                 material={material} receiveShadow castShadow />
