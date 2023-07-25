@@ -4,6 +4,7 @@ title: Full-Stack Developer
 company: INTO University Partnerships
 location: Brighton
 startDate: '2018-08'
+endDate: '2021-01'
 technologies:
     - REST
     - Microservices
@@ -44,7 +45,7 @@ technologies:
     - VS Code
 ---
 
-With a market revenue of $260m and over 1800 employees internationally, INTO University Partnerships is a leader in providing education to students around the world. At INTO I build full-stack, secure, and optimised, websites and microservices that serve users with digitally diverse requirements. I’ve worked on agile (Scrum) projects across the company's digital portfolio and am experienced in a broad array of modern development tools and methodologies. I’m continually recognised and rewarded as a high-performer. My highlights include:
+With a market revenue of $260m and over 1800 employees internationally, INTO University Partnerships is a leader in providing education to students around the world. At INTO I built full-stack, secure, and optimised, websites and microservices that served users with digitally diverse requirements. I worked in agile (Scrum) projects across the company's digital portfolio and experienced a broad array of modern development tools and methodologies. I received continually recognition and rewarded as a high-performer. My highlights include:
 
 * Rebuilding our core B2B offering with Angular, personally delivering key features such as the search page, university listing, and comparison pages, within narrow time constraints.
 * Being entrusted to analyse, research, and then develop with Azure Durable Functions a secure and reliable pipeline to carry our company’s most crucial data.
