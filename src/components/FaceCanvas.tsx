@@ -1,0 +1,122 @@
+import { useGLTF } from "@react-three/drei/core/useGLTF";
+import useEventListener from "@use-it/event-listener";
+import dynamic from "next/dynamic";
+import React, { HTMLAttributes, Suspense, useRef, useState } from "react";
+import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
+import { Group, Vector2, MathUtils } from "three";
+import styles from "./face-canvas.module.scss";
+import BackgroundCircles from "./background-circle.svg";
+
+const deg = MathUtils.degToRad;
+
+export const FaceCanvas = dynamic(
+  async () => {
+    const { Canvas } = await import("@react-three/fiber");
+
+    return function dynamicFaceCanvas(
+      props?: HTMLAttributes<HTMLDivElement> & { showAxesHelper: boolean }
+    ) {
+      return (
+        <div className={styles.outerContainer}>
+          <div className={styles.innerContainer}>
+            <BackgroundCircles className={styles.backgroundCircles} />
+            <Canvas
+              {...props}
+              camera={{ position: [0, 0, 7.5], fov: 36 }}
+              style={{ position: "absolute" }}
+              gl={{
+                alpha: true,
+                antialias: true,
+              }}
+            >
+              <InnerCanvas />
+              {!!props?.showAxesHelper && <axesHelper position={[0, 0, 4]} />}
+            </Canvas>
+          </div>
+        </div>
+      );
+    };
+  },
+  { ssr: false }
+);
+
+const InnerCanvas = () => {
+  const [mousePoint, setMousePoint] = useState(new Vector2(0, 0));
+
+  useEventListener("mousemove", (event: MouseEvent) => {
+    const windowWidth = window.innerWidth / 2;
+    const windowHeight = window.innerHeight / 2;
+
+    const mouseX = (event.x - windowWidth) / windowWidth;
+    const mouseY = (windowHeight - event.y) / windowHeight;
+    const vector = new Vector2(mouseX, mouseY);
+    setMousePoint(vector);
+  });
+
+  const face = useRef<Group>(null);
+
+  useFrame(({ camera }) => {
+    if (!face.current || !face.current?.lookAt) {
+      return;
+    }
+
+    face.current.lookAt(mousePoint.x, mousePoint.y, camera.position.z);
+  });
+
+  return (
+    <group>
+      <group>
+        <ambientLight intensity={0.5} />
+        <directionalLight
+          position={[-5, 5, 5]}
+          intensity={1}
+          shadow-mapSize-height={2048}
+          shadow-mapSize-width={2048}
+          castShadow
+        />
+      </group>
+      <Suspense fallback={null}>
+        <group ref={face}>
+          <HeadAndHair />
+        </group>
+      </Suspense>
+    </group>
+  );
+};
+
+const HeadAndHair = () => {
+  const { scene } = useGLTF("./myface.glb");
+
+  const head = scene.getObjectByName("Head") as any;
+  const hair = scene.getObjectByName("Hair") as any;
+
+  const material = new THREE.MeshStandardMaterial({
+    color: new THREE.Color("#fff"),
+    roughness: 1,
+    blending: THREE.NoBlending,
+  });
+
+  return (
+    <group position={[0, -0.25, 0]} rotation={[0, deg(-10), 0]} visible={true}>
+      <mesh
+        name="head"
+        geometry={head.geometry}
+        material={material}
+        receiveShadow
+        castShadow
+      />
+      <mesh
+        name="hair"
+        scale={[1.05, 1.05, 1.05]}
+        position={[0, -0.05, 0]}
+        geometry={hair.geometry}
+        material={material}
+        receiveShadow
+        castShadow
+      />
+    </group>
+  );
+};
+
+export default FaceCanvas;
