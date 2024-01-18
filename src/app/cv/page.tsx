@@ -1,15 +1,30 @@
 import Head from "next/head";
 import styles from "./cv.module.css";
 import content, { CvSummaryEntry, CvExperienceEntry } from "@/lib/content";
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 import { ComponentPropsWithoutRef, FC } from "react";
 import { cn } from "@/lib/cn";
+import {
+  IconBook,
+  IconBrandLinkedin,
+  IconBriefcase,
+  IconChartBubble,
+  IconMail,
+  IconMapPin,
+  IconPhone,
+  IconSchool,
+} from "@tabler/icons-react";
+
 //import { useSearchParams } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "TODO: {summary.fullName}: {summary.title} - CV",
-  description: "Full Stack Developer",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const summary = await content.getCvSummary();
+
+  return {
+    title: `${summary.fullName}: ${summary.title} - CV`,
+    description: `CV of ${summary.fullName}, ${summary.title}`,
+  };
+}
 
 export default async function Cv() {
   const summary = await content.getCvSummary();
@@ -48,19 +63,13 @@ export default async function Cv() {
             <ul className={styles.contactDetails}>
               <li>
                 <a href={"mailto:" + summary.contactDetails.email}>
-                  <i
-                    className={`${styles.contactIcon} fas fa-envelope`}
-                    aria-hidden={true}
-                  />{" "}
+                  <IconMail />
                   {summary.contactDetails.email}
                 </a>
               </li>
               <li>
                 <a href={"tel:" + summary.contactDetails.phone}>
-                  <i
-                    className={`${styles.contactIcon} fas fa-phone-alt`}
-                    aria-hidden={true}
-                  />
+                  <IconPhone />
                   <code>{summary.contactDetails.phone}</code>
                 </a>
               </li>
@@ -70,24 +79,27 @@ export default async function Cv() {
                     "https://linkedin.com/in/" + summary.contactDetails.linkedIn
                   }
                 >
-                  <i
-                    className={`${styles.contactIcon} fab fa-linkedin`}
-                    aria-hidden={true}
-                  />{" "}
+                  <IconBrandLinkedin />
                   {summary.contactDetails.linkedIn}
                 </a>
               </li>
-              <li>
-                <i
-                  className={`${styles.contactIcon} fas fa-map-marker-alt`}
-                  aria-hidden={true}
-                />{" "}
-                {summary.contactDetails.location}
-              </li>
+              {!!summary.contactDetails.location && (
+                <li>
+                  <IconMapPin />
+                  {summary.contactDetails.location}
+                </li>
+              )}
             </ul>
           </header>
           <section className={styles.summary}>
             <div dangerouslySetInnerHTML={{ __html: summary.body }} />
+          </section>
+          <section>
+            <h2>Technologies & Skills</h2>
+            <TechnologyAndSkills
+              techAndSkills={summary.skillHighlights}
+              highlights={[]}
+            />
           </section>
           <section>
             <h2>Experience</h2>
@@ -113,6 +125,34 @@ export default async function Cv() {
   );
 }
 
+const TechnologyAndSkills = ({
+  techAndSkills,
+  highlights,
+}: {
+  techAndSkills: string[];
+  highlights: string[];
+}) => {
+  const filterUnique = (value: string, index: number, array: string[]) =>
+    array.indexOf(value) === index;
+
+  return (
+    <div className={styles.technologies}>
+      <ul>
+        {techAndSkills.filter(filterUnique).map((ts) => (
+          <li
+            className={
+              highlights?.includes(ts.toLowerCase()) ? styles.highlight : ""
+            }
+            key={ts}
+          >
+            {ts}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
 const ExperienceSection: FC<
   ComponentPropsWithoutRef<"article"> & {
     experience: CvExperienceEntry;
@@ -122,12 +162,7 @@ const ExperienceSection: FC<
   return (
     <article {...props} className={cn(styles.experience, className)}>
       <h3>
-        <i
-          className={`${styles.experienceIcon} ${getExperienceIconClass(
-            experience.type
-          )}`}
-          aria-hidden={true}
-        />
+        {getExperienceIcon(experience.type)}
         <span className={styles.experienceTitle}>
           {experience.title}
           {experience.company && <> at {experience.company}</>}
@@ -142,24 +177,6 @@ const ExperienceSection: FC<
           className={styles.experienceDescription}
           dangerouslySetInnerHTML={{ __html: experience.body }}
         />
-        {experience.technologies && (
-          <div className={styles.technologies}>
-            <ul>
-              {experience.technologies.map((technology) => (
-                <li
-                  className={
-                    highlights?.includes(technology.toLowerCase())
-                      ? styles.highlight
-                      : ""
-                  }
-                  key={technology}
-                >
-                  {technology}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
       </div>
     </article>
   );
@@ -187,21 +204,21 @@ function getLeftFooter() {
   });
 }
 
-function getExperienceIconClass(type: string) {
+function getExperienceIcon(type: string) {
   switch (type) {
     case "job":
-      return "fas fa-briefcase";
+      return <IconBriefcase />;
 
     case "degree":
-      return "fas fa-graduation-cap";
+      return <IconSchool />;
 
     case "study":
-      return "fas fa-book-open";
+      return <IconBook />;
 
     case "project":
-      return "fas fa-project-diagram";
+      return <IconChartBubble />;
 
     default:
-      return "";
+      return null;
   }
 }

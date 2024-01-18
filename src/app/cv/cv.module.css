@@ -60,6 +60,7 @@
   font-family: "Merriweather", serif;
   max-width: 21cm;
   font-size: 12px;
+  color: #000;
 }
 
 .cv p {
@@ -116,6 +117,18 @@
   display: inline;
   font-family: "Consolas", monospace;
   margin-left: 2px;
+}
+
+.contactDetails li {
+  display: flex;
+  align-items: center;
+}
+
+.contactDetails svg {
+  display: inline;
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.5rem;
 }
 
 .experience {
@@ -205,4 +218,15 @@
 
 .summary blockquote cite::before {
   content: "― ";
+}
+
+.experience svg {
+  display: inline;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.experience h3 {
+  display: flex;
+  align-items: center;
 }

@@ -108,6 +108,7 @@ export type CvSummaryEntry = EntryBase & {
   };
   body: string;
   experiences: string[];
+  skillHighlights: string[];
 };
 
 export type CvExperienceEntry = EntryBase & {
